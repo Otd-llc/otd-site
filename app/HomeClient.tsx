@@ -80,7 +80,7 @@ export default function HomeClient() {
           <div className="mission-text">
             <p>
               Current BCIs ask operators to visualize abstract geometric forms&mdash;producing
-              weak, highly variable signal separation that collapses outside the lab.
+              weak, highly variable signal separation that collapses outside the lab.{' '}
               <strong>BioScale-BCI</strong> introduces Embodied Motor Imagery (EMI): task-anchored
               procedural motor imagery drawn from deeply trained motor programs, where
               high-repetition practice has forged stable sensorimotor cortex activation patterns.
