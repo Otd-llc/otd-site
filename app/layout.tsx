@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'One Thousand Drones, LLC',
-  description: 'Physiology-aware brain-computer interface systems for autonomous platform control.',
+  description: 'Non-invasive, closed-loop brain-computer interface for multi-axis robotic shared control.',
 }
 
 export default function RootLayout({

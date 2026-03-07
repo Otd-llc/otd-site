@@ -34,12 +34,13 @@ export default function HomeClient() {
         <div ref={containerRef} id="canvas-container" />
         <div className="hero-grid">
           <div className="hero-copy">
-            <div className="hero-label">Defense Technology</div>
+            <div className="hero-label">Neuro-Robotic Shared Control</div>
             <h1 className="hero-title font-impact">
-              AUTONOMY &amp;<br />NEURAL<br />ARCHITECTURE
+              EMBODIED<br />MOTOR<br />IMAGERY
             </h1>
             <p className="hero-sub font-body">
-              Strategic advisory for DARPA initiatives and BioScale-BCI integration.
+              Non-invasive, closed-loop brain-computer interface for multi-axis robotic shared control.
+              Real bodies. Real biosignals. Real-time authority gating.
             </p>
           </div>
           <div className="hero-card">
@@ -74,35 +75,43 @@ export default function HomeClient() {
       {/* Mission */}
       <section id="mission">
         <div className="section-label">Our Mission</div>
-        <h2 className="section-title">BRIDGING MIND<br />AND MACHINE</h2>
+        <h2 className="section-title">BEYOND ABSTRACT<br />VISUALIZATION</h2>
         <div className="mission-grid">
           <div className="mission-text">
             <p>
-              One Thousand Drones, LLC is building <strong>BioScale-BCI</strong>, a non-invasive brain-computer
-              interface that translates neural intent into autonomous platform commands in real time.
+              Current BCIs ask operators to visualize abstract geometric forms&mdash;producing
+              weak, highly variable signal separation that collapses outside the lab.
+              <strong>BioScale-BCI</strong> introduces Embodied Motor Imagery (EMI): task-anchored
+              procedural motor imagery drawn from deeply trained motor programs, where
+              high-repetition practice has forged stable sensorimotor cortex activation patterns.
             </p>
             <p>
-              Our system fuses EEG-derived cognitive state with physiological telemetry to create a
-              <strong> closed-loop control architecture</strong> that adapts to operator workload, fatigue,
-              and stress&mdash;keeping humans in the loop without bottlenecking the mission.
+              Three biological limitations block existing systems: <em>abstract input mapping</em> that
+              yields inadequate signal separation, <em>biological session drift</em> as electrode-skin
+              impedance fluctuation degrades static classifiers over time, and <em>physiological
+              blindness</em>&mdash;open-loop architectures that execute commands regardless of the
+              operator&apos;s cognitive capacity, directly inducing
+              pilot-induced oscillation. BioScale addresses all three with a <strong>hardware-first
+              architecture</strong> that fuses 8-channel EEG with real-time HRV and SpO&#8322;
+              telemetry into a single closed-loop pipeline.
             </p>
             <p>
               We are targeting DARPA SBIR funding through the BTO office-wide BAA to bring this
-              capability from concept to prototype.
+              capability from concept to validated prototype.
             </p>
           </div>
           <div className="mission-stats">
             <div className="stat-item">
-              <div className="stat-num">6</div>
-              <div className="stat-label">Sensor Modalities</div>
+              <div className="stat-num">8</div>
+              <div className="stat-label">EEG Channels (ADS1299)</div>
             </div>
             <div className="stat-item">
-              <div className="stat-num">40</div>
-              <div className="stat-label">Phase I BOM Line Items</div>
+              <div className="stat-num">12</div>
+              <div className="stat-label">Subjects / 3 Cohorts</div>
             </div>
             <div className="stat-item">
-              <div className="stat-num">$150K</div>
-              <div className="stat-label">Phase I Budget</div>
+              <div className="stat-num">48+</div>
+              <div className="stat-label">Operator-Sessions Planned</div>
             </div>
           </div>
         </div>
@@ -115,38 +124,42 @@ export default function HomeClient() {
           <h2 className="section-title">THE BIOSCALE-BCI<br />STACK</h2>
           <div className="tech-intro">
             <p>
-              Three tightly integrated subsystems transform raw biosignals into platform-level
-              autonomy commands with sub-second latency and continuous operator adaptation.
+              Three tightly integrated subsystems transform raw biosignals into vectorial
+              intent signals with &lt;150&thinsp;ms classification latency and continuous operator adaptation.
             </p>
           </div>
           <div className="subsystems">
             <div className="subsystem">
               <div className="sub-index">01</div>
               <div className="sub-label">Subsystem A</div>
-              <div className="sub-title">NEURAL ACQUISITION</div>
+              <div className="sub-title">ZERO-TIME IMPEDANCE CALIBRATION</div>
               <div className="sub-body">
-                High-density dry-electrode EEG array with real-time artifact rejection,
-                capturing motor imagery, SSVEP, and P300 signals at clinical-grade fidelity
-                without gel preparation.
+                8-channel ADS1299 EEG with continuous 31.2&thinsp;Hz out-of-band AC injection
+                feeds live impedance as a conditioning variable into the PyTorch CNN input
+                layer&mdash;rendering the classifier continuously invariant to session drift
+                without manual recalibration downtime.
               </div>
             </div>
             <div className="subsystem">
               <div className="sub-index">02</div>
               <div className="sub-label">Subsystem B</div>
-              <div className="sub-title">PHYSIOLOGICAL FUSION</div>
+              <div className="sub-title">DYNAMIC BIOMETRIC SCALING</div>
               <div className="sub-body">
-                Multi-modal sensor suite&mdash;EMG, EOG, GSR, PPG, respiration&mdash;fused with neural
-                data to estimate operator cognitive load, fatigue index, and stress state in real time.
+                MAX30102 pulse oximetry derives HRV and SpO&#8322; in real time. A bounded derivative
+                function dampens command sensitivity during acute adrenaline-driven &Delta;HR spikes and
+                amplifies fading signal amplitude during cognitive fatigue&mdash;closing the loop
+                between body state and platform behavior.
               </div>
             </div>
             <div className="subsystem">
               <div className="sub-index">03</div>
               <div className="sub-label">Subsystem C</div>
-              <div className="sub-title">ADAPTIVE COMMAND LAYER</div>
+              <div className="sub-title">PROBABILISTIC AUTONOMY GATING</div>
               <div className="sub-body">
-                Edge-deployed inference pipeline that translates fused biosignals into
-                platform-agnostic autonomy commands, dynamically adjusting authority allocation
-                based on operator state.
+                A 3-second sliding-window &ldquo;leaky bucket&rdquo; integrates ERN event counts
+                alongside acute &Delta;HR spikes and SpO&#8322; floor breaches. The combined Bayesian
+                posterior&mdash;not any single indicator&mdash;governs authority transfer, invoking
+                edge-safety protocols only when the joint posterior exceeds a pre-calibrated threshold.
               </div>
             </div>
           </div>
@@ -162,33 +175,38 @@ export default function HomeClient() {
             <div className="hyp-card">
               <div className="hyp-id">H1</div>
               <div className="hyp-text">
-                <strong>Neural Decode Accuracy</strong>
-                Non-invasive EEG can achieve &ge;85% classification accuracy for 4-class motor
-                imagery within 500ms decode windows.
+                <strong>EMI Class Separability</strong>
+                Operators with &ge;50 hours of documented bilateral industrial training
+                demonstrate &ge;85% class separability on continuous multi-axis EMI tasks
+                with &lt;150&thinsp;ms latency
+                and without manual recalibration over continuous 60-minute sessions.
               </div>
             </div>
             <div className="hyp-card">
               <div className="hyp-id">H2</div>
               <div className="hyp-text">
-                <strong>Physiological Prediction</strong>
-                Fused biosignals predict operator cognitive overload &ge;30 seconds before
-                task performance degrades.
+                <strong>PIO Reduction</strong>
+                Dynamic biometric scaling reduces simulated PIO events
+                by &ge;40% under dual-task cognitive load versus unscaled BCI baselines.
               </div>
             </div>
             <div className="hyp-card">
               <div className="hyp-id">H3</div>
               <div className="hyp-text">
-                <strong>Adaptive Authority</strong>
-                Dynamic authority reallocation based on operator state reduces mission-critical
-                errors by &ge;40% vs. static allocation.
+                <strong>Gating Reliability</strong>
+                Autonomy gate maintains &lt;5% false-positive and &lt;10% false-negative rates
+                across &ge;200 gating events in a controlled stress-induction protocol.
               </div>
             </div>
             <div className="hyp-card">
               <div className="hyp-id">H4</div>
               <div className="hyp-text">
-                <strong>Edge Latency</strong>
-                End-to-end pipeline from neural acquisition to platform command executes
-                in &le;200ms on edge compute hardware.
+                <strong>Cross-Cohort EMI Equivalence</strong>
+                EMI class separability does not differ significantly (p&nbsp;&gt;&nbsp;0.05)
+                across three cohorts&mdash;industrial operators, expert gamers, and
+                musicians&mdash;demonstrating that high-repetition bilateral motor training,
+                regardless of domain, produces cortical activation patterns of sufficient
+                quality for BCI classification.
               </div>
             </div>
           </div>
@@ -213,9 +231,9 @@ export default function HomeClient() {
             <div className="about-role">Founder &amp; Principal Investigator</div>
             <div className="about-bio">
               <p>
-                Joshua brings deep expertise in <strong>digital signal processing</strong> and
-                real-time embedded systems to the BioScale-BCI program. His background spans
-                defense-adjacent engineering and neurotechnology research.
+                Joshua&apos;s background spans <strong>embedded signal processing, EEG hardware
+                integration, and applied machine learning</strong>. He founded One Thousand Drones
+                to close the gap between BCI research and real-world operator environments.
               </p>
               <p>
                 One Thousand Drones, LLC is incorporated in Oklahoma and registered for
@@ -223,9 +241,9 @@ export default function HomeClient() {
               </p>
             </div>
             <div className="expertise-list">
-              <div className="exp-item">Digital Signal Processing &amp; Real-Time DSP</div>
-              <div className="exp-item">EEG / BCI System Architecture</div>
-              <div className="exp-item">Embedded Systems &amp; Edge Compute</div>
+              <div className="exp-item">EEG Analog Front-End &amp; Impedance Calibration</div>
+              <div className="exp-item">PyTorch CNN / Embodied Motor Imagery</div>
+              <div className="exp-item">HRV &amp; SpO&#8322; Biometric Fusion</div>
               <div className="exp-item">DARPA SBIR / Federal Acquisition</div>
             </div>
           </div>
