@@ -47,10 +47,6 @@ export default function HomeClient() {
             <div className="hero-card-title font-technical">Let&apos;s Talk</div>
             <form action="mailto:pi@onethousanddrones.com" method="POST" encType="text/plain">
               <div className="hero-card-field">
-                <label className="font-technical">Name</label>
-                <input type="text" name="Name" className="font-body" placeholder="Your name" />
-              </div>
-              <div className="hero-card-field">
                 <label className="font-technical">Email</label>
                 <input type="email" name="Email" className="font-body" placeholder="you@example.com" />
               </div>
@@ -85,13 +81,14 @@ export default function HomeClient() {
               procedural motor imagery drawn from deeply trained motor programs, where
               high-repetition practice has forged stable sensorimotor cortex activation patterns.
             </p>
+            <p>Three biological limitations block existing systems:</p>
+            <ul className="mission-limits">
+              <li><em>Abstract input mapping</em> that yields inadequate signal separation.</li>
+              <li><em>Biological session drift</em> as electrode-skin impedance fluctuation degrades static classifiers over time.</li>
+              <li><em>Physiological blindness</em>&mdash;open-loop architectures that execute commands regardless of operator cognitive capacity, directly inducing pilot-induced oscillation.</li>
+            </ul>
             <p>
-              Three biological limitations block existing systems: <em>abstract input mapping</em> that
-              yields inadequate signal separation, <em>biological session drift</em> as electrode-skin
-              impedance fluctuation degrades static classifiers over time, and <em>physiological
-              blindness</em>&mdash;open-loop architectures that execute commands regardless of the
-              operator&apos;s cognitive capacity, directly inducing
-              pilot-induced oscillation. BioScale addresses all three with a <strong>hardware-first
+              BioScale addresses all three with a <strong>hardware-first
               architecture</strong> that fuses 8-channel EEG with real-time HRV and SpO&#8322;
               telemetry into a single closed-loop pipeline.
             </p>
