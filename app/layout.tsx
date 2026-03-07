@@ -4,6 +4,19 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'One Thousand Drones, LLC',
   description: 'Non-invasive, closed-loop brain-computer interface for multi-axis robotic shared control.',
+  openGraph: {
+    title: 'One Thousand Drones, LLC',
+    description: 'BioScale-BCI: Embodied Motor Imagery for physiology-aware robotic shared control.',
+    url: 'https://onethousanddrones.com',
+    siteName: 'One Thousand Drones, LLC',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'One Thousand Drones, LLC',
+    description: 'BioScale-BCI: Embodied Motor Imagery for physiology-aware robotic shared control.',
+  },
 }
 
 export default function RootLayout({

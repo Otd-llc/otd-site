@@ -45,18 +45,18 @@ export default function HomeClient() {
           </div>
           <div className="hero-card">
             <div className="hero-card-title font-technical">Let&apos;s Talk</div>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form action="mailto:pi@onethousanddrones.com" method="POST" encType="text/plain">
               <div className="hero-card-field">
                 <label className="font-technical">Name</label>
-                <input type="text" className="font-body" placeholder="Your name" />
+                <input type="text" name="Name" className="font-body" placeholder="Your name" />
               </div>
               <div className="hero-card-field">
                 <label className="font-technical">Email</label>
-                <input type="email" className="font-body" placeholder="you@example.com" />
+                <input type="email" name="Email" className="font-body" placeholder="you@example.com" />
               </div>
               <div className="hero-card-field">
                 <label className="font-technical">Message</label>
-                <textarea className="font-body" placeholder="How can we help?" />
+                <textarea name="Message" className="font-body" placeholder="How can we help?" />
               </div>
               <button type="submit" className="hero-card-submit font-technical">
                 Send Message
@@ -263,32 +263,36 @@ export default function HomeClient() {
             <div className="contact-channels">
               <div className="channel">
                 <span className="channel-label">Email</span>
-                <a href="mailto:josh@onethousanddrones.com" className="channel-value">
-                  josh@onethousanddrones.com
+                <a href="mailto:pi@onethousanddrones.com" className="channel-value">
+                  pi@onethousanddrones.com
                 </a>
               </div>
               <div className="channel">
+                <span className="channel-label">Phone</span>
+                <a href="tel:+19184058555" className="channel-value">(918) 405-8555</a>
+              </div>
+              <div className="channel">
                 <span className="channel-label">Location</span>
-                <span className="channel-value">Tulsa, Oklahoma</span>
+                <span className="channel-value">Tulsa, OK Aerospace Corridor</span>
               </div>
             </div>
           </div>
-          <div className="contact-form-area">
+          <form className="contact-form-area" action="mailto:pi@onethousanddrones.com" method="POST" encType="text/plain">
             <div className="form-title">Send a Message</div>
             <div className="form-field">
               <label>Name</label>
-              <input type="text" placeholder="Your name" />
+              <input type="text" name="Name" placeholder="Your name" />
             </div>
             <div className="form-field">
               <label>Email</label>
-              <input type="email" placeholder="you@example.com" />
+              <input type="email" name="Email" placeholder="you@example.com" />
             </div>
             <div className="form-field">
               <label>Message</label>
-              <textarea placeholder="How can we help?" />
+              <textarea name="Message" placeholder="How can we help?" />
             </div>
-            <button className="form-submit">Send Message</button>
-          </div>
+            <button type="submit" className="form-submit">Send Message</button>
+          </form>
         </div>
       </section>
 
