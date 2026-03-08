@@ -219,7 +219,7 @@ export default function HomeClient() {
         <div className="about-grid">
           <div className="about-photo">
             <div className="photo-frame">
-              <img src="/josh1.jpg" alt="Joshua Tollette" className="photo-img" />
+              <img src="/josh2.jpg" alt="Joshua Tollette" className="photo-img" />
             </div>
             <div className="photo-accent" />
           </div>
