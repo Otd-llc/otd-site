@@ -266,7 +266,7 @@ export default function HomeClient() {
               </div>
               <div className="channel">
                 <span className="channel-label">Phone</span>
-                <a href="tel:+19184058555" className="channel-value">(918) 405-8555</a>
+                <a href="tel:+19184068555" className="channel-value">(918) 406-8555</a>
               </div>
               <div className="channel">
                 <span className="channel-label">Location</span>
