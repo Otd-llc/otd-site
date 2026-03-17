@@ -270,7 +270,7 @@ export default function HomeClient() {
               </div>
               <div className="channel">
                 <span className="channel-label">Location</span>
-                <span className="channel-value">Tulsa, OK Aerospace Corridor</span>
+                <span className="channel-value">Broken Arrow, OK</span>
               </div>
             </div>
           </div>
