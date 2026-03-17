@@ -1181,6 +1181,243 @@
     letter-spacing: 1px;
     border: 1px solid #D5CFC4;
   }
+  /* ── RESPONSIVE ───────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .cover {
+      padding: 40px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      min-height: auto;
+    }
+
+    .cover-left h1 {
+      font-size: 42px;
+      letter-spacing: 2px;
+    }
+
+    .cover-right {
+      text-align: left;
+    }
+
+    .cover-right .bee svg {
+      width: 56px;
+      height: 54px;
+    }
+
+    .section {
+      padding: 40px 24px;
+    }
+
+    .color-grid {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 16px;
+    }
+
+    .type-meta {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .type-use {
+      margin-left: 0;
+    }
+
+    .specimen-bebas {
+      font-size: 36px;
+    }
+
+    .specimen-bebas-sm {
+      font-size: 20px;
+    }
+
+    .logo-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .usage-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .biz-card {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .letterhead-preview,
+    .memo-preview,
+    .invoice-preview,
+    .doc-strip-preview {
+      max-width: 100%;
+    }
+
+    .lh-header {
+      padding: 24px 20px 16px;
+    }
+
+    .lh-body {
+      padding: 20px;
+    }
+
+    .lh-footer {
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .lh-footer-right {
+      text-align: left;
+    }
+
+    .proposal-cover {
+      max-width: 100%;
+    }
+
+    .proposal-body {
+      padding: 28px 24px;
+    }
+
+    .proposal-title {
+      font-size: 24px;
+    }
+
+    .slide-preview {
+      max-width: 100%;
+      padding: 28px 24px;
+    }
+
+    .slide-title {
+      font-size: 24px;
+    }
+
+    .slide-footer {
+      left: 24px;
+      right: 24px;
+    }
+
+    .envelope-preview {
+      max-width: 100%;
+      aspect-ratio: auto;
+      min-height: 180px;
+    }
+
+    .avatar-grid {
+      flex-wrap: wrap;
+    }
+
+    .memo-header {
+      padding: 16px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .memo-fields {
+      padding: 16px 20px;
+    }
+
+    .memo-body {
+      padding: 16px 20px 24px;
+    }
+
+    .inv-header {
+      padding: 16px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .inv-meta {
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .inv-meta-block[style*="text-align:right"] {
+      text-align: left !important;
+    }
+
+    .inv-table th,
+    .inv-table td {
+      padding: 8px 20px;
+    }
+
+    .inv-total-row {
+      padding: 12px 20px;
+    }
+
+    .inv-footer {
+      padding: 12px 20px;
+    }
+
+    .specs-table {
+      font-size: 9px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    .specs-table th,
+    .specs-table td {
+      padding: 8px 10px;
+    }
+
+    .clearspace-demo {
+      padding: 16px;
+    }
+
+    .doc-header-strip {
+      padding: 10px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .doc-footer-strip {
+      padding: 8px 20px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .doc-body-placeholder {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cover-left h1 {
+      font-size: 32px;
+    }
+
+    .color-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .specimen-bebas {
+      font-size: 28px;
+    }
+
+    .biz-card-front .card-name {
+      font-size: 18px;
+    }
+
+    .proposal-title {
+      font-size: 20px;
+    }
+
+    .slide-title {
+      font-size: 20px;
+    }
+
+    .inv-number {
+      font-size: 18px;
+    }
+  }
 </style>
 </head>
 <body>
