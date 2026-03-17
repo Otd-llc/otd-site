@@ -1183,240 +1183,176 @@
   }
   /* ── RESPONSIVE ───────────────────────────────────────────── */
   @media (max-width: 768px) {
+    /* Global layout */
     .cover {
-      padding: 40px 24px;
+      padding: 32px 16px;
       flex-direction: column;
       align-items: flex-start;
-      gap: 24px;
+      gap: 20px;
       min-height: auto;
     }
+    .cover-left h1 { font-size: 36px; letter-spacing: 2px; }
+    .cover-right { text-align: left; }
+    .cover-right .bee svg { width: 48px; height: 46px; }
+    .section { padding: 32px 16px; }
 
-    .cover-left h1 {
-      font-size: 42px;
-      letter-spacing: 2px;
-    }
-
-    .cover-right {
-      text-align: left;
-    }
-
-    .cover-right .bee svg {
-      width: 56px;
-      height: 54px;
-    }
-
-    .section {
-      padding: 40px 24px;
-    }
-
+    /* Colors */
     .color-grid {
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
     }
 
-    .type-meta {
-      flex-direction: column;
-      gap: 4px;
-    }
+    /* Typography */
+    .type-meta { flex-direction: column; gap: 4px; }
+    .type-use { margin-left: 0; }
+    .specimen-bebas { font-size: 32px; }
+    .specimen-bebas-sm { font-size: 18px; }
+    .specimen-mono { font-size: 11px; letter-spacing: 1px; }
+    .specimen-lora { font-size: 15px; }
 
-    .type-use {
-      margin-left: 0;
-    }
+    /* Logo */
+    .logo-grid { grid-template-columns: 1fr; gap: 16px; }
+    .logo-panel { padding: 28px 20px; }
 
-    .specimen-bebas {
-      font-size: 36px;
-    }
+    /* Usage */
+    .usage-grid { grid-template-columns: 1fr; }
+    .usage-panel { padding: 20px; }
 
-    .specimen-bebas-sm {
-      font-size: 20px;
-    }
+    /* Business card */
+    .card-grid { grid-template-columns: 1fr; gap: 20px; }
+    .biz-card { width: 100% !important; max-width: 100%; height: auto; min-height: 180px; }
+    .biz-card-front { padding: 20px; }
+    .biz-card-front .card-name { font-size: 20px; }
 
-    .logo-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    .usage-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .biz-card {
-      width: 100%;
-      max-width: 350px;
-    }
-
+    /* All preview containers */
     .letterhead-preview,
     .memo-preview,
     .invoice-preview,
-    .doc-strip-preview {
-      max-width: 100%;
-    }
+    .doc-strip-preview,
+    .proposal-cover,
+    .slide-preview,
+    .envelope-preview { max-width: 100%; }
 
-    .lh-header {
-      padding: 24px 20px 16px;
+    /* Letterhead */
+    .lh-header { padding: 20px 16px 14px; }
+    .lh-body { padding: 16px; }
+    .lh-footer {
+      padding: 14px 16px;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
     }
+    .lh-footer-right { text-align: left; }
 
-    .lh-body {
+    /* Proposal */
+    .proposal-cover { aspect-ratio: auto; }
+    .proposal-body { padding: 24px 16px; }
+    .proposal-title { font-size: 22px; }
+    .proposal-subtitle { font-size: 9px; }
+    .proposal-meta { font-size: 8px; }
+
+    /* Slide deck */
+    .slide-preview {
+      padding: 24px 16px;
+      aspect-ratio: auto;
+      min-height: 200px;
+    }
+    .slide-title { font-size: 22px; }
+    .slide-footer { left: 16px; right: 16px; bottom: 12px; }
+
+    /* Document header/footer */
+    .doc-header-strip {
+      padding: 10px 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .doc-footer-strip {
+      padding: 8px 16px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .doc-body-placeholder { padding: 16px; }
+
+    /* Envelope */
+    .envelope-preview {
+      aspect-ratio: auto;
+      min-height: 160px;
       padding: 20px;
     }
+    .envelope-recipient { position: static; transform: none; margin-top: 24px; text-align: left; }
 
-    .lh-footer {
-      padding: 16px 20px;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-start;
-    }
+    /* Social/favicon */
+    .avatar-grid { flex-wrap: wrap; gap: 16px; }
 
-    .lh-footer-right {
-      text-align: left;
-    }
-
-    .proposal-cover {
-      max-width: 100%;
-    }
-
-    .proposal-body {
-      padding: 28px 24px;
-    }
-
-    .proposal-title {
-      font-size: 24px;
-    }
-
-    .slide-preview {
-      max-width: 100%;
-      padding: 28px 24px;
-    }
-
-    .slide-title {
-      font-size: 24px;
-    }
-
-    .slide-footer {
-      left: 24px;
-      right: 24px;
-    }
-
-    .envelope-preview {
-      max-width: 100%;
-      aspect-ratio: auto;
-      min-height: 180px;
-    }
-
-    .avatar-grid {
-      flex-wrap: wrap;
-    }
-
+    /* Memo */
     .memo-header {
-      padding: 16px 20px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .memo-fields {
-      padding: 16px 20px;
-    }
-
-    .memo-body {
-      padding: 16px 20px 24px;
-    }
-
-    .inv-header {
-      padding: 16px 20px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .inv-meta {
-      padding: 16px 20px;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .inv-meta-block[style*="text-align:right"] {
-      text-align: left !important;
-    }
-
-    .inv-table th,
-    .inv-table td {
-      padding: 8px 20px;
-    }
-
-    .inv-total-row {
-      padding: 12px 20px;
-    }
-
-    .inv-footer {
-      padding: 12px 20px;
-    }
-
-    .specs-table {
-      font-size: 9px;
-      display: block;
-      overflow-x: auto;
-    }
-
-    .specs-table th,
-    .specs-table td {
-      padding: 8px 10px;
-    }
-
-    .clearspace-demo {
       padding: 16px;
-    }
-
-    .doc-header-strip {
-      padding: 10px 20px;
       flex-direction: column;
       align-items: flex-start;
       gap: 6px;
     }
+    .memo-fields { padding: 14px 16px; }
+    .memo-body { padding: 14px 16px 20px; }
 
-    .doc-footer-strip {
-      padding: 8px 20px;
-      flex-wrap: wrap;
-      gap: 4px;
+    /* Invoice */
+    .inv-header {
+      padding: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
     }
+    .inv-meta {
+      padding: 14px 16px;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .inv-meta-block[style*="text-align:right"] { text-align: left !important; }
+    .inv-table th, .inv-table td { padding: 8px 16px; font-size: 9px; }
+    .inv-total-row { padding: 12px 16px; }
+    .inv-footer { padding: 12px 16px; }
+    .inv-number { font-size: 18px; }
 
-    .doc-body-placeholder {
-      padding: 20px;
+    /* Email signature */
+    .section > div[style*="padding:32px"] { padding: 16px !important; }
+
+    /* Tables */
+    .specs-table {
+      font-size: 9px;
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
+    .specs-table th, .specs-table td { padding: 8px 10px; white-space: nowrap; }
+
+    /* Clearspace */
+    .clearspace-demo { padding: 12px; }
+    .clearspace-demo svg { width: 140px !important; height: 47px !important; }
+
+    /* Inline style overrides */
+    [style*="padding:32px"] { padding: 16px !important; }
+    [style*="padding: 32px"] { padding: 16px !important; }
+    [style*="max-width:640px"] { max-width: 100% !important; }
+    [style*="max-width: 640px"] { max-width: 100% !important; }
+    [style*="max-width:600px"] { max-width: 100% !important; }
+    [style*="max-width: 600px"] { max-width: 100% !important; }
+    [style*="width:200px"] { width: 140px !important; }
   }
 
   @media (max-width: 480px) {
-    .cover-left h1 {
-      font-size: 32px;
-    }
-
-    .color-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .specimen-bebas {
-      font-size: 28px;
-    }
-
-    .biz-card-front .card-name {
-      font-size: 18px;
-    }
-
-    .proposal-title {
-      font-size: 20px;
-    }
-
-    .slide-title {
-      font-size: 20px;
-    }
-
-    .inv-number {
-      font-size: 18px;
-    }
+    .cover { padding: 24px 12px; }
+    .cover-left h1 { font-size: 28px; }
+    .section { padding: 24px 12px; }
+    .color-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .swatch-color { height: 60px; }
+    .specimen-bebas { font-size: 24px; }
+    .specimen-bebas-sm { font-size: 16px; }
+    .biz-card-front .card-name { font-size: 18px; }
+    .biz-card { min-height: 160px; }
+    .proposal-title { font-size: 18px; }
+    .slide-title { font-size: 18px; }
+    .logo-panel { padding: 24px 16px; }
+    .usage-panel { padding: 16px; }
   }
 </style>
 </head>
