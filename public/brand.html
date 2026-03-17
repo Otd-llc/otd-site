@@ -1221,7 +1221,7 @@
 
     /* Business card */
     .card-grid { grid-template-columns: 1fr; gap: 20px; }
-    .biz-card { width: 100% !important; max-width: 100%; height: auto; min-height: 180px; }
+    .biz-card { width: 100% !important; max-width: 100%; height: auto; aspect-ratio: 3.5 / 2; }
     .biz-card-front { padding: 20px; }
     .biz-card-front .card-name { font-size: 20px; }
 
@@ -1246,7 +1246,7 @@
     .lh-footer-right { text-align: left; }
 
     /* Proposal */
-    .proposal-cover { aspect-ratio: auto; }
+    .proposal-cover { aspect-ratio: 8.5 / 11; }
     .proposal-body { padding: 24px 16px; }
     .proposal-title { font-size: 22px; }
     .proposal-subtitle { font-size: 9px; }
@@ -1255,8 +1255,7 @@
     /* Slide deck */
     .slide-preview {
       padding: 24px 16px;
-      aspect-ratio: auto;
-      min-height: 200px;
+      aspect-ratio: 16 / 9;
     }
     .slide-title { font-size: 22px; }
     .slide-footer { left: 16px; right: 16px; bottom: 12px; }
@@ -1277,8 +1276,7 @@
 
     /* Envelope */
     .envelope-preview {
-      aspect-ratio: auto;
-      min-height: 160px;
+      aspect-ratio: 9.5 / 4.125;
       padding: 20px;
     }
     .envelope-recipient { position: static; transform: none; margin-top: 24px; text-align: left; }
@@ -1349,7 +1347,7 @@
     .specimen-bebas { font-size: 24px; }
     .specimen-bebas-sm { font-size: 16px; }
     .biz-card-front .card-name { font-size: 18px; }
-    .biz-card { min-height: 160px; }
+    .biz-card { aspect-ratio: 3.5 / 2; }
     .proposal-title { font-size: 18px; }
     .slide-title { font-size: 18px; }
     .logo-panel { padding: 24px 16px; }
