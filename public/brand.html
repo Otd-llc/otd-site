@@ -357,26 +357,28 @@
   }
 
   .lh-header {
-    padding: 36px 48px 24px;
+    padding: 36px 48px 0;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 16px;
   }
-
 
   .lh-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
-  .lh-bee svg { width: 28px; height: 27px; color: var(--bg-3); }
+  .lh-bee svg { width: 38px; height: 36px; color: var(--bg-3); }
 
   .lh-wordmark {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 3px;
+    font-size: 20px;
+    letter-spacing: 4px;
     color: var(--bg-3);
+    font-weight: 700;
   }
 
   .lh-watermark {
@@ -384,32 +386,28 @@
   }
 
   .lh-body {
-    padding: 24px 48px 20px;
-    position: relative;
-    z-index: 1;
+    padding: 28px 48px 20px;
   }
 
   .lh-body p {
     font-family: 'Lora', serif;
-    font-size: 13px;
+    font-size: 12px;
     color: #444;
-    line-height: 1.8;
-    margin-bottom: 14px;
+    line-height: 1.7;
+    margin-bottom: 12px;
   }
 
   .lh-footer {
-    padding: 20px 48px;
-    border-top: 1px solid var(--gold);
+    padding: 16px 48px 20px;
+    border-top: 2px solid var(--gold);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    align-items: flex-start;
   }
 
   .lh-footer-left p {
     font-family: 'Space Mono', monospace;
-    font-size: 8px;
+    font-size: 7.5px;
     color: #999;
     letter-spacing: 1px;
     line-height: 1.8;
@@ -421,7 +419,7 @@
 
   .lh-footer-right p {
     font-family: 'Space Mono', monospace;
-    font-size: 8px;
+    font-size: 7.5px;
     color: #999;
     letter-spacing: 1px;
     line-height: 1.8;
