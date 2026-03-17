@@ -352,8 +352,11 @@
     border-radius: 4px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.12);
     overflow: hidden;
-    max-width: 640px;
+    max-width: 540px;
+    aspect-ratio: 8.5 / 11;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   .lh-header {
@@ -387,6 +390,7 @@
 
   .lh-body {
     padding: 28px 48px 20px;
+    flex: 1;
   }
 
   .lh-body p {
