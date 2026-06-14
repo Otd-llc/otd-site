@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { bebas, spaceMono, lora } from './fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -26,11 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+    <html lang="en" className={`${bebas.variable} ${spaceMono.variable} ${lora.variable}`}>
       <body>{children}</body>
     </html>
   )
