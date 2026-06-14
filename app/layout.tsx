@@ -4,13 +4,19 @@ import { SiteHeader } from './components/SiteHeader'
 import { SiteFooter } from './components/SiteFooter'
 import './globals.css'
 
+const DESCRIPTION =
+  'A non-invasive EEG brain–computer interface that turns trained motor imagery into supervisory command of a swarm — built in a defense-registered lab (SAM.gov / CAGE 1ZYS4), and teachable board-by-board in the Academy.'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://onethousanddrones.com'),
-  title: 'One Thousand Drones, LLC',
-  description: 'Non-invasive, closed-loop brain-computer interface for multi-axis robotic shared control.',
+  title: {
+    default: 'One Thousand Drones — From Mind to Swarm',
+    template: '%s · One Thousand Drones',
+  },
+  description: DESCRIPTION,
   openGraph: {
-    title: 'One Thousand Drones, LLC',
-    description: 'BioScale-BCI: Embodied Motor Imagery for physiology-aware robotic shared control.',
+    title: 'One Thousand Drones — From Mind to Swarm',
+    description: DESCRIPTION,
     url: 'https://onethousanddrones.com',
     siteName: 'One Thousand Drones, LLC',
     locale: 'en_US',
@@ -18,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'One Thousand Drones, LLC',
-    description: 'BioScale-BCI: Embodied Motor Imagery for physiology-aware robotic shared control.',
+    title: 'One Thousand Drones — From Mind to Swarm',
+    description: DESCRIPTION,
   },
 }
 

@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'One Thousand Drones, LLC — BioScale-BCI'
+export const alt = 'One Thousand Drones — From Mind to Swarm'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -16,7 +16,7 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
-          backgroundColor: '#0D1117',
+          backgroundColor: '#08090d',
           padding: '80px 100px',
           fontFamily: 'sans-serif',
         }}
@@ -26,7 +26,7 @@ export default async function Image() {
           style={{
             width: 60,
             height: 4,
-            backgroundColor: '#E5A544',
+            backgroundColor: '#c8963e',
             marginBottom: 32,
           }}
         />
@@ -36,39 +36,39 @@ export default async function Image() {
           style={{
             fontSize: 20,
             letterSpacing: '0.15em',
-            color: '#4FD1C5',
+            color: '#4a8fff',
             textTransform: 'uppercase',
             marginBottom: 16,
           }}
         >
-          Neuro-Robotic Shared Control
+          Neuro-Robotic Command
         </div>
 
         {/* Title */}
         <div
           style={{
-            fontSize: 72,
+            fontSize: 84,
             fontWeight: 700,
-            color: '#E2E8F0',
-            lineHeight: 1.05,
+            color: '#ffffff',
+            lineHeight: 1.0,
             marginBottom: 24,
           }}
         >
-          EMBODIED MOTOR IMAGERY
+          FROM MIND TO <span style={{ color: '#c8963e' }}>SWARM</span>
         </div>
 
         {/* Subtitle */}
         <div
           style={{
             fontSize: 24,
-            color: '#E2E8F0',
+            color: '#e2e8f0',
             opacity: 0.7,
             lineHeight: 1.5,
-            maxWidth: 700,
+            maxWidth: 760,
           }}
         >
-          Non-invasive, closed-loop brain-computer interface for
-          multi-axis robotic shared control.
+          A non-invasive EEG brain–computer interface that turns trained motor
+          imagery into supervisory command of a swarm.
         </div>
 
         {/* Company name */}
@@ -86,16 +86,16 @@ export default async function Image() {
             style={{
               fontSize: 18,
               letterSpacing: '0.2em',
-              color: '#E2E8F0',
+              color: '#e2e8f0',
               opacity: 0.4,
               textTransform: 'uppercase',
             }}
           >
-            One Thousand Drones, LLC
+            One Thousand Drones · SAM.gov Registered · CAGE 1ZYS4
           </div>
         </div>
 
-        {/* Teal accent dot cluster — decorative */}
+        {/* Accent dot cluster — decorative */}
         <div
           style={{
             position: 'absolute',
@@ -105,9 +105,9 @@ export default async function Image() {
             gap: 8,
           }}
         >
-          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4FD1C5', opacity: 0.3 }} />
-          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4FD1C5', opacity: 0.5 }} />
-          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4FD1C5', opacity: 0.7 }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4a8fff', opacity: 0.3 }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4a8fff', opacity: 0.5 }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#4a8fff', opacity: 0.7 }} />
         </div>
       </div>
     ),

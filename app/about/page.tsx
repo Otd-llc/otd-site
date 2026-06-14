@@ -5,7 +5,7 @@ import { Section } from '../components/ui/Section'
 import { MetaStrip } from '../components/ui/MetaStrip'
 
 export const metadata: Metadata = {
-  title: 'About · One Thousand Drones',
+  title: 'About',
   description:
     'One Thousand Drones is a SAM.gov-registered lab founded by Joshua Tollette, building BioScale-BCI — a non-invasive brain–computer interface for supervisory swarm command.',
   openGraph: {

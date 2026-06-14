@@ -4,7 +4,7 @@ import { Section } from '../components/ui/Section'
 const ACADEMY_URL = 'https://academy.onethousanddrones.com'
 
 export const metadata: Metadata = {
-  title: 'Academy · One Thousand Drones',
+  title: 'Academy',
   description:
     'Build the BioScale BCI yourself, board by board — from your first ESP32 board to an EEG brain–computer interface that commands your own swarm. 22 projects, free start.',
   openGraph: {

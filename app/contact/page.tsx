@@ -4,7 +4,7 @@ import { MetaStrip } from '../components/ui/MetaStrip'
 import { BriefingForm } from '../components/BriefingForm'
 
 export const metadata: Metadata = {
-  title: 'Request a Briefing · One Thousand Drones',
+  title: 'Request a Briefing',
   description:
     'Request a briefing with One Thousand Drones — a SAM.gov-registered lab building the BioScale BCI and OIDAT operator-safety system for defense and program partners.',
   openGraph: {
