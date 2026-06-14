@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { bebas, spaceMono, lora } from './fonts'
+import { SiteHeader } from './components/SiteHeader'
+import { SiteFooter } from './components/SiteFooter'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -28,7 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bebas.variable} ${spaceMono.variable} ${lora.variable}`}>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <main className="main">{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   )
 }
