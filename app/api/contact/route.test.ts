@@ -1,7 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
 const send = vi.fn()
-vi.mock('resend', () => ({ Resend: vi.fn(() => ({ emails: { send } })) }))
+// Resend is `new`-ed in the route, so the mock must be constructable (Vitest 4
+// rejects an arrow vi.fn() as a constructor). A class exposes the shared spy.
+vi.mock('resend', () => ({ Resend: class { emails = { send } } }))
 
 import { POST } from './route'
 
