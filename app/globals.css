@@ -356,6 +356,36 @@ body {
 .tease-hook { font-family: var(--font-serif), serif; font-style: italic; font-size: 16px; color: var(--color-muted); max-width: 60ch; margin-top: 1.1rem; }
 .tease-cta { margin-top: 2rem; }
 
+/* ---- briefing form ---- */
+.brief-lead { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.7; max-width: 60ch; margin-top: 1.2rem; }
+.brief-form { margin-top: 1.8rem; max-width: 640px; display: flex; flex-direction: column; gap: 1.1rem; }
+.brief-field { display: flex; flex-direction: column; gap: .4rem; }
+.brief-field label { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-command-gold); }
+.brief-field input, .brief-field textarea {
+  width: 100%;
+  background: rgba(8, 9, 13, .55);
+  border: 1px solid var(--color-panel-border);
+  border-radius: 6px;
+  color: var(--color-gray-1);
+  font-family: var(--font-serif), serif;
+  font-size: 15px;
+  padding: .65rem .8rem;
+  outline: none;
+  transition: border-color .14s, box-shadow .14s;
+}
+.brief-field textarea { min-height: 130px; resize: vertical; }
+.brief-field input:focus, .brief-field textarea:focus { border-color: var(--color-command-gold); box-shadow: 0 0 0 1px rgba(200, 150, 62, .35); }
+.brief-field input[aria-invalid="true"], .brief-field textarea[aria-invalid="true"] { border-color: var(--color-alert-red); }
+.brief-error { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-alert-red); }
+.brief-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.brief-submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: .4rem; }
+.brief-status { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .1em; }
+.brief-status.ok { color: var(--color-status-green); }
+.brief-status.err { color: var(--color-alert-red); }
+.brief-fallback { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--color-muted); margin-top: 1.6rem; letter-spacing: .04em; }
+.brief-fallback a { color: var(--color-command-gold); text-decoration: none; }
+.brief-fallback a:hover { text-decoration: underline; }
+
 /* ---- footer ---- */
 .app-footer { border-top: 1px solid var(--color-panel-border); padding: 1.5rem; font-family: var(--font-mono), monospace; font-size: .75rem; color: var(--color-muted); }
 .app-footer .inner { margin: 0 auto; max-width: 72rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; }
