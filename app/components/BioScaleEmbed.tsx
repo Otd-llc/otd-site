@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-const DEMO = 'https://demo.onethousanddrones.com'
+// Defaults to the production demo; override with NEXT_PUBLIC_DEMO_URL to frame
+// a local/preview build (e.g. http://localhost:4173) without code changes.
+const DEMO = process.env.NEXT_PUBLIC_DEMO_URL ?? 'https://demo.onethousanddrones.com'
 const SCN = [
   { key: '1', label: 'Baseline' },
   { key: '2', label: 'MI-Left' },
