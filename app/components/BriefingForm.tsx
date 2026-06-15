@@ -42,6 +42,35 @@ export function BriefingForm() {
     }
   }
 
+  // Prominent confirmation — replaces the form so the send is unmistakable.
+  if (status === 'ok') {
+    return (
+      <div className="brief-success glass-card" role="status" aria-live="polite">
+        <span className="brief-check" aria-hidden="true">
+          ✓
+        </span>
+        <div className="brief-success-body">
+          <p className="brief-success-h">Request received.</p>
+          <p className="brief-success-p">
+            Thanks — your briefing request is in, and it goes straight to the founder. We’ll be in
+            touch shortly. Prefer email?{' '}
+            <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
+          </p>
+          <button
+            type="button"
+            className="brief-again"
+            onClick={() => {
+              setErrors({})
+              setStatus('idle')
+            }}
+          >
+            Send another →
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <form className="brief-form" onSubmit={onSubmit} noValidate>
       {/* honeypot — hidden from humans; bots fill it and get silently dropped */}
@@ -110,14 +139,9 @@ export function BriefingForm() {
         <button className="glass-button glass-button-cta" type="submit" disabled={status === 'pending'}>
           {status === 'pending' ? 'Sending…' : 'Request a briefing →'}
         </button>
-        {status === 'ok' && (
-          <span className="brief-status ok" role="status">
-            Sent — we’ll be in touch.
-          </span>
-        )}
         {status === 'err' && (
           <span className="brief-status err" role="status">
-            Something went wrong. Email us directly below.
+            Something went wrong — email us directly below.
           </span>
         )}
       </div>

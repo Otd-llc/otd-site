@@ -386,6 +386,16 @@ body {
 .brief-fallback a { color: var(--color-command-gold); text-decoration: none; }
 .brief-fallback a:hover { text-decoration: underline; }
 
+/* prominent success confirmation — replaces the form on a successful send */
+.brief-success { margin-top: 1.8rem; max-width: 640px; display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.5rem 1.6rem; }
+.brief-check { flex: none; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1.5px solid var(--color-command-gold); background: rgba(200, 150, 62, .1); color: var(--color-command-gold); font-size: 1.25rem; font-weight: 700; line-height: 1; }
+.brief-success-h { font-family: var(--font-display), sans-serif; font-size: 1.7rem; letter-spacing: .04em; color: #fff; line-height: 1; margin-bottom: .55rem; }
+.brief-success-p { font-family: var(--font-serif), serif; font-size: 15px; color: var(--color-gray-2); line-height: 1.65; max-width: 48ch; }
+.brief-success-p a { color: var(--color-command-gold); text-decoration: none; }
+.brief-success-p a:hover { text-decoration: underline; }
+.brief-again { margin-top: 1.1rem; background: none; border: none; padding: 0; cursor: pointer; font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-signal-blue); transition: color .15s; }
+.brief-again:hover { color: var(--color-gold-light); }
+
 /* ---- footer ---- */
 .app-footer {
   margin-top: 4.5rem;
