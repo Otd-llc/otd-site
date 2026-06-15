@@ -34,6 +34,20 @@ export function BioScaleEmbed() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  // Follow the demo's own state: it broadcasts the active scenario (auto-advance
+  // and jumps alike) so the selector always matches what's on screen.
+  useEffect(() => {
+    const onMsg = (e: MessageEvent) => {
+      if (e.origin !== DEMO) return
+      const d = e.data as { type?: string; key?: string } | null
+      if (d && d.type === 'otd-scenario-state' && typeof d.key === 'string' && d.key >= '1' && d.key <= '6') {
+        setActive(d.key)
+      }
+    }
+    window.addEventListener('message', onMsg)
+    return () => window.removeEventListener('message', onMsg)
+  }, [])
+
   return (
     <figure className="glass-card figure" data-rv>
       <figcaption className="figcap">
@@ -43,10 +57,10 @@ export function BioScaleEmbed() {
       <iframe
         id="viz"
         className="viz"
-        src={DEMO}
+        src={`${DEMO}/?embed=1`}
         title="BioScale-Viz — real-time BCI drone control"
         loading="lazy"
-        referrerPolicy="no-referrer"
+        referrerPolicy="origin-when-cross-origin"
       />
       <div className="tryit">
         <span className="tryit-label">
