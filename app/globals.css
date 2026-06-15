@@ -402,10 +402,17 @@ body {
 
 /* ---- responsive collapse ---- */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; }
   .cards, .doors { grid-template-columns: 1fr; }
   .hnav { display: none; }
   .hmenu-btn { display: inline-flex; align-items: center; justify-content: center; }
   .hnav-mobile { display: flex; }
-  .figure .viz { height: clamp(460px, 74vh, 640px); }
+  /* brand + hamburger only — the gold CTA is redundant with the hero CTA + menu */
+  .hright .glass-button { display: none; }
+  /* the demo was eating the screen — shorter + less wasted space */
+  .figure .viz { height: clamp(340px, 46vh, 420px); }
+  /* tighten vertical rhythm so the page isn't so long */
+  .sec { margin-top: 2.2rem; }
+  .cta-row { margin-top: 1.4rem; }
+  .subhead { margin-top: 1rem; }
 }
