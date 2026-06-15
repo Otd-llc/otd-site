@@ -14,8 +14,8 @@ export default function Home() {
         <div data-rv>
           <MetaStrip />
           <h1 className="bench-hero" style={{ marginTop: '1.4rem' }}>
-            <span className="ord">Neuro-Robotic Command</span>FROM MIND TO{' '}
-            <span className="accent">SWARM</span>
+            <span className="ord">Neuro-Robotic Command</span>ONE MIND,{' '}
+            <span className="accent">MANY MACHINES</span>
           </h1>
           <p className="subhead">
             A non-invasive EEG brain–computer interface that turns trained motor imagery into

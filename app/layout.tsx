@@ -10,12 +10,12 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL('https://onethousanddrones.com'),
   title: {
-    default: 'One Thousand Drones — From Mind to Swarm',
+    default: 'One Thousand Drones — One Mind, Many Machines',
     template: '%s · One Thousand Drones',
   },
   description: DESCRIPTION,
   openGraph: {
-    title: 'One Thousand Drones — From Mind to Swarm',
+    title: 'One Thousand Drones — One Mind, Many Machines',
     description: DESCRIPTION,
     url: 'https://onethousanddrones.com',
     siteName: 'One Thousand Drones, LLC',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'One Thousand Drones — From Mind to Swarm',
+    title: 'One Thousand Drones — One Mind, Many Machines',
     description: DESCRIPTION,
   },
 }

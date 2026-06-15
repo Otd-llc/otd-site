@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'One Thousand Drones — From Mind to Swarm'
+export const alt = 'One Thousand Drones — One Mind, Many Machines'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -47,14 +47,14 @@ export default async function Image() {
         {/* Title */}
         <div
           style={{
-            fontSize: 84,
+            fontSize: 72,
             fontWeight: 700,
             color: '#ffffff',
-            lineHeight: 1.0,
+            lineHeight: 1.05,
             marginBottom: 24,
           }}
         >
-          FROM MIND TO <span style={{ color: '#c8963e' }}>SWARM</span>
+          ONE MIND, <span style={{ color: '#c8963e' }}>MANY MACHINES</span>
         </div>
 
         {/* Subtitle */}
