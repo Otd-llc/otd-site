@@ -6,10 +6,10 @@ import { BriefingForm } from '../components/BriefingForm'
 export const metadata: Metadata = {
   title: 'Request a Briefing',
   description:
-    'Request a briefing with One Thousand Drones — a SAM.gov-registered lab building the BioScale BCI and OIDAT operator-safety system for defense and program partners.',
+    'Request a briefing with One Thousand Drones, a SAM.gov-registered lab building the BioScale BCI and OIDAT operator-safety system for defense and program partners.',
   openGraph: {
     title: 'Request a Briefing · One Thousand Drones',
-    description: 'For defense and program partners — request a briefing.',
+    description: 'For defense and program partners: request a briefing.',
     url: 'https://onethousanddrones.com/contact',
     siteName: 'One Thousand Drones, LLC',
     locale: 'en_US',

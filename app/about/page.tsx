@@ -7,7 +7,7 @@ import { MetaStrip } from '../components/ui/MetaStrip'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'One Thousand Drones is a SAM.gov-registered lab founded by Joshua Tollette, building BioScale-BCI — a non-invasive brain–computer interface for supervisory swarm command.',
+    'One Thousand Drones is a SAM.gov-registered lab founded by Joshua Tollette, building BioScale-BCI, a non-invasive brain–computer interface for supervisory swarm command.',
   openGraph: {
     title: 'About · One Thousand Drones',
     description:
@@ -40,14 +40,14 @@ export default function About() {
           <p>
             The lab’s thesis is <b>Brain-to-Swarm</b>: read a trained operator’s intent
             non-invasively, and use it to supervise a swarm that flies itself. <b>BioScale-BCI</b>{' '}
-            classifies <b>Embodied Motor Imagery</b> into vectorial intent — high-level
-            directional commands — while each platform’s edge-autonomy handles flight. That
+            classifies <b>Embodied Motor Imagery</b> into vectorial intent (high-level
+            directional commands) while each platform’s edge-autonomy handles flight. That
             decoupling is what lets one operator command many platforms at once.
           </p>
           <p>
             Its first commercial system, <b>OIDAT</b>, is an operator-safety layer that reads
             operator engagement and hands control authority to a safe state the instant
-            responsiveness collapses. OIDAT is an operator-safety system — not a medical device.
+            responsiveness collapses. OIDAT is an operator-safety system, not a medical device.
           </p>
           <p>
             The same closed-loop stack is taught board-by-board in the <b>Academy</b>, so makers
