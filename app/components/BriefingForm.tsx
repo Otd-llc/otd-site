@@ -52,7 +52,7 @@ export function BriefingForm() {
         <div className="brief-success-body">
           <p className="brief-success-h">Request received.</p>
           <p className="brief-success-p">
-            Thanks — your briefing request is in, and it goes straight to the founder. We’ll be in
+            Thanks. Your briefing request is in, and it goes straight to the founder. We’ll be in
             touch shortly. Prefer email?{' '}
             <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
           </p>
@@ -141,7 +141,7 @@ export function BriefingForm() {
         </button>
         {status === 'err' && (
           <span className="brief-status err" role="status">
-            Something went wrong — email us directly below.
+            Something went wrong. Email us directly below.
           </span>
         )}
       </div>

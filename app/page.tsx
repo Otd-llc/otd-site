@@ -19,7 +19,7 @@ export default function Home() {
           </h1>
           <p className="subhead">
             A non-invasive EEG brain–computer interface that turns trained motor imagery into
-            supervisory command of a swarm — built in a defense-registered lab, and teachable
+            supervisory command of a swarm, built in a defense-registered lab, and teachable
             board-by-board in the Academy.
           </p>
           <div className="cta-row">
@@ -38,14 +38,14 @@ export default function Home() {
       <Section id="bioscale" kicker="01 · BioScale-BCI" title="COMMAND THE SWARM">
         <p className="lead">
           <b>BioScale-BCI</b> turns trained motor imagery into command of a swarm. A skilled
-          operator recalls deeply-grooved procedural movements — <b>Embodied Motor Imagery</b> —
+          operator recalls deeply-grooved procedural movements (<b>Embodied Motor Imagery</b>),
           which the system classifies into <b>vectorial intent</b>: high-level directional
           commands, not raw actuator signals. Each platform’s edge-autonomy flies itself, so one
           operator’s motor cortex can command <b>N platforms at once.</b>
         </p>
         <ModeBand eyebrow="Why it scales">
           The operator broadcasts <em>intent</em>; the edge handles <em>flight</em>. That
-          decoupling is the known fix for control-loop oscillation — and it’s what turns a
+          decoupling is the known fix for control-loop oscillation, and it’s what turns a
           one-to-one link into 1:N supervisory swarm command.
         </ModeBand>
         <div className="cards">
@@ -82,11 +82,11 @@ export default function Home() {
       {/* 02 · OIDAT — first commercial system (safety derivative) */}
       <Section
         id="oidat"
-        kicker="02 · OIDAT — First Commercial System"
+        kicker="02 · OIDAT: First Commercial System"
         title="OPERATOR SAFETY & AUTHORITY TRANSFER"
       >
         <p className="lead">
-          <b>OIDAT</b> is BioScale’s first commercial system — an operator-safety layer,{' '}
+          <b>OIDAT</b> is BioScale’s first commercial system, an operator-safety layer,{' '}
           <b>not a medical device</b>. It continuously assesses whether an operator is still{' '}
           <b>responsive and in command</b>, and the instant that engagement collapses it
           transfers control authority to a safe state in seconds.
@@ -94,7 +94,7 @@ export default function Home() {
         <ModeBand eyebrow="Why read operator state">
           A grip-pressure dead-man switch only knows your hand let go. OIDAT reads operator
           engagement directly, so it can hand authority to a safe state within seconds of a loss
-          of responsiveness — before the platform does anything unsafe.
+          of responsiveness, before the platform does anything unsafe.
         </ModeBand>
         <div className="cards">
           <ProductCard
@@ -113,7 +113,7 @@ export default function Home() {
             chip="16-Channel"
             chipBlue
             title="OIDAT-16"
-            sub="Full montage — extended state coverage."
+            sub="Full montage: extended state coverage."
             rows={[
               { ref: 'Sensing', value: '16-ch EEG · 2× ADS1299' },
               { ref: 'Adds', value: 'Fp1 Fp2 O1 O2 + FCz/temporal' },
@@ -134,16 +134,16 @@ export default function Home() {
         <p className="sec-kicker">03 · Two ways in, one ecosystem</p>
         <div className="doors">
           <Door
-            kicker="01 / Defense & DARPA — for partners & programs"
+            kicker="01 / Defense & DARPA: for partners & programs"
             title="BioScale & OIDAT"
-            body="The closed-loop BCI platform and its first operator-safety system — read the brain, gate authority, command platforms. Built by a SAM.gov-registered lab."
+            body="The closed-loop BCI platform and its first operator-safety system: read the brain, gate authority, command platforms. Built by a SAM.gov-registered lab."
             cta="Explore the technology"
             href="/contact"
           />
           <Door
-            kicker="02 / Academy — for makers & engineers"
+            kicker="02 / Academy: for makers & engineers"
             title="Build It Yourself"
-            body="First ESP32 board to an EEG BCI that commands your own swarm — 22 projects, free start."
+            body="First ESP32 board to an EEG BCI that commands your own swarm. 22 projects, free start."
             cta="Start free with L1.01"
             href="/academy"
           />

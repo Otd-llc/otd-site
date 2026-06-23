@@ -5,7 +5,7 @@ import { SiteFooter } from './components/SiteFooter'
 import './globals.css'
 
 const DESCRIPTION =
-  'A non-invasive EEG brain–computer interface that turns trained motor imagery into supervisory command of a swarm — built in a defense-registered lab (SAM.gov / CAGE 1ZYS4), and teachable board-by-board in the Academy.'
+  'A non-invasive EEG brain–computer interface that turns trained motor imagery into supervisory command of a swarm, built in a defense-registered lab (SAM.gov / CAGE 1ZYS4), and teachable board-by-board in the Academy.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://onethousanddrones.com'),

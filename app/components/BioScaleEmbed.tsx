@@ -66,7 +66,7 @@ export function BioScaleEmbed() {
       />
       <div className="tryit">
         <span className="tryit-label">
-          Try it <span className="hint">— press 1–6 or tap</span>
+          Try it <span className="hint">(press 1–6 or tap)</span>
         </span>
         <div className="scn-grid">
           {SCN.map((s) => (
