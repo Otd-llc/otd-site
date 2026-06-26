@@ -134,7 +134,7 @@ body {
   font-weight: 400;
   /* Bebas is single-weight; thicken the glyphs (currentColor, so a gold accent
      word strokes gold) for the capability-brief "fat" look. */
-  -webkit-text-stroke: .03em currentColor;
+  -webkit-text-stroke: .027em currentColor;
   paint-order: stroke fill;
 }
 .bench-hero .accent { color: var(--color-command-gold); }
