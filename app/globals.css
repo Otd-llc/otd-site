@@ -60,8 +60,8 @@ body {
   pointer-events: none;
   --cell: clamp(15px, calc(var(--hero-size) / 6.5), 18px);
   --major: calc(var(--cell) * 3);
-  --grid-minor: rgba(150, 170, 205, 0.045);
-  --grid-bold: rgba(150, 170, 205, 0.085);
+  --grid-minor: rgba(150, 170, 205, 0.03);
+  --grid-bold: rgba(150, 170, 205, 0.058);
   background-color: var(--color-deep-space);
   background-image:
     radial-gradient(96% 88% at 50% 26%, transparent 18%, var(--color-deep-space) 100%),
