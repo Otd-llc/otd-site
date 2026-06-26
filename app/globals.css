@@ -439,9 +439,6 @@ body {
   justify-content: space-between;
   gap: .6rem 1.4rem;
 }
-.foot-reg { display: flex; flex-wrap: wrap; align-items: baseline; gap: .55rem; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-muted); }
-.foot-reg .lbl { color: var(--color-command-gold); }
-.foot-reg .dot { color: rgba(200, 150, 62, .4); }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
 @media (max-width: 720px) {

@@ -34,7 +34,7 @@ export function SiteHeader() {
       </nav>
       <div className="hright">
         <Link className="glass-button glass-button-cta" href="/academy">
-          Enter the Academy
+          Enter the Academy →
         </Link>
         <button
           className="hmenu-btn"
