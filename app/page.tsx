@@ -16,8 +16,9 @@ export default function Home() {
           <div className="title-rule" aria-hidden="true" />
           <h1 className="bench-hero">
             <span className="ord">Neuro-Robotic Command</span>
-            One <span className="accent">mind</span>. Many{' '}
-            <span className="accent">machines</span>.
+            One <span className="accent">mind</span>.
+            <br />
+            Many <span className="accent">machines</span>.
           </h1>
           <p className="subhead">
             A non-invasive EEG brain–computer interface that turns trained motor imagery into
