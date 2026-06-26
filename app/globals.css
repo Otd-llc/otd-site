@@ -27,6 +27,11 @@
   --color-gray-3: #555555;
   --color-alert-red: #ef5350;
   --color-status-green: #66bb6a;
+
+  /* The single title scale. The page hero (.bench-hero) and the global grid
+     backdrop (.app-backdrop) both derive from this, so the engineering-paper
+     grid stays locked in ratio to the headline (never tiny on phones). */
+  --hero-size: clamp(54px, 9vw, 108px);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,6 +45,34 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── Global engineering-paper backdrop (shared with the academy) ──────────────
+   A fixed, full-viewport isometric graph-paper field behind every page: a
+   two-tier triangular line grid (fine + bold) in dim steel, with a top-biased
+   vignette that keeps the content band clear and fades the grid into deep space
+   at the edges. Cell size is LOCKED to the title scale (--hero-size / 6.5) and
+   floored at 15px so it never goes tiny on phones. position: fixed so it holds
+   per-viewport on scroll; pointer-events-none; hidden in print. */
+.app-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  --cell: clamp(15px, calc(var(--hero-size) / 6.5), 18px);
+  --major: calc(var(--cell) * 3);
+  --grid-minor: rgba(150, 170, 205, 0.045);
+  --grid-bold: rgba(150, 170, 205, 0.085);
+  background-color: var(--color-deep-space);
+  background-image:
+    radial-gradient(96% 88% at 50% 26%, transparent 18%, var(--color-deep-space) 100%),
+    repeating-linear-gradient(90deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(30deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(150deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
+    repeating-linear-gradient(30deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
+    repeating-linear-gradient(150deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell));
+}
+@media print { .app-backdrop { display: none; } }
 
 /* ---- component recipes — verbatim from globals.css ---- */
 .glass-card {
@@ -92,7 +125,7 @@ body {
 }
 .bench-hero {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(54px, 9vw, 108px);
+  font-size: var(--hero-size);
   letter-spacing: .04em;
   color: #fff;
   line-height: .92;

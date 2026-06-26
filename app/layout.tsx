@@ -37,6 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bebas.variable} ${spaceMono.variable} ${lora.variable}`}>
       <body>
+        {/* Global engineering-paper backdrop — a fixed isometric graph-paper
+            field behind every page (CSS in globals.css, .app-backdrop). Shared
+            with the academy. Decorative; pointer-events-none, hidden in print. */}
+        <div className="app-backdrop" aria-hidden="true" />
         <SiteHeader />
         <main className="main">{children}</main>
         <SiteFooter />
