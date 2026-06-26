@@ -27,6 +27,7 @@
   --color-gray-3: #555555;
   --color-alert-red: #ef5350;
   --color-status-green: #66bb6a;
+  --color-title: #f1ece0;
 
   /* The single title scale. The page hero (.bench-hero) and the global grid
      backdrop (.app-backdrop) both derive from this, so the engineering-paper
@@ -126,14 +127,20 @@ body {
 .bench-hero {
   font-family: var(--font-display), sans-serif;
   font-size: var(--hero-size);
-  letter-spacing: .04em;
-  color: #fff;
-  line-height: .92;
+  letter-spacing: 0;
+  color: var(--color-title);
+  line-height: .85;
   margin: 0;
   font-weight: 400;
+  /* Bebas is single-weight; thicken the glyphs (currentColor, so a gold accent
+     word strokes gold) for the capability-brief "fat" look. */
+  -webkit-text-stroke: .017em currentColor;
 }
 .bench-hero .accent { color: var(--color-command-gold); }
-.bench-hero .ord { display: block; font-size: .3em; letter-spacing: .3em; color: var(--color-command-gold); margin-bottom: .5rem; }
+.bench-hero .ord { display: block; font-size: .3em; letter-spacing: .3em; color: var(--color-command-gold); margin-bottom: .75rem; -webkit-text-stroke-width: 0; }
+/* title-rule — gold gradient hairline opening the hero (matches the academy). */
+.title-rule { position: relative; height: 1px; width: 100%; max-width: 760px; background: var(--color-panel-border); margin: 1.4rem 0; }
+.title-rule::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 60%; background: linear-gradient(to right, var(--color-command-gold) 0%, var(--color-command-gold) 38%, rgba(200, 150, 62, 0) 100%); }
 .subhead {
   font-family: var(--font-serif), serif;
   font-size: 18px;
