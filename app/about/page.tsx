@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <Section id="about" kicker="04 · About" title="BUILT IN A DEFENSE-REGISTERED LAB">
+    <Section id="about" kicker="About" title="BUILT IN A DEFENSE-REGISTERED LAB">
       <div className="about-grid">
         <Image
           className="about-photo"

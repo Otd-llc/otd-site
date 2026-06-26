@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Section } from '../components/ui/Section'
 import { MetaStrip } from '../components/ui/MetaStrip'
+import { ModeBand } from '../components/ui/ModeBand'
 import { BriefingForm } from '../components/BriefingForm'
 
 export const metadata: Metadata = {
@@ -19,11 +20,15 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <Section id="contact" kicker="05 · Contact" title="REQUEST A BRIEFING">
+    <Section id="contact" kicker="Contact" title="REQUEST A BRIEFING">
       <p className="brief-lead">
         For defense and program partners evaluating BioScale-BCI or OIDAT: tell us about your
         program and we’ll set up a briefing. Everything goes straight to the founder.
       </p>
+      <ModeBand eyebrow="What to include">
+        A line on your <em>program</em>, your <em>timeline</em>, and the capability you’re
+        evaluating. The more specific your note, the faster we can route it.
+      </ModeBand>
       <BriefingForm />
       <p className="brief-fallback">
         Prefer email? <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>

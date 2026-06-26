@@ -53,14 +53,14 @@ export function BioScaleEmbed() {
   return (
     <figure className="glass-card figure" data-rv>
       <figcaption className="figcap">
-        <span>Fig.01 — BioScale-Viz</span>
+        <span>Fig.01 · BioScale-Viz</span>
         <span className="live">● Live BCI drone control</span>
       </figcaption>
       <iframe
         id="viz"
         className="viz"
         src={`${DEMO}/?embed=1`}
-        title="BioScale-Viz — real-time BCI drone control"
+        title="BioScale-Viz: real-time BCI drone control"
         loading="lazy"
         referrerPolicy="origin-when-cross-origin"
       />

@@ -24,7 +24,7 @@ export default function Home() {
           </p>
           <div className="cta-row">
             <Link className="glass-button glass-button-cta" href="/contact">
-              For Defense Partners →
+              Request a briefing →
             </Link>
             <Link className="glass-button" href="/academy">
               Enter the Academy →
@@ -82,7 +82,7 @@ export default function Home() {
       {/* 02 · OIDAT — first commercial system (safety derivative) */}
       <Section
         id="oidat"
-        kicker="02 · OIDAT: First Commercial System"
+        kicker="02 · OIDAT"
         title="OPERATOR SAFETY & AUTHORITY TRANSFER"
       >
         <p className="lead">
@@ -129,26 +129,25 @@ export default function Home() {
         </p>
       </Section>
 
-      {/* 03 · two doors */}
-      <section className="sec" id="academy">
-        <p className="sec-kicker">03 · Two ways in, one ecosystem</p>
+      {/* two ways in */}
+      <Section id="academy" kicker="Two ways in" title="One ecosystem">
         <div className="doors">
           <Door
-            kicker="01 / Defense & DARPA: for partners & programs"
+            kicker="For partners & programs"
             title="BioScale & OIDAT"
             body="The closed-loop BCI platform and its first operator-safety system: read the brain, gate authority, command platforms. Built by a SAM.gov-registered lab."
             cta="Explore the technology"
             href="/contact"
           />
           <Door
-            kicker="02 / Academy: for makers & engineers"
+            kicker="For makers & engineers"
             title="Build It Yourself"
             body="First ESP32 board to an EEG BCI that commands your own swarm. 22 projects, free start."
             cta="Start free with L1.01"
             href="/academy"
           />
         </div>
-      </section>
+      </Section>
     </>
   )
 }

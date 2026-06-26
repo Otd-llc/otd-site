@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
+import { MetaStrip } from './ui/MetaStrip'
 
 const ACADEMY = 'https://academy.onethousanddrones.com'
 
@@ -38,19 +39,7 @@ export function SiteFooter() {
       </div>
 
       <div className="foot-strip">
-        <p className="foot-reg">
-          <span>
-            <span className="lbl">SAM.gov</span> Registered
-          </span>
-          <span className="dot">·</span>
-          <span>
-            <span className="lbl">CAGE</span> 1ZYS4
-          </span>
-          <span className="dot">·</span>
-          <span>
-            <span className="lbl">UEI</span> WDQXD9L9UFH3
-          </span>
-        </p>
+        <MetaStrip />
         <p className="foot-copy">© 2026 One Thousand Drones, LLC</p>
       </div>
     </footer>
