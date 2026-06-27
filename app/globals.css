@@ -510,13 +510,13 @@ body {
 .foot-brand:hover .foot-wm { color: #fff; }
 .foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
 /* Scalable colophon: short themed groups in an auto-fit grid; gold rationed to the bee. */
-.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1.9rem 1.5rem; margin-top: 2.1rem; }
+.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 1.7rem 1.3rem; margin-top: 2.1rem; }
 .foot-group { display: flex; flex-direction: column; align-items: flex-start; }
 .foot-gh { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gray-1); margin-bottom: .85rem; }
-.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; transition: color .15s; }
+.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; overflow-wrap: anywhere; transition: color .15s; }
 .foot-group a:hover { color: #fff; }
 .foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
-.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); }
+.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); overflow-wrap: anywhere; }
 .foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
