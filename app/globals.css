@@ -506,6 +506,15 @@ body {
 @keyframes rv { to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { [data-rv] { animation: none; opacity: 1; transform: none; } }
 
+/* Scroll reveal — sections tagged `data-reveal` fade + rise as they enter the
+   viewport, driven by a CSS scroll timeline (no JS). Guarded by @supports so
+   unsupported browsers and reduced-motion just show the content, never hidden. */
+@keyframes reveal-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  [data-reveal] { animation: reveal-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 32%; }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { animation: none; } }
+}
+
 /* ---- responsive collapse ---- */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 1.5rem; }
