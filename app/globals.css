@@ -154,8 +154,12 @@ body {
 /* title-rule — gold gradient hairline opening the hero (matches the academy). */
 .title-rule { position: relative; height: 1px; width: 100%; max-width: 760px; background: var(--color-panel-border); margin: 1.4rem 0; }
 .title-rule::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 60%; background: linear-gradient(to right, var(--color-command-gold) 0%, var(--color-command-gold) 38%, rgba(200, 150, 62, 0) 100%); }
-/* Page header (about / contact / etc.) — the bench-hero title stack. */
-.page-head { margin-bottom: 2.5rem; }
+/* Page header (about / contact / etc.) — the bench-hero title stack. Page titles
+   run a notch smaller than the home hero and WRAP: the home hero is nowrap on two
+   controlled lines, but a long single-line page title must wrap rather than clip
+   inside the hero-line mask. */
+.page-head { margin-bottom: 2.5rem; --hero-size: clamp(31px, 5.6vw, 58px); }
+.page-head .bench-hero { white-space: normal; overflow-wrap: break-word; }
 .subhead { margin-top: 1.1rem; font-family: var(--font-serif), serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--color-gray-1); max-width: 56ch; }
 .subhead {
   font-family: var(--font-serif), serif;
@@ -402,7 +406,7 @@ body {
 .door:hover .go .ar { transform: translateX(4px); }
 
 /* ---- about — founder dossier: framed credential + a structured record ---- */
-.about-intro { margin-top: 1.8rem; display: grid; grid-template-columns: .72fr 1.28fr; gap: 2.8rem; align-items: start; }
+.about-intro { margin-top: 1.8rem; display: grid; grid-template-columns: 300px 1fr; gap: 2.8rem; align-items: start; }
 .about-portrait { margin: 0; }
 .about-frame { position: relative; }
 /* gold corner ticks, like a sighted record */
@@ -413,21 +417,24 @@ body {
 .about-plate { display: flex; flex-direction: column; gap: 4px; margin-top: 1rem; padding-left: .85rem; border-left: 2px solid var(--color-command-gold); }
 .ap-name { font-family: var(--font-display), sans-serif; font-size: 1.5rem; letter-spacing: .05em; color: var(--color-gray-1); line-height: 1; }
 .ap-role { font-family: var(--font-mono), monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-command-gold); }
-.about-lead > p { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.75; max-width: 56ch; }
+.about-lead > p { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.75; max-width: 60ch; }
 .about-lead > p b { color: #fff; font-weight: 500; }
-.about-lead p.about-thesis { margin-top: 1.5rem; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.42; color: var(--color-gray-1); }
+.about-lead p.about-thesis { margin-top: 1.5rem; max-width: none; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.42; color: var(--color-gray-1); }
 .about-lead p.about-thesis b { color: var(--color-command-gold); font-weight: 500; }
 .about-creds { margin-top: 1.8rem; }
-.about-system { margin-top: 3rem; }
-.asys-cap { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--color-command-gold); margin-bottom: .3rem; }
-.asys { display: grid; grid-template-columns: 180px 1fr; gap: 1.6rem; padding: 1.4rem 0; border-top: 1px solid var(--color-panel-border); align-items: baseline; }
-.asys-h { font-family: var(--font-display), sans-serif; font-size: 1.35rem; letter-spacing: .05em; color: var(--color-gray-1); }
-.asys p { font-family: var(--font-serif), serif; font-size: 16px; color: var(--color-gray-2); line-height: 1.7; max-width: 62ch; }
+.about-system { margin-top: 3.2rem; }
+.asys-cap { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--color-command-gold); margin-bottom: 1.1rem; }
+/* three product columns fill the row instead of leaving the right half empty */
+.asys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.9rem; }
+.asys { border-top: 2px solid var(--color-command-gold); padding-top: 1.1rem; }
+.asys-h { display: block; font-family: var(--font-display), sans-serif; font-size: 1.4rem; letter-spacing: .04em; color: var(--color-gray-1); margin-bottom: .55rem; }
+.asys p { font-family: var(--font-serif), serif; font-size: 15.5px; color: var(--color-gray-2); line-height: 1.7; }
 .asys p b { color: #fff; font-weight: 500; }
 @media (max-width: 760px) {
-  .about-intro { grid-template-columns: 1fr; gap: 1.9rem; }
-  .about-frame { max-width: 300px; }
-  .asys { grid-template-columns: 1fr; gap: .5rem; padding: 1.2rem 0; }
+  .about-intro { grid-template-columns: 1fr; gap: 1.8rem; }
+  .about-frame { max-width: 280px; }
+  .asys-grid { grid-template-columns: 1fr; gap: 0; }
+  .asys { border-top-width: 1px; border-top-color: var(--color-panel-border); padding: 1.3rem 0; }
 }
 
 /* ---- academy tease ---- */

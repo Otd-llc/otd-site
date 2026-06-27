@@ -60,28 +60,30 @@ export default function About() {
 
       <div className="about-system">
         <p className="asys-cap">The system</p>
-        <div className="asys">
-          <span className="asys-h">BioScale-BCI</span>
-          <p>
-            classifies <b>Embodied Motor Imagery</b> into vectorial intent (high-level
-            directional commands) while each platform’s edge-autonomy handles flight. That
-            decoupling is what lets one operator command many platforms at once.
-          </p>
-        </div>
-        <div className="asys">
-          <span className="asys-h">OIDAT</span>
-          <p>
-            the first commercial system: an operator-safety layer that reads operator
-            engagement and hands control authority to a safe state the instant
-            responsiveness collapses. An operator-safety system, not a medical device.
-          </p>
-        </div>
-        <div className="asys">
-          <span className="asys-h">Academy</span>
-          <p>
-            the same closed-loop stack, taught board-by-board, so makers and engineers can
-            build the platform from a first ESP32 board up to an EEG BCI.
-          </p>
+        <div className="asys-grid">
+          <div className="asys">
+            <span className="asys-h">BioScale-BCI</span>
+            <p>
+              classifies <b>Embodied Motor Imagery</b> into vectorial intent (high-level
+              directional commands) while each platform’s edge-autonomy handles flight. That
+              decoupling is what lets one operator command many platforms at once.
+            </p>
+          </div>
+          <div className="asys">
+            <span className="asys-h">OIDAT</span>
+            <p>
+              the first commercial system: an operator-safety layer that reads operator
+              engagement and hands control authority to a safe state the instant
+              responsiveness collapses. An operator-safety system, not a medical device.
+            </p>
+          </div>
+          <div className="asys">
+            <span className="asys-h">Academy</span>
+            <p>
+              the same closed-loop stack, taught board-by-board, so makers and engineers can
+              build the platform from a first ESP32 board up to an EEG BCI.
+            </p>
+          </div>
         </div>
       </div>
 
