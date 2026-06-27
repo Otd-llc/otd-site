@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Section } from '../components/ui/Section'
+import { PageHeader } from '../components/PageHeader'
 import { MetaStrip } from '../components/ui/MetaStrip'
 
 export const metadata: Metadata = {
@@ -21,7 +21,8 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <Section id="about" kicker="About" title="BUILT IN A DEFENSE-REGISTERED LAB">
+    <section className="sec" id="about" data-reveal>
+      <PageHeader eyebrow="About" title="Built in a defense-registered lab" />
       <div className="about-grid">
         <Image
           className="about-photo"
@@ -63,6 +64,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   )
 }

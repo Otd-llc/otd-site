@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Section } from '../components/ui/Section'
+import { PageHeader } from '../components/PageHeader'
 import { MetaStrip } from '../components/ui/MetaStrip'
 import { ModeBand } from '../components/ui/ModeBand'
 import { BriefingForm } from '../components/BriefingForm'
@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 
 export default function Contact() {
   return (
-    <Section id="contact" kicker="Contact" title="REQUEST A BRIEFING">
+    <section className="sec" id="contact" data-reveal>
+      <PageHeader eyebrow="Contact" title="Request a briefing" />
       <p className="brief-lead">
         For defense and program partners evaluating BioScale-BCI or OIDAT: tell us about your
         program and we’ll set up a briefing. Everything goes straight to the founder.
@@ -36,6 +37,6 @@ export default function Contact() {
       <div style={{ marginTop: '2rem' }}>
         <MetaStrip />
       </div>
-    </Section>
+    </section>
   )
 }
