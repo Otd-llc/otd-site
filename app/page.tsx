@@ -13,9 +13,21 @@ export default function Home() {
       <section className="hero">
         <div data-rv>
           <MetaStrip />
-          <h1 className="bench-hero" style={{ marginTop: '1.4rem' }}>
-            <span className="ord">Neuro-Robotic Command</span>ONE MIND,{' '}
-            <span className="accent">MANY MACHINES</span>
+          <div className="title-rule" aria-hidden="true" />
+          <h1 className="bench-hero">
+            <span className="ord">Neuro-Robotic Command</span>
+            <span className="hero-line">
+              <span>
+                One <span className="accent">mind</span>
+                <span className="tdot">.</span>
+              </span>
+            </span>
+            <span className="hero-line hero-line-2">
+              <span>
+                Many <span className="accent">machines</span>
+                <span className="tdot">.</span>
+              </span>
+            </span>
           </h1>
           <p className="subhead">
             A non-invasive EEG brain–computer interface that turns trained motor imagery into

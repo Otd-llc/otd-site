@@ -27,6 +27,14 @@
   --color-gray-3: #555555;
   --color-alert-red: #ef5350;
   --color-status-green: #66bb6a;
+  --color-title: #f1ece0;
+
+  /* The single title scale. The page hero (.bench-hero) and the global grid
+     backdrop (.app-backdrop) both derive from this, so the engineering-paper
+     grid stays locked in ratio to the headline (never tiny on phones). Capped
+     at 90 (vs the academy's 108) because the apex home hero sits in a narrow
+     2-column grid; bigger wraps "Many Machines." onto two lines. */
+  --hero-size: clamp(48px, 7vw, 90px);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,6 +48,34 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── Global engineering-paper backdrop (shared with the academy) ──────────────
+   A fixed, full-viewport isometric graph-paper field behind every page: a
+   two-tier triangular line grid (fine + bold) in dim steel, with a top-biased
+   vignette that keeps the content band clear and fades the grid into deep space
+   at the edges. Cell size is LOCKED to the title scale (--hero-size / 6.5) and
+   floored at 15px so it never goes tiny on phones. position: fixed so it holds
+   per-viewport on scroll; pointer-events-none; hidden in print. */
+.app-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  --cell: clamp(15px, calc(var(--hero-size) / 6.5), 18px);
+  --major: calc(var(--cell) * 3);
+  --grid-minor: rgba(150, 170, 205, 0.03);
+  --grid-bold: rgba(150, 170, 205, 0.058);
+  background-color: var(--color-deep-space);
+  background-image:
+    radial-gradient(96% 88% at 50% 26%, transparent 18%, var(--color-deep-space) 100%),
+    repeating-linear-gradient(90deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(30deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(150deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
+    repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
+    repeating-linear-gradient(30deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
+    repeating-linear-gradient(150deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell));
+}
+@media print { .app-backdrop { display: none; } }
 
 /* ---- component recipes — verbatim from globals.css ---- */
 .glass-card {
@@ -92,15 +128,32 @@ body {
 }
 .bench-hero {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(54px, 9vw, 108px);
-  letter-spacing: .04em;
-  color: #fff;
-  line-height: .92;
+  font-size: var(--hero-size);
+  letter-spacing: -.01em;
+  color: var(--color-title);
+  line-height: .82;
   margin: 0;
   font-weight: 400;
+  white-space: nowrap;
+  /* Bebas is single-weight; thicken the glyphs (currentColor, so a gold accent
+     word strokes gold) for the capability-brief "fat" look. */
+  -webkit-text-stroke: .04em currentColor;
+  paint-order: stroke fill;
 }
 .bench-hero .accent { color: var(--color-command-gold); }
-.bench-hero .ord { display: block; font-size: .3em; letter-spacing: .3em; color: var(--color-command-gold); margin-bottom: .5rem; }
+/* tdot — the title period, rendered hollow (outline only): transparent fill
+   over the inherited glyph stroke = a hollow ivory box. */
+.tdot { -webkit-text-fill-color: transparent; -webkit-text-stroke-width: .035em; }
+.bench-hero .ord { display: block; font-size: .3em; letter-spacing: .3em; color: var(--color-command-gold); margin-bottom: .75rem; -webkit-text-stroke-width: 0; }
+/* Kinetic hero reveal — each line wipes up from a mask on load (one beat). */
+.hero-line { display: block; overflow: hidden; padding: .08em 0; margin: -.08em 0; }
+.hero-line > span { display: inline-block; animation: hero-rise .9s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-line-2 > span { animation-delay: .12s; }
+@keyframes hero-rise { from { transform: translateY(110%); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .hero-line > span { animation: none; } }
+/* title-rule — gold gradient hairline opening the hero (matches the academy). */
+.title-rule { position: relative; height: 1px; width: 100%; max-width: 760px; background: var(--color-panel-border); margin: 1.4rem 0; }
+.title-rule::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 60%; background: linear-gradient(to right, var(--color-command-gold) 0%, var(--color-command-gold) 38%, rgba(200, 150, 62, 0) 100%); }
 .subhead {
   font-family: var(--font-serif), serif;
   font-size: 18px;
@@ -408,49 +461,40 @@ body {
     radial-gradient(120% 90% at 50% 0%, rgba(200, 150, 62, .05), transparent 60%),
     var(--color-deep-space);
 }
-.foot-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 3.2rem 1.5rem 2rem;
-  display: grid;
-  grid-template-columns: 1.7fr 1fr 1fr;
-  gap: 2.5rem;
-}
-.foot-mark { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
-.foot-mark img { height: 1.85rem; width: 1.85rem; flex-shrink: 0; }
-.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .08em; color: var(--color-gray-1); transition: color .15s; }
-.foot-mark:hover .foot-wm { color: #fff; }
-.foot-tag { font-family: var(--font-serif), serif; font-style: italic; font-size: 15px; color: var(--color-command-gold); margin-top: .9rem; }
-.foot-loc { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gray-3); margin-top: .55rem; }
-.foot-col { display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; }
-.foot-h { font-size: 10px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--color-command-gold); margin-bottom: .35rem; }
-.foot-col a { font-size: 12px; letter-spacing: .05em; color: var(--color-link-muted); text-decoration: none; transition: color .15s, transform .15s; }
-.foot-col a:hover { color: var(--color-command-gold); transform: translateX(2px); }
-.foot-col a .ext { color: var(--color-signal-blue); font-size: 11px; }
-
-.foot-strip {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 1.1rem 1.5rem 1.7rem;
-  border-top: 1px solid rgba(58, 63, 80, .45);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: .6rem 1.4rem;
-}
+.foot-inner { max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
+.foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
+.foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
+.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .1em; color: var(--color-gray-1); transition: color .15s; }
+.foot-brand:hover .foot-wm { color: #fff; }
+.foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
+/* Scalable colophon: short themed groups in an auto-fit grid; gold rationed to the bee. */
+.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1.9rem 1.5rem; margin-top: 2.1rem; }
+.foot-group { display: flex; flex-direction: column; align-items: flex-start; }
+.foot-gh { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gray-1); margin-bottom: .85rem; }
+.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; transition: color .15s; }
+.foot-group a:hover { color: #fff; }
+.foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
+.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); }
+.foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
 @media (max-width: 720px) {
-  .foot-inner { grid-template-columns: 1fr 1fr; gap: 2rem 1.2rem; padding: 2.6rem 1.25rem 1.6rem; }
-  .foot-brand { grid-column: 1 / -1; }
-  .foot-strip { flex-direction: column; align-items: flex-start; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .foot-inner { padding: 2.6rem 1.25rem 1.8rem; }
 }
 
 /* ---- one motion beat — reveal (hero only) ---- */
 [data-rv] { opacity: 0; transform: translateY(12px); animation: rv .85s cubic-bezier(.2, .7, .2, 1) forwards; }
 @keyframes rv { to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { [data-rv] { animation: none; opacity: 1; transform: none; } }
+
+/* Scroll reveal — sections tagged `data-reveal` fade + rise as they enter the
+   viewport, driven by a CSS scroll timeline (no JS). Guarded by @supports so
+   unsupported browsers and reduced-motion just show the content, never hidden. */
+@keyframes reveal-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  [data-reveal] { animation: reveal-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 32%; }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { animation: none; } }
+}
 
 /* ---- responsive collapse ---- */
 @media (max-width: 900px) {

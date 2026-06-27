@@ -14,7 +14,7 @@ export function Section({
   children?: ReactNode
 }) {
   return (
-    <section className="sec" id={id}>
+    <section className="sec" id={id} data-reveal>
       <p className="sec-kicker">{kicker}</p>
       <h2 className="sec-h2">{title}</h2>
       {children}
