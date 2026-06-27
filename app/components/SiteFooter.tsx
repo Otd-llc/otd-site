@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
+import { BrandMark } from './BrandMark'
 
 const ACADEMY = 'https://academy.onethousanddrones.com'
 
@@ -12,7 +12,7 @@ export function SiteFooter() {
     <footer className="app-footer">
       <div className="foot-inner">
         <Link className="foot-brand" href="/" aria-label="One Thousand Drones home">
-          <img src="/icon.svg" alt="" width={27} height={27} />
+          <BrandMark className="foot-bee" />
           <span className="foot-wm">ONE THOUSAND DRONES</span>
         </Link>
         <p className="foot-tag">One mind, many machines.</p>

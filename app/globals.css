@@ -223,7 +223,7 @@ body {
   padding: .5rem 1rem;
 }
 .hbrand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
-.hbrand img { height: 1.5rem; width: 1.5rem; flex-shrink: 0; }
+.hbrand .bee { height: 1.5rem; width: 1.5rem; flex-shrink: 0; color: var(--color-command-gold); }
 .hbrand .wm { font-family: var(--font-display), sans-serif; font-size: .875rem; line-height: 1.25rem; letter-spacing: .05em; color: var(--color-gray-1); }
 .hbrand .wm-ac { color: var(--color-command-gold); }
 .hnav {
@@ -471,6 +471,7 @@ body {
 .foot-inner { max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
 .foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
 .foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
+.foot-bee { color: var(--color-command-gold); }
 .foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .1em; color: var(--color-gray-1); transition: color .15s; }
 .foot-brand:hover .foot-wm { color: #fff; }
 .foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
