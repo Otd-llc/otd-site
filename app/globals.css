@@ -224,7 +224,8 @@ body {
 }
 .hbrand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
 .hbrand img { height: 1.5rem; width: 1.5rem; flex-shrink: 0; }
-.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: 1.125rem; letter-spacing: .08em; color: var(--color-gray-1); }
+.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: 1.125rem; letter-spacing: .05em; color: var(--color-gray-1); }
+.hbrand .wm-ac { color: var(--color-command-gold); }
 .hnav {
   display: flex;
   flex-wrap: wrap;

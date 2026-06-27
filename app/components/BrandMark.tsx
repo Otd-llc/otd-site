@@ -6,7 +6,9 @@ export function BrandMark() {
   return (
     <>
       <img src="/icon.svg" alt="" width={24} height={24} />
-      <span className="wm">ONE THOUSAND DRONES</span>
+      <span className="wm">
+        ONE THOUSAND <span className="wm-ac">DRONES</span>
+      </span>
     </>
   )
 }
