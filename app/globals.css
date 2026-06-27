@@ -461,52 +461,25 @@ body {
     radial-gradient(120% 90% at 50% 0%, rgba(200, 150, 62, .05), transparent 60%),
     var(--color-deep-space);
 }
-.foot-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 3.2rem 1.5rem 2rem;
-  display: grid;
-  grid-template-columns: 1.7fr 1fr 1fr;
-  gap: 2.5rem;
-}
-.foot-mark { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
-.foot-mark img { height: 1.85rem; width: 1.85rem; flex-shrink: 0; }
-.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .08em; color: var(--color-gray-1); transition: color .15s; }
-.foot-mark:hover .foot-wm { color: #fff; }
-.foot-tag { font-family: var(--font-serif), serif; font-style: italic; font-size: 15px; color: var(--color-command-gold); margin-top: .9rem; }
-.foot-loc { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-gray-3); margin-top: .55rem; }
-.foot-col { display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; }
-.foot-h { font-size: 10px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--color-command-gold); margin-bottom: .35rem; }
-.foot-col a { font-size: 12px; letter-spacing: .05em; color: var(--color-link-muted); text-decoration: none; transition: color .15s, transform .15s; }
-.foot-col a:hover { color: var(--color-command-gold); transform: translateX(2px); }
-.foot-col a .ext { color: var(--color-signal-blue); font-size: 11px; }
-
-.foot-strip {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 1.1rem 1.5rem 1.7rem;
-  border-top: 1px solid rgba(58, 63, 80, .45);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: .6rem 1.4rem;
-}
+.foot-inner { max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
+.foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
+.foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
+.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .1em; color: var(--color-gray-1); transition: color .15s; }
+.foot-brand:hover .foot-wm { color: #fff; }
+.foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
+/* Scalable colophon: short themed groups in an auto-fit grid; gold rationed to the bee. */
+.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1.9rem 1.5rem; margin-top: 2.1rem; }
+.foot-group { display: flex; flex-direction: column; align-items: flex-start; }
+.foot-gh { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gray-1); margin-bottom: .85rem; }
+.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; transition: color .15s; }
+.foot-group a:hover { color: #fff; }
+.foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
+.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); }
+.foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
-/* Footer title block — engineering-drawing corner plate: hairline-divided cells
-   of official-record data. The gap + container-background trick draws the inner
-   hairlines for any responsive cell count. */
-.foot-plate { padding: 0 1.5rem 1.9rem; }
-.title-block { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: rgba(58, 63, 80, .55); border: 1px solid rgba(200, 150, 62, .3); border-radius: 7px; overflow: hidden; }
-.tb-cell { background: var(--color-deep-space); padding: .8rem 1rem .85rem; }
-.tb-label { display: block; font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: var(--color-command-gold); }
-.tb-value { display: block; margin-top: .4rem; font-family: var(--font-mono), monospace; font-size: 12px; letter-spacing: .04em; color: var(--color-gray-1); overflow-wrap: anywhere; }
-
 @media (max-width: 720px) {
-  .foot-inner { grid-template-columns: 1fr 1fr; gap: 2rem 1.2rem; padding: 2.6rem 1.25rem 1.6rem; }
-  .foot-brand { grid-column: 1 / -1; }
-  .foot-strip { flex-direction: column; align-items: flex-start; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .foot-inner { padding: 2.6rem 1.25rem 1.8rem; }
 }
 
 /* ---- one motion beat — reveal (hero only) ---- */
