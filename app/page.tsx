@@ -18,12 +18,14 @@ export default function Home() {
             <span className="ord">Neuro-Robotic Command</span>
             <span className="hero-line">
               <span>
-                One <span className="accent">mind</span>.
+                One <span className="accent">mind</span>
+                <span className="tdot">.</span>
               </span>
             </span>
             <span className="hero-line hero-line-2">
               <span>
-                Many <span className="accent">machines</span>.
+                Many <span className="accent">machines</span>
+                <span className="tdot">.</span>
               </span>
             </span>
           </h1>
