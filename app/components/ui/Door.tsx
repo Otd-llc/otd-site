@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { Title } from '../Title'
 
 // .glass-card.door call-to-action panel (v4 265–270). Internal targets use
 // next/link; external (e.g. the academy host) use a plain anchor.
@@ -22,9 +21,7 @@ export function Door({
   const inner = (
     <>
       <span className="dk">{kicker}</span>
-      <h3>
-        <Title>{title}</Title>
-      </h3>
+      <h3>{title}</h3>
       <p>{body}</p>
       <span className="go">
         {cta} <span className="ar">→</span>
