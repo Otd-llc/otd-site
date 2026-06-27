@@ -23,7 +23,10 @@ export function SiteHeader() {
   return (
     <header className="app-header">
       <Link className="hbrand" href="/" aria-label="One Thousand Drones home">
-        <BrandMark />
+        <BrandMark className="bee" />
+        <span className="wm">
+          ONE <span className="wm-ac">THOUSAND</span> DRONES
+        </span>
       </Link>
       <nav className="hnav" aria-label="Primary">
         {NAV.map((n) => (

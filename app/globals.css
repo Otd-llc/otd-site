@@ -15,6 +15,11 @@
   --color-bg-3: #1a1a2e;
   --color-navy-dark: #1f2438;
   --color-panel-border: #3a3f50;
+  /* elevation scale — S1 deep drop for cards/panels, a smaller raise for buttons +
+     the sticky header; rim = the lit top edge that pairs with a drop. */
+  --elev-card: 0 26px 50px -12px rgba(0, 0, 0, .95), 0 10px 18px -8px rgba(0, 0, 0, .85);
+  --elev-raise: 0 8px 20px -6px rgba(0, 0, 0, .85);
+  --rim-hi: inset 0 1px 0 rgba(232, 184, 101, .12), inset 0 0 0 1px rgba(255, 255, 255, .04);
   --color-command-gold: #c8963e;
   --color-gold-light: #e8b865;
   --color-gold-dim: #8b6428;
@@ -82,7 +87,7 @@ body {
   background: linear-gradient(180deg, #13131f 0%, #0d0e14 100%);
   border: 1px solid rgba(200, 150, 62, .35);
   border-radius: 14px;
-  box-shadow: 0 12px 44px rgba(0, 0, 0, .55), 0 1px 0 rgba(232, 184, 101, .12) inset, 0 0 0 1px rgba(255, 255, 255, .04) inset;
+  box-shadow: var(--elev-card), var(--rim-hi);
 }
 .glass-button {
   background: var(--color-navy-dark);
@@ -99,6 +104,7 @@ body {
   text-transform: uppercase;
   letter-spacing: .1em;
   text-decoration: none;
+  box-shadow: var(--elev-raise);
 }
 .glass-button:hover { background: var(--color-command-gold); color: var(--color-deep-space); }
 .glass-button:active { transform: translateY(1px); }
@@ -154,6 +160,13 @@ body {
 /* title-rule — gold gradient hairline opening the hero (matches the academy). */
 .title-rule { position: relative; height: 1px; width: 100%; max-width: 760px; background: var(--color-panel-border); margin: 1.4rem 0; }
 .title-rule::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 60%; background: linear-gradient(to right, var(--color-command-gold) 0%, var(--color-command-gold) 38%, rgba(200, 150, 62, 0) 100%); }
+/* Page header (about / contact / etc.) — the bench-hero title stack. Page titles
+   run a notch smaller than the home hero and WRAP: the home hero is nowrap on two
+   controlled lines, but a long single-line page title must wrap rather than clip
+   inside the hero-line mask. */
+.page-head { margin-bottom: 2.5rem; --hero-size: clamp(31px, 5.6vw, 58px); }
+.page-head .bench-hero { white-space: normal; overflow-wrap: break-word; }
+.subhead { margin-top: 1.1rem; font-family: var(--font-serif), serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; color: var(--color-gray-1); max-width: 56ch; }
 .subhead {
   font-family: var(--font-serif), serif;
   font-size: 18px;
@@ -220,11 +233,13 @@ body {
   row-gap: .5rem;
   border-bottom: 1px solid var(--color-panel-border);
   background: var(--color-deep-space);
-  padding: .5rem 1.5rem;
+  padding: .5rem 1rem;
+  box-shadow: var(--elev-raise);
 }
 .hbrand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
-.hbrand img { height: 1.5rem; width: 1.5rem; flex-shrink: 0; }
-.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: 1.125rem; letter-spacing: .08em; color: var(--color-gray-1); }
+.hbrand .bee { height: 1.5rem; width: 1.5rem; flex-shrink: 0; color: var(--color-command-gold); }
+.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: .875rem; line-height: 1.25rem; letter-spacing: .05em; color: var(--color-gray-1); }
+.hbrand .wm-ac { color: var(--color-command-gold); }
 .hnav {
   display: flex;
   flex-wrap: wrap;
@@ -233,13 +248,14 @@ body {
   row-gap: .25rem;
   font-family: var(--font-mono), monospace;
   font-size: .75rem;
+  line-height: 1rem;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .05em;
 }
 .hnav a { color: var(--color-muted); text-decoration: none; transition: color .2s; }
 .hnav a:hover { color: var(--color-command-gold); }
 .hright { margin-left: auto; display: flex; align-items: center; gap: .75rem; }
-.hright .glass-button { padding: .375rem .75rem; }
+.hright .glass-button { padding: .375rem .75rem; line-height: 1rem; letter-spacing: .05em; }
 
 /* mobile nav (added in the port — fixes the prototype's display:none gap) */
 .hmenu-btn {
@@ -266,6 +282,11 @@ body {
 }
 .hnav-mobile a { color: var(--color-muted); text-decoration: none; padding: .55rem .25rem; border-bottom: 1px solid rgba(58, 63, 80, .5); }
 .hnav-mobile a:hover { color: var(--color-command-gold); }
+/* match the academy header exactly: px-4 sm:px-6, wordmark text-sm sm:text-lg */
+@media (min-width: 640px) {
+  .app-header { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hbrand .wm { font-size: 1.125rem; line-height: 1.75rem; }
+}
 
 .main { flex: 1; margin: 0 auto; width: 100%; max-width: 72rem; padding: 2.5rem 1.5rem 4rem; }
 @media (max-width: 639px) { .main { padding: 1.5rem 1rem 3rem; } }
@@ -391,16 +412,36 @@ body {
 .door .go .ar { transition: transform .3s; }
 .door:hover .go .ar { transform: translateX(4px); }
 
-/* ---- about — founder two-column ---- */
-.about-grid { margin-top: 1.7rem; display: grid; grid-template-columns: .8fr 1.2fr; gap: 2.4rem; align-items: start; }
-.about-photo { width: 100%; height: auto; border-radius: 14px; display: block; }
-.about-bio p { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.75; margin-bottom: 1.1rem; max-width: 60ch; }
-.about-bio p b { color: #fff; font-weight: 500; }
-.about-bio .about-meta { margin: 1.6rem 0; }
-.about-bio .cta-row { margin-top: 1.6rem; }
+/* ---- about — founder dossier: framed credential + a structured record ---- */
+.about-intro { margin-top: 1.8rem; display: grid; grid-template-columns: 300px 1fr; gap: 2.8rem; align-items: start; }
+.about-portrait { margin: 0; }
+.about-frame { position: relative; }
+/* gold corner ticks, like a sighted record */
+.about-frame::before, .about-frame::after { content: ""; position: absolute; width: 24px; height: 24px; border: 2px solid var(--color-command-gold); }
+.about-frame::before { top: -7px; left: -7px; border-right: 0; border-bottom: 0; }
+.about-frame::after { bottom: -7px; right: -7px; border-left: 0; border-top: 0; }
+.about-photo { width: 100%; height: auto; display: block; border-radius: 3px; }
+.about-plate { display: flex; flex-direction: column; gap: 4px; margin-top: 1rem; padding-left: .85rem; border-left: 2px solid var(--color-command-gold); }
+.ap-name { font-family: var(--font-display), sans-serif; font-size: 1.5rem; letter-spacing: .05em; color: var(--color-gray-1); line-height: 1; }
+.ap-role { font-family: var(--font-mono), monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-command-gold); }
+.about-lead > p { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.75; max-width: 60ch; }
+.about-lead > p b { color: #fff; font-weight: 500; }
+.about-lead p.about-thesis { margin-top: 1.5rem; max-width: none; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.42; color: var(--color-gray-1); }
+.about-lead p.about-thesis b { color: var(--color-command-gold); font-weight: 500; }
+.about-creds { margin-top: 1.8rem; }
+.about-system { margin-top: 3.2rem; }
+.asys-cap { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--color-command-gold); margin-bottom: 1.1rem; }
+/* three product columns fill the row instead of leaving the right half empty */
+.asys-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.9rem; }
+.asys { border-top: 2px solid var(--color-command-gold); padding-top: 1.1rem; }
+.asys-h { display: block; font-family: var(--font-display), sans-serif; font-size: 1.4rem; letter-spacing: .04em; color: var(--color-gray-1); margin-bottom: .55rem; }
+.asys p { font-family: var(--font-serif), serif; font-size: 15.5px; color: var(--color-gray-2); line-height: 1.7; }
+.asys p b { color: #fff; font-weight: 500; }
 @media (max-width: 760px) {
-  .about-grid { grid-template-columns: 1fr; gap: 1.6rem; }
-  .about-photo { max-width: 320px; }
+  .about-intro { grid-template-columns: 1fr; gap: 1.8rem; }
+  .about-frame { max-width: 280px; }
+  .asys-grid { grid-template-columns: 1fr; gap: 0; }
+  .asys { border-top-width: 1px; border-top-color: var(--color-panel-border); padding: 1.3rem 0; }
 }
 
 /* ---- academy tease ---- */
@@ -464,17 +505,18 @@ body {
 .foot-inner { max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
 .foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
 .foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
+.foot-bee { color: var(--color-command-gold); }
 .foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .1em; color: var(--color-gray-1); transition: color .15s; }
 .foot-brand:hover .foot-wm { color: #fff; }
 .foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
 /* Scalable colophon: short themed groups in an auto-fit grid; gold rationed to the bee. */
-.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 1.9rem 1.5rem; margin-top: 2.1rem; }
+.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 1.7rem 1.3rem; margin-top: 2.1rem; }
 .foot-group { display: flex; flex-direction: column; align-items: flex-start; }
 .foot-gh { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gray-1); margin-bottom: .85rem; }
-.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; transition: color .15s; }
+.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; overflow-wrap: anywhere; transition: color .15s; }
 .foot-group a:hover { color: #fff; }
 .foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
-.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); }
+.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); overflow-wrap: anywhere; }
 .foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
