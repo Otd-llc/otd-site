@@ -220,11 +220,11 @@ body {
   row-gap: .5rem;
   border-bottom: 1px solid var(--color-panel-border);
   background: var(--color-deep-space);
-  padding: .5rem 1.5rem;
+  padding: .5rem 1rem;
 }
 .hbrand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
 .hbrand img { height: 1.5rem; width: 1.5rem; flex-shrink: 0; }
-.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: 1.125rem; letter-spacing: .05em; color: var(--color-gray-1); }
+.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: .875rem; line-height: 1.25rem; letter-spacing: .05em; color: var(--color-gray-1); }
 .hbrand .wm-ac { color: var(--color-command-gold); }
 .hnav {
   display: flex;
@@ -234,13 +234,14 @@ body {
   row-gap: .25rem;
   font-family: var(--font-mono), monospace;
   font-size: .75rem;
+  line-height: 1rem;
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: .05em;
 }
 .hnav a { color: var(--color-muted); text-decoration: none; transition: color .2s; }
 .hnav a:hover { color: var(--color-command-gold); }
 .hright { margin-left: auto; display: flex; align-items: center; gap: .75rem; }
-.hright .glass-button { padding: .375rem .75rem; }
+.hright .glass-button { padding: .375rem .75rem; line-height: 1rem; letter-spacing: .05em; }
 
 /* mobile nav (added in the port — fixes the prototype's display:none gap) */
 .hmenu-btn {
@@ -267,6 +268,11 @@ body {
 }
 .hnav-mobile a { color: var(--color-muted); text-decoration: none; padding: .55rem .25rem; border-bottom: 1px solid rgba(58, 63, 80, .5); }
 .hnav-mobile a:hover { color: var(--color-command-gold); }
+/* match the academy header exactly: px-4 sm:px-6, wordmark text-sm sm:text-lg */
+@media (min-width: 640px) {
+  .app-header { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hbrand .wm { font-size: 1.125rem; line-height: 1.75rem; }
+}
 
 .main { flex: 1; margin: 0 auto; width: 100%; max-width: 72rem; padding: 2.5rem 1.5rem 4rem; }
 @media (max-width: 639px) { .main { padding: 1.5rem 1rem 3rem; } }
