@@ -8,6 +8,7 @@ const NAV = [
   { href: '/#oidat', label: 'OIDAT' },
   { href: '/academy', label: 'Academy' },
   { href: '/about', label: 'About' },
+  { href: '/brand', label: 'Brand' },
   { href: '/contact', label: 'Contact' },
 ]
 

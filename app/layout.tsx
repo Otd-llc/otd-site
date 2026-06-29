@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { bebas, spaceMono, lora } from './fonts'
+import { bebas, spaceMono, lora, saira } from './fonts'
 import { SiteHeader } from './components/SiteHeader'
 import { SiteFooter } from './components/SiteFooter'
 import './globals.css'
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${bebas.variable} ${spaceMono.variable} ${lora.variable}`}>
+    <html lang="en" className={`${bebas.variable} ${spaceMono.variable} ${lora.variable} ${saira.variable}`}>
       <body>
         {/* Global engineering-paper backdrop — a fixed isometric graph-paper
             field behind every page (CSS in globals.css, .app-backdrop). Shared

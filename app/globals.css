@@ -238,7 +238,7 @@ body {
 }
 .hbrand { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
 .hbrand .bee { height: 1.5rem; width: 1.5rem; flex-shrink: 0; color: var(--color-command-gold); }
-.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: .875rem; line-height: 1.25rem; letter-spacing: .05em; color: var(--color-gray-1); }
+.hbrand .wm { font-family: var(--font-display), sans-serif; font-size: .875rem; line-height: 1.25rem; letter-spacing: .05em; color: var(--color-gray-1); -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
 .hbrand .wm-ac { color: var(--color-command-gold); }
 .hnav {
   display: flex;
@@ -537,6 +537,268 @@ body {
   [data-reveal] { animation: reveal-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 32%; }
   @media (prefers-reduced-motion: reduce) { [data-reveal] { animation: none; } }
 }
+
+/* =========================================================================
+   /brand — the brand system page. Mirrors the live Academy design (the source
+   of truth): the palette, the four faces (incl. the Saira numeral), the chonky
+   wordmark, and the honeycomb signature. Built from the recipes above + these
+   page-specific specimen blocks.
+   ========================================================================= */
+.brand-lede { font-family: var(--font-serif), serif; font-size: 18px; color: var(--color-gray-2); line-height: 1.75; max-width: 60ch; margin-top: 1.4rem; }
+.brand-lede b { color: #fff; font-weight: 500; }
+
+/* color swatches */
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(186px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.swatch { border: 1px solid var(--color-panel-border); border-radius: 10px; overflow: hidden; background: var(--color-bg-2); }
+.swatch .blk { display: block; height: 96px; border-bottom: 1px solid rgba(0, 0, 0, .4); }
+.swatch .meta { padding: .75rem .85rem .9rem; }
+.swatch .nm { font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-1); }
+.swatch .hx { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .04em; color: var(--color-command-gold); margin-top: 4px; }
+.swatch .role { font-family: var(--font-serif), serif; font-style: italic; font-size: 12.5px; color: var(--color-muted); line-height: 1.45; margin-top: .5rem; }
+
+/* typography specimens */
+.type-list { margin-top: 1.5rem; }
+.type-row { display: grid; grid-template-columns: 210px 1fr; gap: 1.8rem; align-items: baseline; padding: 1.4rem 0; border-top: 1px solid rgba(170, 170, 170, .12); }
+.type-row:first-child { border-top: 0; }
+.type-meta .face { font-family: var(--font-mono), monospace; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-command-gold); }
+.type-meta .new { display: inline-block; margin-left: .4rem; padding: 1px 6px; border: 1px solid var(--color-gold-dim); border-radius: 99px; font-size: 8.5px; letter-spacing: .12em; color: var(--color-gold-light); vertical-align: middle; }
+.type-meta .use { font-family: var(--font-serif), serif; font-style: italic; font-size: 13px; color: var(--color-muted); line-height: 1.55; margin-top: .55rem; }
+.type-spec { min-width: 0; }
+.spec-display { font-family: var(--font-display), sans-serif; font-size: clamp(30px, 4.6vw, 52px); color: var(--color-title); line-height: .9; letter-spacing: .01em; -webkit-text-stroke: .03em currentColor; paint-order: stroke fill; }
+.spec-display .accent { color: var(--color-command-gold); }
+.spec-numeral { font-family: var(--font-numeral), sans-serif; font-weight: 800; font-size: clamp(36px, 5.4vw, 60px); color: var(--color-command-gold); line-height: .82; letter-spacing: .01em; }
+.spec-mono { font-family: var(--font-mono), monospace; font-size: 15px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gray-1); }
+.spec-serif { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.6; }
+.spec-serif i { color: var(--color-muted); }
+
+/* wordmark specimens */
+.wm-spec { display: flex; flex-wrap: wrap; gap: 0; margin-top: 1.2rem; border-top: 1px solid var(--color-panel-border); }
+.wm-card { flex: 1 1 280px; display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem 0; }
+.wm-card + .wm-card { border-top: 1px solid var(--color-panel-border); padding-top: 1.5rem; }
+@media (min-width: 640px) {
+  .wm-card { padding: 1.5rem 1.8rem; }
+  .wm-card:first-child { padding-left: 0; }
+  .wm-card + .wm-card { border-top: 0; border-left: 1px solid var(--color-panel-border); padding-top: 1.5rem; }
+}
+.wm-lockup { display: flex; align-items: center; gap: .6rem; }
+.wm-lockup .bee { height: 1.8rem; width: 1.8rem; flex: none; color: var(--color-command-gold); }
+.wm-text { font-family: var(--font-display), sans-serif; font-size: 1.45rem; letter-spacing: .06em; color: var(--color-gray-1); -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
+.wm-text .ac { color: var(--color-command-gold); }
+.wm-note { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-gray-3); line-height: 1.7; }
+
+/* honeycomb signature specimen */
+.brand-comb { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+.bhex { position: relative; width: clamp(120px, 26vw, 158px); aspect-ratio: 1 / 1.1547; }
+.bhex svg.hx { position: absolute; inset: 0; height: 100%; width: 100%; }
+.bhex polygon { fill: var(--color-deep-space); stroke: var(--color-panel-border); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.bhex.on polygon { fill: url(#bhoney); stroke: var(--color-command-gold); }
+.bhex .bn { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-numeral), sans-serif; font-weight: 800; font-size: clamp(40px, 9vw, 58px); color: transparent; -webkit-text-stroke: 2px rgba(200, 150, 62, .45); }
+.bhex.on .bn { color: #140d02; -webkit-text-stroke: 0; }
+.bhex .bl { position: absolute; left: 0; right: 0; bottom: 19%; text-align: center; font-family: var(--font-mono), monospace; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+.bhex.on .bl { color: var(--color-gold-dim); }
+
+@media (max-width: 640px) {
+  .type-row { grid-template-columns: 1fr; gap: .6rem; }
+}
+
+/* sane default size for any bee mark on the brand page (more specific context
+   rules below — .logo-lockup/.sig/.bcback/.av/.dhead — still override). Without
+   this, a BrandMark in a context with no size rule renders at its intrinsic SVG
+   size and balloons. */
+.bee { height: 1.5rem; width: 1.5rem; flex: none; }
+/* logo system — specimen plate: the mark as a printer's plate, the wordmark
+   built beside it, and the three background treatments as a value strip below.
+   No bordered cards — the field carries it; the chonky stroke does the weight. */
+.logo-spec { display: grid; grid-template-columns: auto 1fr; gap: clamp(2rem, 5vw, 3.4rem); align-items: center; margin-top: 1.6rem; }
+.logo-plate { position: relative; justify-self: center; color: var(--color-command-gold); }
+.logo-plate .bee { height: clamp(6rem, 14vw, 9rem); width: clamp(6rem, 14vw, 9rem); }
+.logo-plate .pn { position: absolute; top: 0; right: -1.6rem; writing-mode: vertical-rl; font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .16em; color: var(--color-gray-3); }
+.logo-build .lw { font-family: var(--font-display), sans-serif; font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: .86; letter-spacing: .04em; color: var(--color-gray-1); -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
+.logo-build .ann { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); margin-top: 1.1rem; line-height: 1.7; }
+.logo-build .ann b { color: var(--color-command-gold); font-weight: 400; }
+.logo-strip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; border-top: 1px solid var(--color-panel-border); padding-top: 1.4rem; margin-top: .4rem; }
+.logo-strip .seg { display: flex; align-items: center; gap: .75rem; }
+.logo-strip .grnd { width: 48px; height: 48px; flex: none; display: grid; place-items: center; }
+.logo-strip .grnd .bee { height: 1.7rem; width: 1.7rem; }
+.logo-strip .grnd.l { background: #f1ece0; } .logo-strip .grnd.l .bee { color: #1a1a2e; }
+.logo-strip .grnd.d { background: var(--color-deep-space); outline: 1px solid var(--color-panel-border); } .logo-strip .grnd.d .bee { color: var(--color-command-gold); }
+.logo-strip .grnd.m { background: var(--color-bg-2); } .logo-strip .grnd.m .bee { color: var(--color-muted); }
+.logo-strip .cap { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: var(--color-muted); line-height: 1.5; }
+.logo-strip .cap.gold { color: var(--color-command-gold); }
+@media (max-width: 680px) { .logo-spec { grid-template-columns: 1fr; } .logo-strip { grid-template-columns: 1fr; gap: .8rem; } }
+
+/* usage do / don't */
+.usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.5rem; }
+.usage-card { padding: 1.4rem 1.5rem; }
+.usage-h { font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+.usage-card.do .usage-h { color: var(--color-status-green); }
+.usage-card.dont .usage-h { color: var(--color-alert-red); }
+.usage-list { list-style: none; display: flex; flex-direction: column; }
+.usage-list li { font-family: var(--font-serif), serif; font-size: 14px; color: var(--color-gray-2); line-height: 1.5; padding: .65rem 0; border-top: 1px solid rgba(170, 170, 170, .1); display: flex; gap: .6rem; }
+.usage-list li::before { font-family: var(--font-mono), monospace; font-weight: 700; flex: none; }
+.usage-card.do .usage-list li::before { content: "\2713"; color: var(--color-status-green); }
+.usage-card.dont .usage-list li::before { content: "\2715"; color: var(--color-alert-red); }
+@media (max-width: 680px) { .usage-grid { grid-template-columns: 1fr; } }
+
+/* ---- document / application mockups (print artifacts shown faithfully) ---- */
+.doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 1.5rem; align-items: start; }
+.doc-grid.one { grid-template-columns: minmax(0, 560px); }
+@media (max-width: 760px) { .doc-grid { grid-template-columns: 1fr; } }
+.doc { background: #fdfcf9; color: #1a1a2e; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); border-top: 3px solid var(--color-command-gold); }
+.doc.no-accent { border-top: 0; }
+.doc-cap { text-align: center; font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-gray-3); margin-top: .6rem; }
+.dhead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.3rem; border-bottom: 1.5px solid var(--color-command-gold); }
+.dhead .lk { display: flex; align-items: center; gap: .55rem; }
+.dhead .bee { height: 1.5rem; width: 1.5rem; color: #1a1a2e; flex: none; }
+.dhead .nm { font-family: var(--font-display), sans-serif; font-size: 1.05rem; letter-spacing: .07em; color: #1a1a2e; }
+.dhead .rt { font-family: var(--font-display), sans-serif; font-size: 1rem; letter-spacing: .06em; color: #1a1a2e; }
+/* letterhead — letterpress masthead: the chonky stroke-thickened wordmark IS the
+   header. Mark + contact ride a small mono row beneath. No gold rules. */
+.lh-mast { padding: 1.7rem 1.5rem .9rem; }
+.lh-mast .wm { font-family: var(--font-display), sans-serif; font-size: 2.7rem; line-height: .82; letter-spacing: .02em; color: #1a1a2e; -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
+.lh-mast .row { display: flex; align-items: center; gap: .5rem; margin-top: .55rem; }
+.lh-mast .row .bee { height: 1rem; width: 1rem; color: var(--color-command-gold); flex: none; }
+.lh-mast .sub { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #8a8270; }
+.dbody { padding: 1.3rem; font-family: var(--font-serif), serif; font-size: 13px; line-height: 1.7; color: #2a2a3a; min-height: 120px; }
+.dbody .ph { color: #9a9a9a; }
+.dbody .mono { font-family: var(--font-mono), monospace; font-size: 11px; color: #555; letter-spacing: .02em; }
+.dbody .gold { color: var(--color-gold-dim); }
+.dtitle { font-family: var(--font-display), sans-serif; font-size: 2rem; letter-spacing: .03em; color: #1a1a2e; line-height: 1; margin: .2rem 0 .6rem; }
+.dfoot { padding: .8rem 1.3rem 1rem; border-top: 1.5px solid var(--color-command-gold); font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .04em; color: #888; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+/* dark variants — slide title / card back / social */
+.doc.dark { background: var(--color-deep-space); color: var(--color-gray-1); border-top-color: var(--color-command-gold); }
+.doc.dark .dtitle { color: #fff; }
+.doc.dark .bee { color: var(--color-command-gold); }
+.doc.dark .nm { color: var(--color-command-gold); }
+/* email-signature lockup */
+.sig { display: flex; gap: 1rem; align-items: flex-start; }
+.sig .bee { height: 3.2rem; width: 3.2rem; color: #1a1a2e; flex: none; }
+.sig .bar { width: 2px; align-self: stretch; background: #d3d3d3; }
+.sig .nm2 { font-weight: 700; font-size: 14px; color: #000; font-family: Arial, sans-serif; }
+.sig .ln { font-size: 12px; color: #333; font-family: Arial, sans-serif; }
+.sig .lnk { color: var(--color-signal-blue); }
+.sig .tag { font-style: italic; font-size: 12px; color: #666; font-family: Arial, sans-serif; margin-top: .25rem; }
+/* business card — warm drafting stock with the engineering grid as a top-right
+   corner accent (not a full field), a thin bee + Bebas lockup, and the name set
+   in the stroke-thickened display face. Print-light, unmistakably the field. */
+.bcard { position: relative; aspect-ratio: 3.5 / 2; overflow: hidden; border-radius: 6px; color: #1a1a2e; background-color: #efe9da; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); }
+.bcard .iso { position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 15px, rgba(60, 70, 90, .11) 15px 16px),
+    repeating-linear-gradient(30deg, transparent 0 15px, rgba(60, 70, 90, .08) 15px 16px),
+    repeating-linear-gradient(150deg, transparent 0 15px, rgba(60, 70, 90, .08) 15px 16px);
+  -webkit-mask-image: radial-gradient(95% 105% at 100% 0, #000 26%, transparent 72%);
+          mask-image: radial-gradient(95% 105% at 100% 0, #000 26%, transparent 72%); }
+.bcard .pad { position: relative; z-index: 2; padding: 1.3rem 1.4rem; height: 100%; display: flex; flex-direction: column; }
+.bcard .lk { display: flex; align-items: center; gap: .45rem; }
+.bcard .lk .bee { height: 1.15rem; width: 1.15rem; color: var(--color-command-gold); flex: none; }
+.bcard .lk .wm { font-family: var(--font-display), sans-serif; font-size: .95rem; letter-spacing: .05em; color: #1a1a2e; }
+.bcard .nm { font-family: var(--font-display), sans-serif; font-size: 1.9rem; letter-spacing: .03em; color: #1a1a2e; line-height: .88; margin-top: auto; -webkit-text-stroke: .04em currentColor; paint-order: stroke fill; }
+.bcard .ti { font-family: var(--font-mono), monospace; font-size: 8px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gold-dim); margin-top: .3rem; }
+.bcard .ct { font-family: var(--font-mono), monospace; font-size: 8px; color: #6a6458; letter-spacing: .02em; line-height: 1.7; margin-top: .6rem; }
+.bcard.back .pad { align-items: center; justify-content: center; text-align: center; gap: .55rem; }
+.bcard.back .bee { height: 2.6rem; width: 2.6rem; color: var(--color-command-gold); }
+.bcard.back .tg { font-family: var(--font-mono), monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: #7a7464; line-height: 1.7; }
+.bcard.back .u { font-family: var(--font-mono), monospace; font-size: 10px; font-weight: 700; letter-spacing: .08em; color: var(--color-gold-dim); }
+
+/* proposal / report cover — the page laid out like an engineering drawing sheet:
+   a title field up top, a titleblock of boxed metadata fields anchored at the foot. */
+.pcover { position: relative; aspect-ratio: 8.5 / 11; background: #fdfcf9; color: #1a1a2e; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); display: flex; flex-direction: column; }
+.pcover .field { flex: 1; position: relative; padding: 2.4rem 2.2rem; display: flex; flex-direction: column; justify-content: center; }
+.pcover .field .lk { position: absolute; top: 1.8rem; left: 2.2rem; display: flex; align-items: center; gap: .5rem; }
+.pcover .field .lk .bee { height: 1.3rem; width: 1.3rem; color: var(--color-command-gold); flex: none; }
+.pcover .field .lk .wm { font-family: var(--font-display), sans-serif; font-size: 1rem; letter-spacing: .06em; color: #1a1a2e; }
+.pcover .ptitle { font-family: var(--font-display), sans-serif; font-size: clamp(2.4rem, 5.4vw, 3.4rem); letter-spacing: .02em; line-height: .84; color: #1a1a2e; -webkit-text-stroke: .04em currentColor; paint-order: stroke fill; }
+.pcover .pprog { font-family: var(--font-mono), monospace; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gold-dim); margin-top: 1rem; line-height: 1.7; }
+.pcover .tb { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid #1a1a2e; }
+.pcover .tb .c { padding: .75rem .9rem; border-right: 1px solid #d8cfb8; }
+.pcover .tb .c:last-child { border-right: 0; }
+.pcover .tb .c.w2 { grid-column: span 2; }
+.pcover .tb .k { font-family: var(--font-mono), monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gold-dim); }
+.pcover .tb .v { font-family: var(--font-mono), monospace; font-size: 11px; color: #1a1a2e; margin-top: 3px; }
+
+/* slide deck title — 16:9 deep space. The honeycomb signature runs as a strip
+   under the title: solid honey cells dissolving through outline rings into the
+   field (gold on deep space, the one bold element). */
+.slidecard { position: relative; aspect-ratio: 16 / 9; background: var(--color-deep-space); color: var(--color-gray-1); border: 1px solid #20242f; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(1.6rem, 4vw, 2.8rem); }
+.slidecard .lk { position: absolute; top: 1.4rem; left: clamp(1.6rem, 4vw, 2.8rem); display: flex; align-items: center; gap: .45rem; }
+.slidecard .lk .bee { height: 1.15rem; width: 1.15rem; color: var(--color-command-gold); flex: none; }
+.slidecard .lk .wm { font-family: var(--font-display), sans-serif; font-size: .85rem; letter-spacing: .06em; color: var(--color-gray-1); }
+.slidecard .stitle { font-family: var(--font-display), sans-serif; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: .02em; line-height: .86; color: #fff; margin-bottom: 1rem; }
+.slidecard .ssub { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-signal-blue); margin-top: 1rem; }
+.slidecard .hcomb { display: flex; gap: 4px; align-items: center; }
+.slidecard .hcomb .hx { width: clamp(22px, 5vw, 30px); aspect-ratio: .866; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); flex: none; position: relative; }
+.slidecard .hcomb .hx.honey { background: linear-gradient(180deg, #eab94d, #b07f31); }
+.slidecard .hcomb .hx.ring { background: var(--color-command-gold); }
+.slidecard .hcomb .hx.ring::after { content: ""; position: absolute; inset: 2.4px; background: var(--color-deep-space); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+.slidecard .hcomb .lab { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); margin-left: 10px; flex: none; }
+
+/* document header & footer — interior pages. Minimal running head (mark + doc
+   title); the foot is an engineering drawing-sheet titleblock, carrying the
+   system from the proposal cover onto every page. */
+.hfpage { background: #fdfcf9; color: #1a1a2e; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); display: flex; flex-direction: column; }
+.hfpage .hd { display: flex; align-items: center; gap: .5rem; padding: 1.2rem 1.4rem .7rem; }
+.hfpage .hd .bee { height: 1.1rem; width: 1.1rem; color: var(--color-command-gold); flex: none; }
+.hfpage .hd .dt { font-family: var(--font-display), sans-serif; font-size: 1rem; letter-spacing: .05em; color: #1a1a2e; }
+.hfpage .body { min-height: 130px; display: grid; place-items: center; font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #b9b3a4; }
+.hfpage .tb { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; border-top: 1.5px solid #1a1a2e; }
+.hfpage .tb .c { padding: .6rem .8rem; border-right: 1px solid #d8cfb8; }
+.hfpage .tb .c:last-child { border-right: 0; }
+.hfpage .tb .k { font-family: var(--font-mono), monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gold-dim); }
+.hfpage .tb .v { font-family: var(--font-mono), monospace; font-size: 10px; color: #1a1a2e; margin-top: 2px; }
+
+/* #10 envelope — the chonky wordmark is the return masthead (matches the
+   letterhead); address in mono, recipient centered in the reading serif. */
+.envelope { position: relative; aspect-ratio: 9.5 / 4.125; background: #fdfcf9; color: #1a1a2e; border-radius: 6px; overflow: hidden; box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .85); padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.4rem, 3.5vw, 2.2rem); }
+.envelope .wm { font-family: var(--font-display), sans-serif; font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: .03em; line-height: .84; color: #1a1a2e; -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
+.envelope .ret { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .04em; color: var(--color-gold-dim); line-height: 1.7; margin-top: .55rem; }
+.envelope .rcpt { position: absolute; left: 52%; top: 68%; transform: translate(-42%, -50%); font-family: var(--font-serif), serif; font-style: italic; font-size: 12px; color: #3a3a48; line-height: 1.6; }
+
+/* internal memo — the word MEMO set huge does the identifying; the routing sits
+   quiet in a two-column mono block, body in the reading serif. */
+.memodoc { background: #fdfcf9; color: #1a1a2e; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); padding: 1.8rem 2rem; }
+.memodoc .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.memodoc .memoword { font-family: var(--font-display), sans-serif; font-size: clamp(2.6rem, 6vw, 3.6rem); letter-spacing: .04em; line-height: .82; color: #1a1a2e; -webkit-text-stroke: .04em currentColor; paint-order: stroke fill; }
+.memodoc .lk { display: flex; align-items: center; gap: .45rem; }
+.memodoc .lk .bee { height: 1.1rem; width: 1.1rem; color: var(--color-command-gold); flex: none; }
+.memodoc .lk .wm { font-family: var(--font-display), sans-serif; font-size: .95rem; letter-spacing: .05em; color: #1a1a2e; }
+.memodoc .kv { font-family: var(--font-mono), monospace; font-size: 11px; line-height: 2; color: #1a1a2e; margin: 1.3rem 0; columns: 2; max-width: 30rem; }
+.memodoc .kv .k { color: var(--color-gold-dim); }
+.memodoc .body { font-family: var(--font-serif), serif; font-size: 13px; line-height: 1.8; color: #2a2a3a; }
+
+/* invoice — letterpress wordmark masthead, two-column bill-to / details, a clean
+   mono line-item table, and the total set in the Saira numeral face (its real job). */
+.invdoc { background: #fdfcf9; color: #1a1a2e; border-radius: 7px; overflow: hidden; box-shadow: 0 18px 44px -12px rgba(0, 0, 0, .85); padding: 1.8rem 2rem; }
+.invdoc .top { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.invdoc .wm { font-family: var(--font-display), sans-serif; font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing: .03em; line-height: .84; color: #1a1a2e; -webkit-text-stroke: .045em currentColor; paint-order: stroke fill; }
+.invdoc .invno { font-family: var(--font-display), sans-serif; font-size: 1.25rem; letter-spacing: .05em; color: #1a1a2e; }
+.invdoc .cols { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1.3rem 0; }
+.invdoc .bl { font-family: var(--font-mono), monospace; font-size: 11px; line-height: 1.8; color: #5a5648; }
+.invdoc .bl .k { color: var(--color-gold-dim); display: block; letter-spacing: .1em; }
+.invdoc .bl.r { text-align: right; }
+.invdoc table { width: 100%; border-collapse: collapse; font-family: var(--font-mono), monospace; font-size: 11px; }
+.invdoc th { color: #9a9486; text-align: left; padding: .35rem 0; border-bottom: 1px solid #d8cfb8; font-weight: 400; letter-spacing: .06em; }
+.invdoc th.r, .invdoc td.r { text-align: right; }
+.invdoc td { padding: .5rem 0; border-bottom: 1px solid #ece6d8; color: #3a3a48; }
+.invdoc .total { display: flex; justify-content: flex-end; align-items: baseline; gap: 1rem; margin-top: 1rem; border-top: 2px solid var(--color-command-gold); padding-top: .8rem; }
+.invdoc .total .lab { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gold-dim); }
+.invdoc .total .num { font-family: var(--font-numeral), sans-serif; font-weight: 800; font-size: 1.7rem; color: #1a1a2e; letter-spacing: .01em; }
+/* invoice total numeral — uses the new Saira face */
+.inv-total { font-family: var(--font-numeral), sans-serif; font-weight: 800; font-size: 1.7rem; color: #1a1a2e; letter-spacing: .01em; }
+
+/* social / favicon avatars */
+.av-row { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: flex-end; margin-top: 1rem; }
+.av-cell { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+.av { display: grid; place-items: center; flex: none; }
+.av.dark { background: var(--color-deep-space); border: 1px solid var(--color-panel-border); } .av.light { background: #f1ece0; }
+.av.circle { border-radius: 50%; } .av.square { border-radius: 6px; }
+.av .bee { width: 62%; height: 62%; }
+.av.dark .bee { color: var(--color-command-gold); } .av.light .bee { color: #1a1a2e; }
+.av-cap { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-gray-3); text-align: center; line-height: 1.5; }
+.av-sub { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-muted); margin: 1.3rem 0 .2rem; }
+
+/* quick-reference asset chips */
+.qref code, .qref .val { font-family: var(--font-mono), monospace; font-size: 11px; background: rgba(8, 9, 13, .55); border: 1px solid var(--color-panel-border); border-radius: 4px; padding: 2px 7px; color: var(--color-gold-light); white-space: nowrap; }
 
 /* ---- responsive collapse ---- */
 @media (max-width: 900px) {

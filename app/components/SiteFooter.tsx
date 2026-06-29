@@ -30,6 +30,7 @@ export function SiteFooter() {
           <nav className="foot-group" aria-label="Company">
             <span className="foot-gh">Company</span>
             <Link href="/about">About</Link>
+            <Link href="/brand">Brand</Link>
             <Link href="/contact">Request a briefing</Link>
             <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
           </nav>
