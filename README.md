@@ -55,12 +55,10 @@ pnpm test         # vitest
 pnpm lint
 ```
 
-Env vars (the contact form needs the first three):
-
-- `RESEND_API_KEY` — Resend API key
-- `CONTACT_FROM_EMAIL` / `CONTACT_TO_EMAIL` — the briefing email's from/to
-- `NEXT_PUBLIC_DEMO_URL` — optional; the embedded BioScale demo origin (defaults to
-  `https://demo.onethousanddrones.com`)
+Env vars: the contact form needs a Resend API key and a from/to email pair; the embedded
+BioScale demo origin is optional (it defaults to the public demo). See
+`app/api/contact/route.ts` and `app/components/BioScaleEmbed.tsx` for the exact variables.
+Values are never committed.
 
 ## Related
 
