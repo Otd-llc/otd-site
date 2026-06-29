@@ -1,30 +1,18 @@
 'use client'
 import { useState } from 'react'
-
-const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)
-
-type Errors = Partial<Record<'name' | 'email' | 'org' | 'message', string>>
+import { validateBriefing, type BriefingErrors } from './briefing-form-validate'
 
 export function BriefingForm() {
   const [form, setForm] = useState({ name: '', email: '', org: '', message: '', website: '' })
-  const [errors, setErrors] = useState<Errors>({})
+  const [errors, setErrors] = useState<BriefingErrors>({})
   const [status, setStatus] = useState<'idle' | 'pending' | 'ok' | 'err'>('idle')
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const validate = (): Errors => {
-    const er: Errors = {}
-    if (!form.name.trim()) er.name = 'Required'
-    if (!isEmail(form.email)) er.email = 'Enter a valid email'
-    if (!form.org.trim()) er.org = 'Required'
-    if (form.message.trim().length < 5) er.message = 'Tell us a little more'
-    return er
-  }
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const er = validate()
+    const er = validateBriefing(form)
     setErrors(er)
     if (Object.keys(er).length > 0) return // never calls the API on invalid input
     setStatus('pending')
