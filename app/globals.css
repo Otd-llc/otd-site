@@ -495,6 +495,9 @@ body {
   margin-top: 4.5rem;
   font-family: var(--font-mono), monospace;
   color: var(--color-muted);
+  /* clip the bee watermark at the viewport edge so it bleeds off-screen, not
+     mid-page at the 72rem content column */
+  overflow: hidden;
   /* gold-tinted hairline + a faint wash bleeding up from the seam for depth */
   border-top: 1px solid transparent;
   border-image: linear-gradient(90deg, transparent, rgba(200, 150, 62, .55), transparent) 1;
@@ -502,7 +505,12 @@ body {
     radial-gradient(120% 90% at 50% 0%, rgba(200, 150, 62, .05), transparent 60%),
     var(--color-deep-space);
 }
-.foot-inner { max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
+.foot-inner { position: relative; z-index: 0; max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
+/* Brand-icon watermark (ported from the academy). Bleeds off the right on
+   desktop, clipped at the viewport by .app-footer; behind the colophon. Dark-
+   only site, so a single opacity. */
+.foot-wm-bee { position: absolute; z-index: -1; top: 50%; right: -8%; transform: translateY(-50%); width: 46%; max-width: 620px; color: var(--color-command-gold); opacity: .1; pointer-events: none; }
+.foot-wm-bee svg { display: block; width: 100%; height: auto; }
 .foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
 .foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
 .foot-bee { color: var(--color-command-gold); }
@@ -520,8 +528,17 @@ body {
 .foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
 
+/* Desktop: keep the columns to the left ~70% so the bee reads on the right.
+   Mobile is untouched — the grid stays full-width and reflows to 2 cols. */
+@media (min-width: 721px) {
+  .foot-cols { max-width: 70%; }
+}
 @media (max-width: 720px) {
   .foot-inner { padding: 2.6rem 1.25rem 1.8rem; }
+  /* bee tucks into the bottom-right corner instead of bleeding off the side */
+  .foot-wm-bee { top: auto; bottom: -6%; right: -12%; transform: none; width: 52%; }
+  /* registry spans both columns under a hairline, below the 2-col link grid */
+  .foot-group-reg { grid-column: 1 / -1; border-top: 1px solid rgba(58, 63, 80, .55); padding-top: 1.2rem; margin-top: .3rem; }
 }
 
 /* ---- one motion beat — reveal (hero only) ---- */

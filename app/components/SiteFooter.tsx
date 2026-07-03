@@ -11,6 +11,12 @@ export function SiteFooter() {
   return (
     <footer className="app-footer">
       <div className="foot-inner">
+        {/* Large brand-icon watermark (the field-guide idea): bleeds off the
+            right edge on desktop, tucks bottom-right on mobile, behind the
+            colophon. Ported from the academy footer. */}
+        <div className="foot-wm-bee" aria-hidden="true">
+          <BrandMark />
+        </div>
         <Link className="foot-brand" href="/" aria-label="One Thousand Drones home">
           <BrandMark className="foot-bee" />
           <span className="foot-wm">ONE THOUSAND DRONES</span>
@@ -35,7 +41,7 @@ export function SiteFooter() {
             <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
           </nav>
 
-          <div className="foot-group">
+          <div className="foot-group foot-group-reg">
             <span className="foot-gh">Registry</span>
             <p className="foot-reg">
               Broken Arrow, OK · USA
