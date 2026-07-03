@@ -435,6 +435,10 @@ body {
 .about-plate { display: flex; flex-direction: column; gap: 4px; margin-top: 1rem; padding-left: .85rem; border-left: 2px solid var(--color-command-gold); }
 .ap-name { font-family: var(--font-display), sans-serif; font-size: 1.5rem; letter-spacing: .05em; color: var(--color-gray-1); line-height: 1; }
 .ap-role { font-family: var(--font-mono), monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-command-gold); }
+.ap-links { display: flex; gap: .9rem; margin-top: .55rem; }
+.ap-links a { display: inline-flex; align-items: center; gap: .3rem; font-family: var(--font-mono), monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-link-muted); text-decoration: none; transition: color .15s; }
+.ap-links a:hover { color: #fff; }
+.ap-links a .ext { color: var(--color-signal-blue); font-size: 10px; }
 .about-lead > p { font-family: var(--font-serif), serif; font-size: 17px; color: var(--color-gray-2); line-height: 1.75; max-width: 60ch; }
 .about-lead > p b { color: #fff; font-weight: 500; }
 .about-lead p.about-thesis { margin-top: 1.5rem; max-width: none; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.42; color: var(--color-gray-1); }
