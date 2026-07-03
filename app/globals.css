@@ -269,19 +269,30 @@ body {
   line-height: 1;
   cursor: pointer;
 }
+/* H04 dropdown card: absolute under the hamburger (the sticky header is its
+   containing block), navy-dark + hairline + elevation. Holds the full nav. */
 .hnav-mobile {
   display: none;
-  flex-basis: 100%;
+  position: absolute;
+  top: 100%;
+  right: 1rem;
+  margin-top: .5rem;
+  z-index: 30;
+  min-width: 11rem;
   flex-direction: column;
-  gap: .25rem;
-  padding: .5rem 0 .25rem;
+  background: var(--color-navy-dark);
+  border: 1px solid var(--color-panel-border);
+  border-radius: 8px;
+  box-shadow: var(--elev-card);
+  overflow: hidden;
   font-family: var(--font-mono), monospace;
   font-size: .8rem;
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-.hnav-mobile a { color: var(--color-muted); text-decoration: none; padding: .55rem .25rem; border-bottom: 1px solid rgba(58, 63, 80, .5); }
-.hnav-mobile a:hover { color: var(--color-command-gold); }
+.hnav-mobile a { color: var(--color-muted); text-decoration: none; padding: .6rem .9rem; border-top: 1px solid rgba(58, 63, 80, .5); transition: color .15s, background .15s; }
+.hnav-mobile a:first-child { border-top: none; }
+.hnav-mobile a:hover { color: var(--color-command-gold); background: rgba(200, 150, 62, .06); }
 /* match the academy header exactly: px-4 sm:px-6, wordmark text-sm sm:text-lg */
 @media (min-width: 640px) {
   .app-header { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -821,7 +832,15 @@ body {
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 1.5rem; }
   .cards, .doors { grid-template-columns: 1fr; }
-  .hnav { display: none; }
+  /* H04: keep the nav visible but clipped to ONE line on its own row (a right
+     fade hints at more); the hamburger reveals the full nav in the dropdown. */
+  .hnav {
+    flex-basis: 100%;
+    max-height: 1.15rem;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent);
+    mask-image: linear-gradient(90deg, #000 82%, transparent);
+  }
   .hmenu-btn { display: inline-flex; align-items: center; justify-content: center; }
   .hnav-mobile { display: flex; }
   /* brand + hamburger only — the gold CTA is redundant with the hero CTA + menu */

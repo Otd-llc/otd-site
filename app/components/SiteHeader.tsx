@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { BrandMark } from './BrandMark'
 
@@ -14,15 +14,23 @@ const NAV = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
+    const onDown = (e: PointerEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    document.addEventListener('pointerdown', onDown)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.removeEventListener('pointerdown', onDown)
+    }
   }, [])
   return (
-    <header className="app-header">
+    <header className="app-header" ref={ref}>
       <Link className="hbrand" href="/" aria-label="One Thousand Drones home">
         <BrandMark className="bee" />
         <span className="wm">
