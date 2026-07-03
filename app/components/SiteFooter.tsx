@@ -41,6 +41,16 @@ export function SiteFooter() {
             <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
           </nav>
 
+          <nav className="foot-group" aria-label="Founder">
+            <span className="foot-gh">Founder</span>
+            <a href="https://www.linkedin.com/in/joshuatollette/" target="_blank" rel="noopener noreferrer">
+              LinkedIn <span className="ext">↗</span>
+            </a>
+            <a href="https://github.com/joshtol" target="_blank" rel="noopener noreferrer">
+              GitHub <span className="ext">↗</span>
+            </a>
+          </nav>
+
           <div className="foot-group foot-group-reg">
             <span className="foot-gh">Registry</span>
             <p className="foot-reg">

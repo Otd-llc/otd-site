@@ -20,8 +20,50 @@ export const metadata: Metadata = {
 }
 
 export default function About() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://onethousanddrones.com/#org',
+        name: 'One Thousand Drones, LLC',
+        url: 'https://onethousanddrones.com',
+        founder: { '@id': 'https://onethousanddrones.com/#josh' },
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Broken Arrow',
+          addressRegion: 'OK',
+          addressCountry: 'US',
+        },
+        sameAs: [
+          'https://academy.onethousanddrones.com',
+          'https://github.com/Otd-llc',
+        ],
+        identifier: [
+          { '@type': 'PropertyValue', propertyID: 'CAGE', value: '1ZYS4' },
+          { '@type': 'PropertyValue', propertyID: 'UEI', value: 'WDQXD9L9UFH3' },
+        ],
+      },
+      {
+        '@type': 'Person',
+        '@id': 'https://onethousanddrones.com/#josh',
+        name: 'Joshua Tollette',
+        jobTitle: 'Founder and Principal Investigator',
+        worksFor: { '@id': 'https://onethousanddrones.com/#org' },
+        sameAs: [
+          'https://www.linkedin.com/in/joshuatollette/',
+          'https://github.com/joshtol',
+        ],
+      },
+    ],
+  }
+
   return (
     <section className="sec" id="about" data-reveal>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader eyebrow="About" title="Built in a defense-registered lab" />
 
       <div className="about-intro">
@@ -39,6 +81,22 @@ export default function About() {
           <figcaption className="about-plate">
             <span className="ap-name">Joshua Tollette</span>
             <span className="ap-role">Founder · Principal Investigator</span>
+            <span className="ap-links">
+              <a
+                href="https://www.linkedin.com/in/joshuatollette/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn <span className="ext">↗</span>
+              </a>
+              <a
+                href="https://github.com/joshtol"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub <span className="ext">↗</span>
+              </a>
+            </span>
           </figcaption>
         </figure>
 
