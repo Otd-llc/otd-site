@@ -37,7 +37,10 @@ export default function About() {
         },
         sameAs: [
           'https://academy.onethousanddrones.com',
+          'https://x.com/1KDrones',
+          'https://www.youtube.com/@1kDrones',
           'https://github.com/Otd-llc',
+          'https://www.linkedin.com/company/one-thousand-drones',
         ],
         identifier: [
           { '@type': 'PropertyValue', propertyID: 'CAGE', value: '1ZYS4' },
