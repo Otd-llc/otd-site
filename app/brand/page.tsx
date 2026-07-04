@@ -6,7 +6,7 @@ import { PageHeader } from '../components/PageHeader'
 export const metadata: Metadata = {
   title: 'Brand',
   description:
-    'The One Thousand Drones brand identity system: palette, the four type faces, the logo system, usage, the honeycomb signature, and the full set of print + digital application templates. Mirrors the live Academy design.',
+    'The One Thousand Drones brand identity system: palette (dark and light), the four type faces, the logo system, usage, the honeycomb signature, the reference-document / PDF standard, and the full set of print + digital application templates. Mirrors the live Academy design.',
 }
 
 // ── shared bits ───────────────────────────────────────────────────────────
@@ -44,6 +44,41 @@ const PRINT: [string, string, string, string][] = [
   ['Navy Dark', '#1A1A2E', '41 / 41 / 0 / 82', '2767 C'],
   ['Signal Blue', '#4A8FFF', '71 / 44 / 0 / 0', '2727 C'],
 ]
+// Light mode: the same tokens flipped under :root[data-theme="light"]. Values
+// anchor on the certificate / Field Guide PDF paper and are AA-tuned on #faf7f0.
+const LIGHT: { nm: string; hex: string; role: string }[] = [
+  { nm: 'Ivory field', hex: '#FAF7F0', role: 'Deep Space inverts to warm paper. The base everything sits on.' },
+  { nm: 'Warm raised', hex: '#F3ECDD', role: 'bg-2. Slightly deeper warm for raised sections.' },
+  { nm: 'White chrome', hex: '#FFFFFF', role: 'Navy Dark inverts to a white panel + hairline. Chrome only.' },
+  { nm: 'Warm hairline', hex: '#D9D2C2', role: 'panel-border. The grouping hairline on paper.' },
+  { nm: 'Command Gold', hex: '#9C7016', role: 'Gold DEEPENS for AA on ivory. Small text near 4.5:1.' },
+  { nm: 'Gold emphasis', hex: '#7E5610', role: 'gold-light INVERTS: emphasis is deeper, not brighter.' },
+  { nm: 'Ink', hex: '#15191F', role: 'Title / text invert to dark ink. Never white on ivory.' },
+  { nm: 'Faint', hex: '#9AA0AD', role: 'gray-3. Faint inverts its rank to sit above muted.' },
+]
+// Reference-document / Field Guide PDF palette (warm-ivory print reference).
+const PDFPAL: { nm: string; hex: string; role: string }[] = [
+  { nm: 'Paper', hex: '#FAF7F0', role: 'Warm ivory page field.' },
+  { nm: 'Ink', hex: '#14181F', role: 'Body copy and headings.' },
+  { nm: 'Gold', hex: '#B5882E', role: 'Rules, numerals, accents.' },
+  { nm: 'Gold deep', hex: '#8A6212', role: 'Hero numeral and emphasis.' },
+  { nm: 'Muted', hex: '#6B7280', role: 'Secondary copy and labels.' },
+  { nm: 'Hairline', hex: '#D8D2C4', role: 'Dividers and table rows.' },
+]
+// swatch renderer shared by the light + PDF grids (light chips need a dark rim
+// so ivory / white read against the deep-space page).
+function LightSwatch({ hex, nm, role }: { hex: string; nm: string; role: string }) {
+  return (
+    <div className="swatch">
+      <span className="blk" style={{ background: hex, boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.14)' }} />
+      <div className="meta">
+        <p className="nm">{nm}</p>
+        <p className="hx">{hex}</p>
+        <p className="role">{role}</p>
+      </div>
+    </div>
+  )
+}
 
 function Hex({ n, label, on }: { n: string; label: string; on?: boolean }) {
   return (
@@ -472,9 +507,64 @@ export default function BrandPage() {
         </div>
       </section>
 
-      {/* ── 16 Quick reference ── */}
+      {/* ── 16 Light mode ── */}
+      <section className="sec">
+        <Kicker n="16">Light mode</Kicker>
+        <h2 className="sec-h2">Ivory paper, deepened gold</h2>
+        <p className="lead">The same system on warm paper. One token block under <code style={{ color: 'var(--color-gold-light)' }}>:root[data-theme=&quot;light&quot;]</code> flips the whole surface at once; a header toggle sets an <code style={{ color: 'var(--color-gold-light)' }}>html data-theme</code> cookie, resolves with no flash on load, and persists to the account when signed in. Same faces, same honeycomb, same console. A lighter field.</p>
+        <div className="swatch-grid">
+          {LIGHT.map((c) => <LightSwatch key={c.nm} {...c} />)}
+        </div>
+        <div className="callout info" style={{ marginTop: '2rem' }}>
+          <span className="callout-label">Three things invert</span>
+          On ivory, gold emphasis DEEPENS (gold-light goes darker, not brighter), bright ink becomes dark ink, and the faint rung inverts its rank so gray-3 sits lighter than muted. Heavy black drop-shadows read as dirt on paper, so elevation softens to a warm gray and the lit rim drops to nothing.
+        </div>
+        <div className="callout" style={{ marginTop: '1.2rem' }}>
+          <span className="callout-label">Hard rules</span>
+          One background per page, never two. Never white text on ivory, not in the UI and not in a diagram. Diagrams ship a true light variant, re-themed rather than dimmed, and the 3D viewer swaps to a light scene. The engineering-paper grid fades in at the top and bottom of a scroll and clears through the reading band, site-wide.
+        </div>
+        <SpecTable cols={['Token', 'Light value']} rows={[
+          ['Deep Space (field)', '#FAF7F0 warm ivory paper'],
+          ['Navy Dark (chrome)', '#FFFFFF white panel + hairline'],
+          ['Panel border', '#D9D2C2 warm hairline'],
+          ['Command Gold', '#9C7016 deepened for AA on ivory'],
+          ['Gold Light (emphasis)', '#7E5610 inverts deeper, not brighter'],
+          ['Title / Text', '#15191F / #20252D dark ink'],
+          ['Elevation', 'warm-gray drop shadow, lit rim → none'],
+        ]} />
+      </section>
+
+      {/* ── 17 Reference document / Field Guide PDF ── */}
+      <section className="sec">
+        <Kicker n="17">Reference document</Kicker>
+        <h2 className="sec-h2">The Field Guide standard</h2>
+        <p className="lead">The pattern every OTD PDF follows. A print asset rendered server-side from the same live content as the web page, so the paper never drifts from the site. Warm ivory, the four faces, gold hairlines. The canonical OTD light reference.</p>
+        <div className="swatch-grid">
+          {PDFPAL.map((c) => <LightSwatch key={c.nm} {...c} />)}
+        </div>
+        <div className="callout" style={{ marginTop: '2rem' }}>
+          <span className="callout-label">Page system</span>
+          <b>Cover.</b> A big Saira volume numeral beside a Bebas title, with the 1KD mark as a faint gold watermark, low corner. <b>Contents.</b> Bebas entries on a dotted leader, gold Saira page numbers. <b>Section opener.</b> A big gold numeral and title so every chapter starts on a fresh page, which kills orphan blanks. <b>Body.</b> A mono kicker, a Bebas h2, Crimson Text serif copy. <b>Running header and footer.</b> Section · document up top, url · page number below, on gold hairlines.
+        </div>
+        <div className="callout info" style={{ marginTop: '1.2rem' }}>
+          <span className="callout-label">Frameless diagrams</span>
+          Figures carry no boxed frame. A mono eyebrow, a Bebas caption title, the figure, then a mono caption line. The whole thing sits on the paper, grouped by air and a hairline, not a card. This is the candidate site-wide diagram rule.
+        </div>
+        <SpecTable cols={['Element', 'Spec']} rows={[
+          ['Page size', 'A4 / US Letter, warm ivory #FAF7F0'],
+          ['Cover', 'Saira numeral + Bebas title + faint 1KD watermark'],
+          ['Contents', 'Bebas entries, dotted leader, Saira gold page numbers'],
+          ['Body face', 'Crimson Text, the print serif (Lora’s reading role, tuned for PDF embedding)'],
+          ['Header / footer', 'section · doc / url · page, on gold hairlines'],
+          ['Page numbers', 'Saira Condensed 800, gold, tabular'],
+          ['Diagrams', 'Frameless, light variant, never dimmed dark art'],
+          ['Source', 'Rendered from live content blocks, no drift'],
+        ]} />
+      </section>
+
+      {/* ── 18 Quick reference ── */}
       <section className="sec qref">
-        <Kicker n="16">Quick reference</Kicker>
+        <Kicker n="18">Quick reference</Kicker>
         <h2 className="sec-h2">The whole system on one card</h2>
         <table className="table-tech" style={{ marginTop: '1.2rem' }}>
           <thead><tr><th>Asset</th><th>Value</th><th>Notes</th></tr></thead>
@@ -489,6 +579,10 @@ export default function BrandPage() {
             <tr><td><span className="ref">Logo icon</span></td><td><span className="val">1kd-icon.svg</span></td><td>Queen bee mark — SVG, scalable</td></tr>
             <tr><td><span className="ref">Logo logotype</span></td><td><span className="val">1kd-logotype.svg</span></td><td>Bee + wordmark — SVG, scalable</td></tr>
             <tr><td><span className="ref">Concept</span></td><td><span className="val">Queen → drones</span></td><td>Military UAS + entomology double meaning</td></tr>
+            <tr><td><span className="ref">Light field</span></td><td><span className="val">#FAF7F0</span></td><td>Ivory paper, the light-mode base</td></tr>
+            <tr><td><span className="ref">Light gold</span></td><td><span className="val">#9C7016</span></td><td>Command Gold deepened for AA on ivory</td></tr>
+            <tr><td><span className="ref">PDF body face</span></td><td><span className="val">Crimson Text</span></td><td>Reference-document serif, warm ivory paper</td></tr>
+            <tr><td><span className="ref">Diagram rule</span></td><td><span className="val">Frameless</span></td><td>No frame; eyebrow, title, figure, caption</td></tr>
           </tbody>
         </table>
       </section>
