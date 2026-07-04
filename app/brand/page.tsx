@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { BrandMark } from '../components/BrandMark'
 import { BannerArt } from '../components/BannerArt'
+import { ThumbnailArt } from '../components/ThumbnailArt'
 import { PageHeader } from '../components/PageHeader'
 
 export const metadata: Metadata = {
@@ -75,6 +76,10 @@ const ASSETS: { n: string; d: string; f: string }[] = [
   { n: 'GitHub README strip · dark', d: '1280 × 400', f: 'otd-banner-readme-1280x400.png' },
   { n: 'GitHub README strip · ivory', d: '1280 × 400', f: 'otd-banner-readme-ivory-1280x400.png' },
   { n: 'Personal README banner', d: '1200 × 360', f: 'otd-banner-personal-1200x360.png' },
+  { n: 'YouTube thumbnail · sample 01', d: '1280 × 720', f: 'otd-thumbnail-lesson-01.png' },
+  { n: 'YouTube thumbnail · sample 02', d: '1280 × 720', f: 'otd-thumbnail-lesson-02.png' },
+  { n: 'YouTube thumbnail · sample 05', d: '1280 × 720', f: 'otd-thumbnail-lesson-05.png' },
+  { n: 'YouTube thumbnail · sample (ivory)', d: '1280 × 720', f: 'otd-thumbnail-lesson-03-ivory.png' },
   { n: 'Avatar · large', d: '800 × 800', f: 'otd-avatar-800.png' },
   { n: 'Avatar · standard', d: '500 × 500', f: 'otd-avatar-500.png' },
   { n: 'Avatar · social', d: '400 × 400', f: 'otd-avatar-400.png' },
@@ -586,7 +591,10 @@ export default function BrandPage() {
         <style>{`.mk svg{width:100%;height:100%;display:block}.mk-wrap{max-width:100%;overflow-x:auto}`}</style>
         <div className="mk-wrap" style={{ marginTop: '1.4rem' }}><BannerArt w={920} h={Math.round(920 / 3)} theme="dark" /></div>
         <div className="mk-wrap" style={{ marginTop: '0.8rem' }}><BannerArt w={920} h={Math.round((920 * 400) / 1280)} theme="ivory" /></div>
-        <h3 className="asys-cap" style={{ marginTop: '2rem' }}>Downloads</h3>
+        <h3 className="asys-cap" style={{ marginTop: '2.4rem' }}>YouTube thumbnail template</h3>
+        <p className="lead" style={{ marginTop: '0.6rem' }}>A parametrized series template: the giant Saira episode number sits as a bold backdrop, an EEG trace runs the base, and the mark plus a lesson tag frame a two-line title. Swap the tag, number, and title per video and the channel still reads as one set.</p>
+        <div className="mk-wrap" style={{ marginTop: '1.2rem' }}><ThumbnailArt w={640} h={360} tag="Neural interfaces" num="01" titleTop="Motor imagery," titleAccent="decoded" /></div>
+        <h3 className="asys-cap" style={{ marginTop: '2.4rem' }}>Downloads</h3>
         <table className="table-tech">
           <thead><tr><th>Asset</th><th>Dimensions</th><th>File</th></tr></thead>
           <tbody>{ASSETS.map((a) => (
