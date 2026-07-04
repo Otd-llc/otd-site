@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { BrandMark } from '../components/BrandMark'
+import { BannerArt } from '../components/BannerArt'
 import { PageHeader } from '../components/PageHeader'
 
 export const metadata: Metadata = {
@@ -65,6 +66,21 @@ const PDFPAL: { nm: string; hex: string; role: string }[] = [
   { nm: 'Muted', hex: '#6B7280', role: 'Secondary copy and labels.' },
   { nm: 'Hairline', hex: '#D8D2C4', role: 'Dividers and table rows.' },
 ]
+// Media-kit downloads — the exported profile banners + avatars in public/brand/social.
+const ASSETS: { n: string; d: string; f: string }[] = [
+  { n: 'X / Twitter header', d: '1500 × 500', f: 'otd-banner-x-1500x500.png' },
+  { n: 'YouTube channel art', d: '2560 × 1440', f: 'otd-banner-youtube-2560x1440.png' },
+  { n: 'LinkedIn company banner', d: '1128 × 191', f: 'otd-banner-linkedin-1128x191.png' },
+  { n: 'GitHub repo social card', d: '1280 × 640', f: 'otd-banner-github-og-1280x640.png' },
+  { n: 'GitHub README strip · dark', d: '1280 × 400', f: 'otd-banner-readme-1280x400.png' },
+  { n: 'GitHub README strip · ivory', d: '1280 × 400', f: 'otd-banner-readme-ivory-1280x400.png' },
+  { n: 'Personal README banner', d: '1200 × 360', f: 'otd-banner-personal-1200x360.png' },
+  { n: 'Avatar · large', d: '800 × 800', f: 'otd-avatar-800.png' },
+  { n: 'Avatar · standard', d: '500 × 500', f: 'otd-avatar-500.png' },
+  { n: 'Avatar · social', d: '400 × 400', f: 'otd-avatar-400.png' },
+  { n: 'Avatar · small', d: '300 × 300', f: 'otd-avatar-300.png' },
+]
+
 // swatch renderer shared by the light + PDF grids (light chips need a dark rim
 // so ivory / white read against the deep-space page).
 function LightSwatch({ hex, nm, role }: { hex: string; nm: string; role: string }) {
@@ -562,9 +578,30 @@ export default function BrandPage() {
         ]} />
       </section>
 
-      {/* ── 18 Quick reference ── */}
+      {/* ── 18 Social & media assets ── */}
+      <section className="sec">
+        <Kicker n="18">Social &amp; media assets</Kicker>
+        <h2 className="sec-h2">The media kit</h2>
+        <p className="lead">Profile banners for every platform, rendered from the live brand components so the download never drifts from the site. The queen-bee mark sits flush to the right as a quiet watermark, an EEG trace reads in from the left, and the wordmark holds the centre. Deep space for social surfaces, warm ivory for light backgrounds like a GitHub README.</p>
+        <style>{`.mk svg{width:100%;height:100%;display:block}.mk-wrap{max-width:100%;overflow-x:auto}`}</style>
+        <div className="mk-wrap" style={{ marginTop: '1.4rem' }}><BannerArt w={920} h={Math.round(920 / 3)} theme="dark" /></div>
+        <div className="mk-wrap" style={{ marginTop: '0.8rem' }}><BannerArt w={920} h={Math.round((920 * 400) / 1280)} theme="ivory" /></div>
+        <h3 className="asys-cap" style={{ marginTop: '2rem' }}>Downloads</h3>
+        <table className="table-tech">
+          <thead><tr><th>Asset</th><th>Dimensions</th><th>File</th></tr></thead>
+          <tbody>{ASSETS.map((a) => (
+            <tr key={a.f}>
+              <td><span className="ref">{a.n}</span></td>
+              <td>{a.d}</td>
+              <td><a href={`/brand/social/${a.f}`} download style={{ color: 'var(--color-gold-light)', fontFamily: 'var(--font-mono)', fontSize: 12 }}>PNG ↓</a></td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </section>
+
+      {/* ── 19 Quick reference ── */}
       <section className="sec qref">
-        <Kicker n="18">Quick reference</Kicker>
+        <Kicker n="19">Quick reference</Kicker>
         <h2 className="sec-h2">The whole system on one card</h2>
         <table className="table-tech" style={{ marginTop: '1.2rem' }}>
           <thead><tr><th>Asset</th><th>Value</th><th>Notes</th></tr></thead>
