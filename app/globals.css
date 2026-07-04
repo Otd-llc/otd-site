@@ -540,13 +540,23 @@ body {
 .foot-group a:hover { color: #fff; }
 .foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
 .foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); overflow-wrap: anywhere; }
-.foot-end { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.foot-end { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
 .foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
+/* Company social profile icon row (footer). Gold marks that brighten on hover;
+   accessible name on each link's aria-label. Distinct from the Founder group. */
+.foot-social { display: flex; align-items: center; gap: 1.1rem; list-style: none; margin: 0; padding: 0; }
+.foot-social a { display: inline-flex; color: var(--color-command-gold); transition: color .15s; }
+.foot-social a:hover { color: var(--color-gold-light); }
+.foot-social a:focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 3px; border-radius: 2px; }
 
 /* Desktop: keep the columns to the left ~70% so the bee reads on the right.
    Mobile is untouched — the grid stays full-width and reflows to 2 cols. */
 @media (min-width: 721px) {
   .foot-cols { max-width: 70%; }
+  /* Desktop: pin the social row left, CENTER the copyright between it and the
+     bee watermark (bleeds off the right). Mobile keeps the simple stacked row. */
+  .foot-end { position: relative; justify-content: center; }
+  .foot-social { position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
 }
 @media (max-width: 720px) {
   .foot-inner { padding: 2.6rem 1.25rem 1.8rem; }
