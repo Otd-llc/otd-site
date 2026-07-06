@@ -79,7 +79,6 @@ const ASSETS: { n: string; d: string; f: string }[] = [
   { n: 'YouTube thumbnail · sample 01', d: '1280 × 720', f: 'otd-thumbnail-lesson-01.png' },
   { n: 'YouTube thumbnail · sample 02', d: '1280 × 720', f: 'otd-thumbnail-lesson-02.png' },
   { n: 'YouTube thumbnail · sample 05', d: '1280 × 720', f: 'otd-thumbnail-lesson-05.png' },
-  { n: 'YouTube thumbnail · sample (ivory)', d: '1280 × 720', f: 'otd-thumbnail-lesson-03-ivory.png' },
   { n: 'LinkedIn Life-tab hero', d: '1128 × 376', f: 'otd-linkedin-life-1128x376.png' },
   { n: 'YouTube watermark (transparent)', d: '800 × 800', f: 'otd-youtube-watermark-800.png' },
   { n: 'YouTube watermark (transparent)', d: '300 × 300', f: 'otd-youtube-watermark-300.png' },
@@ -596,7 +595,7 @@ export default function BrandPage() {
         <div className="mk-wrap" style={{ marginTop: '0.8rem' }}><BannerArt w={920} h={Math.round((920 * 400) / 1280)} theme="ivory" /></div>
         <h3 className="asys-cap" style={{ marginTop: '2.4rem' }}>YouTube thumbnail template</h3>
         <p className="lead" style={{ marginTop: '0.6rem' }}>A parametrized series template: the giant Saira episode number sits as a bold backdrop, an EEG trace runs the base, and the mark plus a lesson tag frame a two-line title. Swap the tag, number, and title per video and the channel still reads as one set.</p>
-        <div className="mk-wrap" style={{ marginTop: '1.2rem' }}><ThumbnailArt w={640} h={360} tag="Neural interfaces" num="01" titleTop="Motor imagery," titleAccent="decoded" /></div>
+        <div className="mk-wrap" style={{ marginTop: '1.2rem' }}><ThumbnailArt w={640} h={360} tag="Neural interfaces" num="01" title="Motor imagery, decoded" /></div>
         <h3 className="asys-cap" style={{ marginTop: '2.4rem' }}>Downloads</h3>
         <table className="table-tech">
           <thead><tr><th>Asset</th><th>Dimensions</th><th>File</th></tr></thead>
