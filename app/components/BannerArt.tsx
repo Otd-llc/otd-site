@@ -26,22 +26,26 @@ const FILL = { position: 'absolute', inset: 0, width: '100%', height: '100%' } a
 /** The F3 banner composition at an arbitrary pixel size. `w`/`h` drive everything. */
 export function BannerArt({ w, h, theme = 'dark', blue }: { w: number; h: number; theme?: 'dark' | 'ivory'; blue?: boolean }) {
   const pal = theme === 'ivory' ? IVORY : DARK
-  const op = theme === 'ivory' ? 0.13 : 0.1
+  const ivory = theme === 'ivory'
+  const op = ivory ? 0.18 : 0.2
   const beeH = Math.min(h * 1.0, w * 0.34)
   const beeRight = w * 0.01
   const beeZone = beeH + beeRight + w * 0.02
-  const traceZone = w * 0.13
-  const avail = Math.max(60, w - traceZone - beeZone)
-  const wordPx = Math.min(h * 0.3, avail / 10)
+  // wordmark is nudged right so the EEG trace gets a clean left zone and can
+  // fade out BEFORE the text (no overlap).
+  const padL = w * 0.33
+  const avail = Math.max(60, w - padL - beeZone)
+  const wordPx = Math.min(h * 0.3, avail / 9)
   const eyePx = wordPx * 0.26
-  const mask = 'linear-gradient(to right,#000 10%,transparent 22%,transparent 100%)'
+  const mask = 'linear-gradient(to right,#000 19%,transparent 30%,transparent 100%)'
+  const eegColor = blue ? pal.blue : ivory ? pal.gold : '#e8b865'
   return (
     <div style={{ position: 'relative', width: w, height: h, background: pal.bg, overflow: 'hidden' }}>
       <div aria-hidden className="mk" style={{ position: 'absolute', right: beeRight, top: '50%', transform: 'translateY(-50%)', width: beeH, height: beeH, color: pal.gold, opacity: op, zIndex: 0 }}><BrandMark /></div>
       <div style={{ ...FILL, WebkitMaskImage: mask, maskImage: mask, zIndex: 1 }}>
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={FILL}><path d={wavePath()} fill="none" stroke={blue ? pal.blue : pal.gold} strokeWidth={0.6} opacity={0.75} vectorEffect="non-scaling-stroke" strokeLinejoin="round" /></svg>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={FILL}><path d={wavePath()} fill="none" stroke={eegColor} strokeWidth={1.6} opacity={ivory ? 0.85 : 1} vectorEffect="non-scaling-stroke" strokeLinejoin="round" /></svg>
       </div>
-      <div style={{ position: 'relative', zIndex: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: h * 0.05, paddingLeft: traceZone, paddingRight: beeZone }}>
+      <div style={{ position: 'relative', zIndex: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: h * 0.05, paddingLeft: padL, paddingRight: beeZone }}>
         <span style={{ fontFamily: 'var(--font-display)', fontSize: wordPx, letterSpacing: '0.05em', color: pal.ink, lineHeight: 0.92, WebkitTextStroke: `${wordPx * 0.018}px ${pal.ink}`, whiteSpace: 'nowrap' }}>{WORD}</span>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: eyePx, letterSpacing: '0.24em', textTransform: 'uppercase', color: pal.muted, whiteSpace: 'nowrap' }}>Biometrically scaled</span>
       </div>
