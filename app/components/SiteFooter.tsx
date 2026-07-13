@@ -82,7 +82,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   aria-label={`One Thousand Drones on ${s.label}`}
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20">
                     <path d={s.d} />
                   </svg>
                 </a>
