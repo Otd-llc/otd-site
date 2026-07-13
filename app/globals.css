@@ -54,31 +54,33 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Global engineering-paper backdrop (shared with the academy) ──────────────
-   A fixed, full-viewport isometric graph-paper field behind every page: a
-   two-tier triangular line grid (fine + bold) in dim steel, with a top-biased
-   vignette that keeps the content band clear and fades the grid into deep space
-   at the edges. Cell size is LOCKED to the title scale (--hero-size / 6.5) and
-   floored at 15px so it never goes tiny on phones. position: fixed so it holds
-   per-viewport on scroll; pointer-events-none; hidden in print. */
+/* ── Global paper backdrop (shared with the academy) ──────────────────────────
+   A fixed, full-viewport vellum paper field behind every page: a fine cold-press
+   speckle over faint horizontal laid lines (2026-07-13, replacing the old line
+   grid, matching academy). Constant on scroll — no fade, no vignette darkening —
+   with a vertical mask that keeps it a touch stronger at the screen top + bottom
+   and softer through the reading band. The deep-space base is painted on the
+   element (unmasked); the paper is a masked ::after on top. position: fixed;
+   pointer-events-none; hidden in print. */
 .app-backdrop {
   position: fixed;
   inset: 0;
   z-index: -10;
   pointer-events: none;
-  --cell: clamp(15px, calc(var(--hero-size) / 6.5), 18px);
-  --major: calc(var(--cell) * 3);
-  --grid-minor: rgba(150, 170, 205, 0.03);
-  --grid-bold: rgba(150, 170, 205, 0.058);
   background-color: var(--color-deep-space);
+}
+.app-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  --tex-rgb: 150 170 205;
   background-image:
-    radial-gradient(96% 88% at 50% 26%, transparent 18%, var(--color-deep-space) 100%),
-    repeating-linear-gradient(90deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
-    repeating-linear-gradient(30deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
-    repeating-linear-gradient(150deg, transparent 0 calc(var(--major) - 1px), var(--grid-bold) 0 var(--major)),
-    repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
-    repeating-linear-gradient(30deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell)),
-    repeating-linear-gradient(150deg, transparent 0 calc(var(--cell) - 1px), var(--grid-minor) 0 var(--cell));
+    radial-gradient(rgb(var(--tex-rgb) / 0.045) 0.5px, transparent 0.7px),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgb(var(--tex-rgb) / 0.03) 2px 3px);
+  background-size: 7px 7px, auto;
+  --backdrop-mask: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 1) 100%);
+  -webkit-mask-image: var(--backdrop-mask);
+  mask-image: var(--backdrop-mask);
 }
 @media print { .app-backdrop { display: none; } }
 
@@ -506,62 +508,62 @@ body {
 .brief-again:hover { color: var(--color-gold-light); }
 
 /* ---- footer ---- */
+/* Footer — the colophon on the current system (2026-07-13, matching academy V01):
+   Bebas wordmark + big Bebas links, gold Bebas heads, mono tagline/registry, large
+   gold socials, a gradient-alpha brand watermark, and a centered copyright. */
 .app-footer {
   margin-top: 4.5rem;
   font-family: var(--font-mono), monospace;
   color: var(--color-muted);
-  /* clip the bee watermark at the viewport edge so it bleeds off-screen, not
-     mid-page at the 72rem content column */
+  /* clip the bee watermark at the viewport edge so it bleeds off-screen */
   overflow: hidden;
-  /* gold-tinted hairline + a faint wash bleeding up from the seam for depth */
-  border-top: 1px solid transparent;
-  border-image: linear-gradient(90deg, transparent, rgba(200, 150, 62, .55), transparent) 1;
-  background:
-    radial-gradient(120% 90% at 50% 0%, rgba(200, 150, 62, .05), transparent 60%),
-    var(--color-deep-space);
+  border-top: 1px solid rgba(58, 63, 80, .6);
+  background: var(--color-deep-space);
 }
-.foot-inner { position: relative; z-index: 0; max-width: 72rem; margin: 0 auto; padding: 3.2rem 1.5rem 2.4rem; }
-/* Brand-icon watermark (ported from the academy). Bleeds off the right on
-   desktop, clipped at the viewport by .app-footer; behind the colophon. Dark-
-   only site, so a single opacity. */
-.foot-wm-bee { position: absolute; z-index: -1; top: 50%; right: -8%; transform: translateY(-50%); width: 46%; max-width: 620px; color: var(--color-command-gold); opacity: .1; pointer-events: none; }
+.foot-inner { position: relative; z-index: 0; max-width: 72rem; margin: 0 auto; padding: 2.6rem 1.5rem 2.4rem; }
+/* Brand-icon watermark: gradient-alpha (135deg from top-left, top 0.25 settling to
+   the resting 0.10), bleeds off the right on desktop, behind the colophon. */
+.foot-wm-bee {
+  position: absolute; z-index: -1; top: 50%; right: -8%; transform: translateY(-50%);
+  width: 46%; max-width: 640px; color: var(--color-command-gold); opacity: .25; pointer-events: none;
+  -webkit-mask-image: linear-gradient(135deg, #000 0%, rgba(0, 0, 0, .4) 45%, rgba(0, 0, 0, .4) 100%);
+  mask-image: linear-gradient(135deg, #000 0%, rgba(0, 0, 0, .4) 45%, rgba(0, 0, 0, .4) 100%);
+}
 .foot-wm-bee svg { display: block; width: 100%; height: auto; }
 .foot-brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
-.foot-brand img, .foot-brand svg { height: 1.7rem; width: 1.7rem; flex-shrink: 0; }
+.foot-brand img, .foot-brand svg { height: 1.6rem; width: 1.6rem; flex-shrink: 0; }
 .foot-bee { color: var(--color-command-gold); }
-.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.3rem; letter-spacing: .1em; color: var(--color-gray-1); transition: color .15s; }
-.foot-brand:hover .foot-wm { color: #fff; }
-.foot-tag { font-size: 12px; letter-spacing: .03em; color: var(--color-gray-3); margin-top: .7rem; }
-/* Scalable colophon: short themed groups in an auto-fit grid; gold rationed to the bee. */
-.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 1.7rem 1.3rem; margin-top: 2.1rem; }
-.foot-group { display: flex; flex-direction: column; align-items: flex-start; }
-.foot-gh { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--color-gray-1); margin-bottom: .85rem; }
-.foot-group a { font-size: 13px; letter-spacing: .04em; color: var(--color-link-muted); text-decoration: none; padding: .18rem 0; overflow-wrap: anywhere; transition: color .15s; }
-.foot-group a:hover { color: #fff; }
-.foot-group a .ext { color: var(--color-signal-blue); font-size: 11px; }
-.foot-reg { font-size: 10.5px; line-height: 1.85; letter-spacing: .04em; color: var(--color-gray-3); overflow-wrap: anywhere; }
-.foot-end { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
-.foot-copy { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
-/* Company social profile icon row (footer). Gold marks that brighten on hover;
-   accessible name on each link's aria-label. Distinct from the Founder group. */
-.foot-social { display: flex; align-items: center; gap: 1.1rem; list-style: none; margin: 0; padding: 0; }
+.foot-wm { font-family: var(--font-display), sans-serif; font-size: 1.5rem; letter-spacing: .2em; color: var(--color-title); transition: color .15s; }
+.foot-brand:hover .foot-wm { color: var(--color-gold-light); }
+.foot-tag { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-muted); margin-top: .6rem; }
+/* Colophon: gold Bebas heads + big Bebas links on the deep-space field. */
+.foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.8rem 1.4rem; margin-top: 2rem; }
+.foot-group { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; }
+.foot-gh { font-family: var(--font-display), sans-serif; font-size: .95rem; letter-spacing: .1em; color: var(--color-command-gold); margin-bottom: .3rem; }
+.foot-group a { font-family: var(--font-display), sans-serif; font-size: 1.05rem; letter-spacing: .06em; color: var(--color-muted); text-decoration: none; overflow-wrap: anywhere; transition: color .15s; }
+.foot-group a:hover { color: var(--color-gold-light); }
+.foot-group a .ext { color: var(--color-signal-blue); font-size: .8rem; }
+.foot-reg { font-family: var(--font-mono), monospace; font-size: 10px; line-height: 1.85; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gray-3); overflow-wrap: anywhere; }
+.foot-end { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(58, 63, 80, .6); }
+.foot-copy { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
+/* Company social profile icon row. Gold marks that brighten on hover. */
+.foot-social { display: flex; align-items: center; gap: 1.15rem; list-style: none; margin: 0; padding: 0; }
 .foot-social a { display: inline-flex; color: var(--color-command-gold); transition: color .15s; }
 .foot-social a:hover { color: var(--color-gold-light); }
 .foot-social a:focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 3px; border-radius: 2px; }
 
-/* Desktop: keep the columns to the left ~70% so the bee reads on the right.
-   Mobile is untouched — the grid stays full-width and reflows to 2 cols. */
+/* Desktop: pin the social row left, CENTER the copyright on the bottom rule. */
 @media (min-width: 721px) {
-  .foot-cols { max-width: 70%; }
-  /* Desktop: pin the social row left, CENTER the copyright between it and the
-     bee watermark (bleeds off the right). Mobile keeps the simple stacked row. */
+  .foot-cols { max-width: 72%; }
   .foot-end { position: relative; justify-content: center; }
   .foot-social { position: absolute; left: 0; top: 50%; transform: translateY(-50%); }
 }
 @media (max-width: 720px) {
-  .foot-inner { padding: 2.6rem 1.25rem 1.8rem; }
-  /* bee tucks into the bottom-right corner instead of bleeding off the side */
-  .foot-wm-bee { top: auto; bottom: -6%; right: -12%; transform: none; width: 52%; }
+  .foot-inner { padding: 2.4rem 1.25rem 1.8rem; }
+  /* watermark drops into the empty lower area instead of behind the columns */
+  .foot-wm-bee { top: auto; bottom: 14%; right: 2%; transform: none; width: 60%; }
+  /* socials + copyright stack, centered */
+  .foot-end { flex-direction: column; align-items: center; }
   /* registry spans both columns under a hairline, below the 2-col link grid */
   .foot-group-reg { grid-column: 1 / -1; border-top: 1px solid rgba(58, 63, 80, .55); padding-top: 1.2rem; margin-top: .3rem; }
 }
