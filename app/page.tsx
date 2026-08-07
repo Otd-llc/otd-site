@@ -141,6 +141,66 @@ export default function Home() {
         </p>
       </Section>
 
+      {/* 03 · Hex Cluster — the open hardware release.
+          A SECTION, NOT AN APEX /hex PAGE. next.config.js already redirects
+          /academy to the academy with the reason written into it: "don't
+          duplicate its landing here". The academy's /hex is a harder case of
+          the same rule. It is the CC BY attribution target, and that URL is
+          baked immutably into the LICENSE.txt inside every published
+          .3mf/.stl/.step of every release, so it cannot move and must not have
+          a rival. Its own header says a maker must never find two different
+          numbers for the same dimension across the page and the build sheet in
+          their hand, and a second spec table here is how that happens. So this
+          band states no dimensions at all and sends every spec and file
+          question to the canonical page. */}
+      <section className="sec" id="hex" data-reveal>
+        <div className="hx-band">
+          <video
+            src="/hex/cluster-loop.mp4"
+            poster="/hex/cluster-loop-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="Three hex tiles: a carrier tray opens, two neighbouring tiles engage, and edge caps go on."
+          />
+          {/* Shown instead of the clip when the visitor asks for reduced motion.
+              It is a sibling rather than a CSS background so it inherits the
+              same sizing and the same sideways shift; a centred background put
+              the cluster back behind the headline. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="hx-band-still"
+            src="/hex/cluster-loop-poster.jpg"
+            alt="Three hex tiles engaged, with a carrier tray open above them."
+          />
+          {/* Legibility only. It carries no colour and states nothing. */}
+          <div className="hx-band-scrim" aria-hidden="true" />
+          <div className="hx-band-copy">
+            <div>
+              <p className="sec-kicker">03 · The download</p>
+              <h2 className="sec-h2">ONE ZIP, NO ACCOUNT</h2>
+              <p className="lead">
+                The configurator runs in your browser and asks for nothing. Lay out the cluster,
+                export the parts it needs, and the zip lands with 3MF, STL and STEP plus a build
+                sheet for the plate.
+              </p>
+              <div className="cta-row">
+                <a
+                  className="glass-button glass-button-cta"
+                  href="https://academy.onethousanddrones.com/hex"
+                >
+                  Get the files →
+                </a>
+                <a className="glass-button" href="https://demo.onethousanddrones.com/hex">
+                  Open the configurator →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* two ways in */}
       <Section id="academy" kicker="Two ways in" title="One ecosystem">
         <div className="doors">

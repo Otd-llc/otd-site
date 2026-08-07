@@ -425,6 +425,66 @@ body {
 .door .go .ar { transition: transform .3s; }
 .door:hover .go .ar { transform: translateX(4px); }
 
+/* ---- hex band — a section whose subject is a silent looping render ----
+   The clip is PUSHED RIGHT and oversized to match. Centred, the cluster sat
+   directly behind the headline and the two collided: a scrim can make type
+   legible over a subject, and it still cannot stop the subject reading as
+   clutter behind the words. Oversizing by the amount it is shifted keeps the
+   left edge covered.
+   The clip's own framing carries empty sides, because it is framed so the
+   exploded parts stack clears the top edge at every azimuth of a full camera
+   revolution. `object-fit: cover` in a box this wide is what crops them away.
+   Do not reuse this band for a contained box: the dead space comes back at
+   page scale, which is exactly how three earlier layout options failed. */
+.hx-band {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--color-panel-border);
+  border-bottom: 1px solid var(--color-panel-border);
+}
+/* The still and the video share every sizing rule so the reduced-motion
+   fallback is framed identically. An earlier version painted the poster as a
+   `background: center / cover` on the band instead, which centred the cluster
+   and put it straight back behind the headline: the shift is the whole reason
+   the copy is readable, and a background cannot carry it. */
+.hx-band video,
+.hx-band-still { width: 124%; height: 46vh; min-height: 320px; object-fit: cover; display: block; transform: translateX(19%); }
+.hx-band-still { display: none; }
+.hx-band-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--color-deep-space) 8%,
+    color-mix(in srgb, var(--color-deep-space) 72%, transparent) 38%, transparent 68%);
+}
+.hx-band-copy { position: absolute; inset: 0; display: flex; align-items: center; padding: 2.2rem 2.6rem; }
+.hx-band-copy > div { max-width: 42ch; }
+.hx-band-copy .sec-h2 { margin-bottom: .6rem; }
+.hx-band-copy .lead { max-width: 46ch; }
+.hx-band-copy .cta-row { margin-top: 1.6rem; }
+/* NARROW STACKS, IT DOES NOT OVERLAY.
+   Overlaying needs horizontal room to push the cluster clear of the words, and
+   under about 860px there is none: first attempt kept the copy over the clip
+   with a vertical scrim, and at 820px the headline sat across the tiles while
+   at 390px the whole paragraph did. A scrim strong enough to fix that would
+   have hidden the render it exists to show. So the clip takes the top, the copy
+   takes the bottom on solid deep space, and the band grows to fit both. */
+@media (max-width: 860px) {
+  .hx-band { display: flex; flex-direction: column; }
+  .hx-band video,
+  .hx-band-still { width: 100%; height: 34vh; min-height: 200px; max-height: 280px; transform: none; }
+  .hx-band-scrim { display: none; }
+  .hx-band-copy { position: static; padding: 1.5rem 1.4rem 1.8rem; }
+  .hx-band-copy > div { max-width: none; }
+}
+/* The poster stands in. A looping render under the headline is motion nobody
+   asked for once a visitor has said they want none. The <video> is still in the
+   DOM and may still decode while hidden; stopping that needs JS, and this page
+   is server-rendered, so the visible motion is what gets removed here. */
+@media (prefers-reduced-motion: reduce) {
+  .hx-band video { display: none; }
+  .hx-band-still { display: block; }
+}
+
 /* ---- about — founder dossier: framed credential + a structured record ---- */
 .about-intro { margin-top: 1.8rem; display: grid; grid-template-columns: 300px 1fr; gap: 2.8rem; align-items: start; }
 .about-portrait { margin: 0; }
