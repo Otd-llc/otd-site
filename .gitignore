@@ -5,3 +5,7 @@ out/
 docs/plans/
 *.tsbuildinfo
 docs/2026-06-16-bioscale-science-blurb.md
+
+# A dev-server log, written by `next dev > dev.log`. Not a build artifact and
+# not content; it just sits in the tree looking committable.
+dev.log
