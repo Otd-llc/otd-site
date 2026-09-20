@@ -6,6 +6,10 @@ import { ModeBand } from './components/ui/ModeBand'
 import { ProductCard } from './components/ui/ProductCard'
 import { Door } from './components/ui/Door'
 
+// Cross-origin, so never a next/link target: a prefetch carries an RSC header through
+// the /academy 307 and fails CORS on every page load. Same reason as SiteHeader.tsx.
+const ACADEMY = 'https://academy.onethousanddrones.com'
+
 export default function Home() {
   return (
     <>
@@ -38,9 +42,9 @@ export default function Home() {
             <Link className="glass-button glass-button-cta" href="/contact">
               Request a briefing →
             </Link>
-            <Link className="glass-button" href="/academy">
+            <a className="glass-button" href={ACADEMY}>
               Enter the Academy →
-            </Link>
+            </a>
           </div>
         </div>
         <BioScaleEmbed />
@@ -216,7 +220,8 @@ export default function Home() {
             title="Build It Yourself"
             body="First ESP32 board to an EEG BCI that commands your own swarm. 22 projects, free start."
             cta="Start free with L1.01"
-            href="/academy"
+            href={ACADEMY}
+            external
           />
         </div>
       </Section>
