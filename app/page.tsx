@@ -155,6 +155,10 @@ export default function Home() {
           question to the canonical page. */}
       <section className="sec" id="hex" data-reveal>
         <div className="hx-band">
+          {/* TODO(8.1 art): cluster-loop.mp4 and its poster still show v1. Replace
+              both with the v2 loop and still captured from the staging
+              configurator, then check the two descriptions below against the
+              final frames. OWNER-REVIEW: both descriptions are drafts. */}
           <video
             src="/hex/cluster-loop.mp4"
             poster="/hex/cluster-loop-poster.jpg"
@@ -162,7 +166,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            aria-label="Three hex tiles: a carrier tray opens, two neighbouring tiles engage, and edge caps go on."
+            aria-label="Hexagonal bases slide together on their dovetail edges, and covers and caps go on."
           />
           {/* Shown instead of the clip when the visitor asks for reduced motion.
               It is a sibling rather than a CSS background so it inherits the
@@ -172,18 +176,21 @@ export default function Home() {
           <img
             className="hx-band-still"
             src="/hex/cluster-loop-poster.jpg"
-            alt="Three hex tiles engaged, with a carrier tray open above them."
+            alt="Hexagonal bases locked together on their dovetail edges, with covers and caps fitted."
           />
           {/* Legibility only. It carries no colour and states nothing. */}
           <div className="hx-band-scrim" aria-hidden="true" />
           <div className="hx-band-copy">
             <div>
-              <p className="sec-kicker">03 · The download</p>
-              <h2 className="sec-h2">ONE ZIP, NO ACCOUNT</h2>
+              {/* OWNER-REVIEW: kicker, headline and lead are the v2 draft. The
+                  lead reuses the academy /hex draft's wording. */}
+              <p className="sec-kicker">03 · Hex Cluster</p>
+              <h2 className="sec-h2">A BENCH MOUNTING STANDARD</h2>
               <p className="lead">
-                The configurator runs in your browser and asks for nothing. Lay out the cluster,
-                export the parts it needs, and the zip lands with 3MF, STL and STEP plus a build
-                sheet for the plate.
+                A bench mounting standard you print yourself, CC BY 4.0. Every base carries a
+                dovetail on all six edges, so a layout of any size locks together and moves as one
+                piece. Plan a layout in the configurator, download the plates, and add to it one
+                cell at a time. No account, no email.
               </p>
               <div className="cta-row">
                 <a
