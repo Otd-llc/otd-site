@@ -188,7 +188,7 @@ export default function Home() {
               <p className="sec-kicker">03 · Hex Cluster</p>
               <h2 className="sec-h2">A BENCH MOUNTING STANDARD</h2>
               <p className="lead">
-                A bench mounting standard you print yourself, CC BY 4.0. Every base carries a
+                Print every part yourself; the files are CC BY 4.0. Every base carries a
                 dovetail on all six edges, so a layout of any size locks together and moves as one
                 piece. Plan a layout in the configurator, download the plates, and add to it one
                 cell at a time. No account, no email.
