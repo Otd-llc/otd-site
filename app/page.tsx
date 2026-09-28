@@ -155,10 +155,11 @@ export default function Home() {
           question to the canonical page. */}
       <section className="sec" id="hex" data-reveal>
         <div className="hx-band">
-          {/* TODO(8.1 art): cluster-loop.mp4 and its poster still show v1. Replace
-              both with the v2 loop and still captured from the staging
-              configurator, then check the two descriptions below against the
-              final frames. OWNER-REVIEW: both descriptions are drafts. */}
+          {/* cluster-loop.mp4 and its poster are the v2 film, cut by the academy's
+              tools/hex-promo-cuts.mjs --preset=apex (column -> PVC -> explode ->
+              plates), fitted inside the part of the frame this band keeps. The
+              two descriptions below were written against its frames.
+              OWNER-REVIEW: both descriptions are drafts. */}
           <video
             src="/hex/cluster-loop.mp4"
             poster="/hex/cluster-loop-poster.jpg"
@@ -166,7 +167,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            aria-label="Hexagonal bases slide together on their dovetail edges, and covers and caps go on."
+            aria-label="A PVC pipe slides through a row of hexagonal bases beside a stacked column, the column's cover snaps on, the build explodes, and every printed part flies onto a print bed before the build reassembles."
           />
           {/* Shown instead of the clip when the visitor asks for reduced motion.
               It is a sibling rather than a CSS background so it inherits the
@@ -176,7 +177,7 @@ export default function Home() {
           <img
             className="hx-band-still"
             src="/hex/cluster-loop-poster.jpg"
-            alt="Hexagonal bases locked together on their dovetail edges, with covers and caps fitted."
+            alt="A column of three stacked hexagonal bases with a cover on top, in a row of open bases that a PVC pipe runs through."
           />
           {/* Legibility only. It carries no colour and states nothing. */}
           <div className="hx-band-scrim" aria-hidden="true" />
