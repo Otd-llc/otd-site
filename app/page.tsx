@@ -155,9 +155,9 @@ export default function Home() {
           question to the canonical page. */}
       <section className="sec" id="hex" data-reveal>
         <div className="hx-band">
-          {/* cluster-loop.mp4 and its poster are the v2 film, cut by the academy's
-              tools/hex-promo-cuts.mjs --preset=apex (column -> PVC -> explode ->
-              plates), fitted inside the part of the frame this band keeps. The
+          {/* cluster-loop.mp4 and its poster are the wall caddy from the
+              configurator repo's build film (bioscale-viz
+              tools/hex-build-film.mjs), exported under that film's gates. The
               two descriptions below were written against its frames.
               OWNER-REVIEW: both descriptions are drafts. */}
           <video
@@ -167,7 +167,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            aria-label="A wall caddy builds itself: one hexagonal base drops onto a painted wall, a keyhole plate, a label plate and two hooks bolt to its sides, and a set of keys drops into its bin."
+            aria-label="A wall caddy builds itself: one hexagonal base drops into place against a wall, a shallow tray drops into it, a label plate and two hooks bolt to its sides, and a set of keys on a strap hangs from one hook."
           />
           {/* Shown instead of the clip when the visitor asks for reduced motion.
               It is a sibling rather than a CSS background so it inherits the
@@ -177,7 +177,7 @@ export default function Home() {
           <img
             className="hx-band-still"
             src="/hex/cluster-loop-poster.jpg"
-            alt="One hexagonal base on a painted wall, keyhole plate and hooks bolted to its sides, a set of keys lying in its bin."
+            alt="One hexagonal base against a wall with a shallow tray in its top, a label plate and two hooks bolted to its sides, and a set of keys hanging from one hook on a strap."
           />
           {/* Legibility only. It carries no colour and states nothing. */}
           <div className="hx-band-scrim" aria-hidden="true" />
