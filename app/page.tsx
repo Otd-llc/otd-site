@@ -167,7 +167,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            aria-label="A wall caddy builds itself: one hexagonal base drops into place against a wall, a shallow tray drops into it, a label plate and two hooks bolt to its sides, and a set of keys on a strap hangs from one hook."
+            aria-label="A wall caddy builds itself: one hexagonal base drops into place against a wall, a bin drops into it, a label plate and two hooks bolt to its sides, and a set of keys on a strap hangs from one hook, its shadow on the wall."
           />
           {/* Shown instead of the clip when the visitor asks for reduced motion.
               It is a sibling rather than a CSS background so it inherits the
@@ -177,7 +177,7 @@ export default function Home() {
           <img
             className="hx-band-still"
             src="/hex/cluster-loop-poster.jpg"
-            alt="One hexagonal base against a wall with a shallow tray in its top, a label plate and two hooks bolted to its sides, and a set of keys hanging from one hook on a strap."
+            alt="One hexagonal base against a wall with a bin in its top, a label plate and two hooks bolted to its sides, and a set of keys hanging from one hook on a strap, with their shadows on the wall."
           />
           {/* Legibility only. It carries no colour and states nothing. */}
           <div className="hx-band-scrim" aria-hidden="true" />
