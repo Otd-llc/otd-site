@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { bebas, spaceMono, lora, saira } from './fonts'
 import { SiteHeader } from './components/SiteHeader'
 import { SiteFooter } from './components/SiteFooter'
+import { ConsentProviders } from './components/ConsentProviders'
 import './globals.css'
 
 const DESCRIPTION =
@@ -41,9 +42,14 @@ export default function RootLayout({
             field behind every page (CSS in globals.css, .app-backdrop). Shared
             with the academy. Decorative; pointer-events-none, hidden in print. */}
         <div className="app-backdrop" aria-hidden="true" />
-        <SiteHeader />
-        <main className="main">{children}</main>
-        <SiteFooter />
+        {/* Consent banner + Google Analytics (c15t, offline mode). Wraps the
+            chrome so the footer's Cookie settings control is inside the
+            provider. Renders no DOM wrapper of its own. */}
+        <ConsentProviders>
+          <SiteHeader />
+          <main className="main">{children}</main>
+          <SiteFooter />
+        </ConsentProviders>
       </body>
     </html>
   )

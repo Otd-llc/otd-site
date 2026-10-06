@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { validateBriefing, type BriefingErrors } from './briefing-form-validate'
+import { gaEvent } from '../lib/ga-client'
 
 export function BriefingForm() {
   const [form, setForm] = useState({ name: '', email: '', org: '', message: '', website: '' })
@@ -23,6 +24,8 @@ export function BriefingForm() {
         body: JSON.stringify(form),
       })
       if (!res.ok) throw new Error('bad status')
+      // GA4 key event. Queued until consent, dropped if GA is unconfigured.
+      gaEvent('generate_lead', { lead_source: 'briefing' })
       setStatus('ok')
       setForm({ name: '', email: '', org: '', message: '', website: '' })
     } catch {

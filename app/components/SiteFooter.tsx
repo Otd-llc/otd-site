@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BrandMark } from './BrandMark'
+import { CookieSettingsButton } from './CookieSettingsButton'
 
 const ACADEMY = 'https://academy.onethousanddrones.com'
 
@@ -48,6 +49,11 @@ export function SiteFooter() {
             <Link href="/brand">Brand</Link>
             <Link href="/contact">Request a briefing</Link>
             <a href="mailto:josh@onethousanddrones.com">josh@onethousanddrones.com</a>
+            {/* One privacy policy covers both sites; it lives on the academy. */}
+            <a href={`${ACADEMY}/privacy`} rel="noopener">
+              Privacy <span className="ext">↗</span>
+            </a>
+            <CookieSettingsButton className="foot-btn" />
           </nav>
 
           <nav className="foot-group" aria-label="Founder">

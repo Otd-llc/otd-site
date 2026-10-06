@@ -9,6 +9,7 @@
    recipes reference them with a generic-family fallback.
    ========================================================================= */
 
+
 :root {
   --color-deep-space: #08090d;
   --color-bg-2: #0f1018;
@@ -42,7 +43,15 @@
   --hero-size: clamp(48px, 7vw, 90px);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* The reset skips the consent banner's subtree (c15t, every class prefixed
+   `c15t-`). c15t's own rules sit in `@layer components`, and ANY unlayered rule
+   beats a layered one whatever its specificity, so a plain `*` reset stripped
+   the banner's padding and it rendered crushed (measured: padding 0 on every
+   banner element, 15.75px-tall buttons). Putting the reset in a layer instead
+   would only work if this file's layer declaration reached the browser before
+   c15t's chunk, which nothing guarantees. `:where()` keeps the specificity at
+   zero, so for every other element this is exactly the old `*` rule. */
+:where(*:not([class*="c15t-"], [class*="c15t-"] *)) { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; height: 100%; }
 body {
   background-color: var(--color-deep-space);
@@ -604,6 +613,8 @@ body {
 .foot-group a { font-family: var(--font-display), sans-serif; font-size: 1.05rem; letter-spacing: .06em; color: var(--color-muted); text-decoration: none; overflow-wrap: anywhere; transition: color .15s; }
 .foot-group a:hover { color: var(--color-gold-light); }
 .foot-group a .ext { color: var(--color-signal-blue); font-size: .8rem; }
+.foot-group .foot-btn { appearance: none; background: none; border: 0; padding: 0; cursor: pointer; text-align: left; font-family: var(--font-display), sans-serif; font-size: 1.05rem; letter-spacing: .06em; color: var(--color-muted); transition: color .15s; }
+.foot-group .foot-btn:hover, .foot-group .foot-btn:focus-visible { color: var(--color-gold-light); }
 .foot-reg { font-family: var(--font-mono), monospace; font-size: 10px; line-height: 1.85; letter-spacing: .12em; text-transform: uppercase; color: var(--color-gray-3); overflow-wrap: anywhere; }
 .foot-end { display: flex; align-items: center; justify-content: space-between; gap: 1rem 1.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(58, 63, 80, .6); }
 .foot-copy { font-family: var(--font-mono), monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-gray-3); }
@@ -928,4 +939,29 @@ body {
   .sec { margin-top: 2.2rem; }
   .cta-row { margin-top: 1.4rem; }
   .subhead { margin-top: 1rem; }
+}
+
+/* Consent banner (c15t) slots. The academy styles these slots with Tailwind
+   utilities in src/components/chrome/ConsentProviders.tsx; these are the same
+   values as plain classes, wired through CONSENT_THEME.slots in
+   app/components/ConsentProviders.tsx. c15t's own component rules sit inside
+   `@layer components`, so these unlayered rules win without specificity games.
+   Accept carries the gold fill; Reject keeps the same face, size and row, and
+   its edge is full gold because a panel hairline measured under the 3:1
+   non-text contrast floor on the academy. */
+.consent-card { border: 1px solid color-mix(in srgb, var(--color-command-gold) 25%, transparent); background: var(--color-deep-space); box-shadow: var(--elev-card); }
+.consent-title { font-family: var(--font-display), sans-serif; font-size: 1.5rem; line-height: 2rem; letter-spacing: .04em; color: var(--color-title); }
+.consent-desc { font-family: var(--font-serif), serif; font-size: .875rem; line-height: 1.625; color: var(--color-muted); }
+.consent-footer { border-top: 1px solid color-mix(in srgb, var(--color-panel-border) 60%, transparent); }
+.consent-btn { font-family: var(--font-mono), monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .16em; border-radius: 6px; }
+.consent-btn-secondary { border-color: var(--color-command-gold); }
+.consent-tag { font-family: var(--font-mono), monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .18em; }
+/* c15t's ghost button sets no background of its own: it assumes a preflight
+   reset (the academy gets one from Tailwind), so here it showed the browser's
+   grey button face. This rule joins c15t's OWN `components` layer at zero
+   specificity, so it behaves exactly like preflight: any c15t rule that does
+   set a background (the gold Accept fill, the Reject surface, hover tints)
+   still wins, and load order cannot change that. */
+@layer components {
+  :where([class*="c15t-"] button) { background-color: transparent; background-image: none; }
 }
