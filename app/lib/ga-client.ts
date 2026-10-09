@@ -10,9 +10,14 @@
 // what keeps the shared privacy policy's "no advertising cookies, no tracking
 // across other sites" true.
 //
-// Pageviews come from GA4 enhanced measurement (first load + history changes),
-// so none are sent from here. Events fired before consent resolves wait in a
-// small in-memory queue and flush when GA boots; a revoke drops them.
+// PAGE VIEWS ARE MANUAL (2026-10-09), sent by gaPageView() from the route
+// tracker in ConsentProviders. The shared GA stream's "page changes based on
+// browser history events" is off, because the academy puts a learner's name in
+// one route's URL and title and must scrub page views itself; one stream, one
+// setting, so the apex sends its own too. Each navigation SETS the page first
+// (gtag attaches the current location/title to every hit), then sends the view.
+// Events fired before consent resolves wait in a small in-memory queue (whole
+// gtag commands) and flush when GA boots; a revoke drops them.
 //
 // Unset NEXT_PUBLIC_GA_MEASUREMENT_ID (local, preview) → nothing loads.
 import { analyticsConsentGranted } from './consent-signal'
@@ -32,8 +37,11 @@ const RAW_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 const GA_ID = RAW_ID && /^G-[A-Z0-9]+$/.test(RAW_ID) ? RAW_ID : undefined
 
 const QUEUE_LIMIT = 20
-const pending: [string, Record<string, unknown> | undefined][] = []
+const pending: unknown[][] = []
 let booted = false
+// Set by a revoke, cleared by the next grant. Without it every loadGa() after
+// boot (every event goes through it) re-sent a consent update.
+let revoked = false
 
 /** Boot GA if configured and consented. Idempotent. Returns whether GA is live. */
 export function loadGa(): boolean {
@@ -41,9 +49,12 @@ export function loadGa(): boolean {
   if (!analyticsConsentGranted()) return false
 
   if (booted) {
-    // A re-grant after a revoke in the same page: lift the denial.
-    window[`ga-disable-${GA_ID}`] = false
-    window.gtag?.('consent', 'update', { analytics_storage: 'granted' })
+    // A re-grant after a revoke in the same page: lift the denial, once.
+    if (revoked) {
+      revoked = false
+      window[`ga-disable-${GA_ID}`] = false
+      window.gtag?.('consent', 'update', { analytics_storage: 'granted' })
+    }
   } else {
     booted = true
     window.dataLayer = window.dataLayer ?? []
@@ -63,6 +74,7 @@ export function loadGa(): boolean {
     window.gtag('config', GA_ID, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      send_page_view: false,
     })
     const script = document.createElement('script')
     script.async = true
@@ -70,18 +82,30 @@ export function loadGa(): boolean {
     document.head.appendChild(script)
   }
 
-  for (const [name, params] of pending.splice(0)) {
-    window.gtag?.('event', name, params)
-  }
+  for (const cmd of pending.splice(0)) window.gtag?.(...cmd)
   return true
 }
 
 /** Send a GA4 event; queued in memory until consent resolves. Never throws. */
 export function gaEvent(name: string, params?: Record<string, unknown>): void {
+  gaCommand('event', name, params)
+}
+
+/** A page view: set the page (every later hit inherits it), then send the view. */
+export function gaPageView(page: { location: string; title: string; referrer?: string }): void {
+  gaCommand('set', {
+    page_location: page.location,
+    page_title: page.title,
+    page_referrer: page.referrer ?? '',
+  })
+  gaCommand('event', 'page_view')
+}
+
+function gaCommand(...cmd: unknown[]): void {
   if (!GA_ID || typeof window === 'undefined') return
   try {
-    if (loadGa()) window.gtag?.('event', name, params)
-    else if (pending.length < QUEUE_LIMIT) pending.push([name, params])
+    if (loadGa()) window.gtag?.(...cmd)
+    else if (pending.length < QUEUE_LIMIT) pending.push(cmd)
   } catch {
     /* telemetry must never break the UI */
   }
@@ -97,6 +121,7 @@ export function revokeGa(): void {
   if (booted && GA_ID) {
     window[`ga-disable-${GA_ID}`] = true
     window.gtag?.('consent', 'update', { analytics_storage: 'denied' })
+    revoked = true
   }
   clearGaCookies()
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { gaEvent } from '../lib/ga-client'
 
 // Defaults to the production demo; override with NEXT_PUBLIC_DEMO_URL to frame
 // a local/preview build (e.g. http://localhost:4173) without code changes.
@@ -17,6 +18,10 @@ export function BioScaleEmbed() {
   const [active, setActive] = useState('1')
 
   const go = (key: string) => {
+    // Which scenario a visitor tried: taps and keys 1-6 both land here.
+    gaEvent('demo_scenario_selected', {
+      scenario: SCN.find((s) => s.key === key)?.label ?? key,
+    })
     const f = document.getElementById('viz') as HTMLIFrameElement | null
     // Cross-origin can't inject real keystrokes, so postMessage the key → the
     // demo re-fires the keydown internally (origin-restricted listener in
