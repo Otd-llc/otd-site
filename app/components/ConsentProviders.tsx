@@ -15,6 +15,7 @@ import { ConsentManagerProvider, ConsentBanner, ConsentDialog } from '@c15t/next
 // site's global reset in globals.css skips the banner's subtree; see there.
 import '@c15t/nextjs/styles.css'
 import { ConsentBridge } from './ConsentBridge'
+import { AnalyticsTracker } from './AnalyticsTracker'
 import { CONSENT_POLICY_PACKS, parseGeoCookie } from '../lib/consent-geo'
 
 // LOAD BEARING: c15t grants only categories it has been told are active. With
@@ -97,6 +98,7 @@ export function ConsentProviders({ children }: { children: React.ReactNode }) {
       }}
     >
       <ConsentBridge />
+      <AnalyticsTracker />
       <ConsentBanner primaryButton="accept" />
       <ConsentDialog />
       {children}

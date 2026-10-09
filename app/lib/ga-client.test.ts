@@ -77,7 +77,7 @@ describe('ga-client (apex)', () => {
       'default',
       { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' },
     ])
-    expect(config).toEqual(['config', 'G-TEST123', { allow_google_signals: false, allow_ad_personalization_signals: false }])
+    expect(config).toEqual(['config', 'G-TEST123', { allow_google_signals: false, allow_ad_personalization_signals: false, send_page_view: false }])
   })
 
   it('holds pre-consent events and flushes them on grant', async () => {
@@ -102,5 +102,28 @@ describe('ga-client (apex)', () => {
       expect(cookieWrites).toContain(`${name}=; Max-Age=0; path=/; domain=.onethousanddrones.com`)
     }
     expect(cookieWrites.some((w) => w.includes('domain=.com'))).toBe(false)
+  })
+})
+
+describe('ga-client (apex) page views and consent updates', () => {
+  it('a page view sets the page first, then sends the view, queued until consent', async () => {
+    const ga = await load()
+    ga.gaPageView({ location: 'https://onethousanddrones.com/about', title: 'About', referrer: 'https://onethousanddrones.com/' })
+    expect(win.dataLayer).toBeUndefined()
+    consent.granted = true
+    ga.loadGa()
+    expect(calls().slice(-2)).toEqual([
+      ['set', { page_location: 'https://onethousanddrones.com/about', page_title: 'About', page_referrer: 'https://onethousanddrones.com/' }],
+      ['event', 'page_view'],
+    ])
+  })
+
+  it('events after boot do NOT each re-send a consent update', async () => {
+    consent.granted = true
+    const ga = await load()
+    ga.loadGa()
+    ga.gaEvent('cta_clicked', { cta: 'academy' })
+    ga.gaEvent('demo_scenario_selected', { scenario: 'MI-Left' })
+    expect(calls().filter((c) => c[0] === 'consent' && c[1] === 'update')).toEqual([])
   })
 })
