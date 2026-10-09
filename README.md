@@ -46,6 +46,22 @@ The thesis — *Brain-to-Swarm*: a non-invasive EEG BCI that reads a trained ope
   client `BriefingForm` validation gate
 - **Vercel** — auto-deploys on push to `main` (branch-protected: PR + a passing build required)
 
+## Analytics and consent
+
+Google Analytics 4 runs behind a c15t consent banner. It is the same GA property and
+web stream as the Academy, so an apex → Academy visit is one journey. The banner
+shows only where the law asks for consent first; the visitor's country comes from
+Vercel's geolocation, via `proxy.ts` and `app/lib/consent-geo.ts`. Page views are
+sent by `app/components/AnalyticsTracker.tsx`, not by GA. Google's script never
+loads before a visitor allows measurement.
+
+`NEXT_PUBLIC_GA_MEASUREMENT_ID` is set on Vercel Production only. Unset, which is
+the case locally and on previews, means no GA at all.
+
+**The full record lives in the Academy repo: [`docs/state-of-analytics.md`](https://github.com/Otd-llc/otd-academy/blob/main/docs/state-of-analytics.md).**
+It covers every event, the consent rules, the GA settings that must not change, and
+the history. One privacy policy covers both sites: <https://academy.onethousanddrones.com/privacy>.
+
 ## Local development
 
 ```bash
