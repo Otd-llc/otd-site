@@ -45,8 +45,13 @@ export default async function Image() {
         </div>
 
         {/* Title */}
+        {/* Two children (text + the gold span), so it must be explicitly flex:
+            Next 16.3's image renderer refuses a multi-child <div> without it
+            (16.2 tolerated it). The space is non-breaking because flex layout
+            drops a trailing plain space between the two. */}
         <div
           style={{
+            display: 'flex',
             fontSize: 72,
             fontWeight: 700,
             color: '#ffffff',
@@ -54,7 +59,8 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          ONE MIND, <span style={{ color: '#c8963e' }}>MANY MACHINES</span>
+          {'ONE MIND, '}
+          <span style={{ color: '#c8963e' }}>MANY MACHINES</span>
         </div>
 
         {/* Subtitle */}
